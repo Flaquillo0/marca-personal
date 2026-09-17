@@ -103,10 +103,29 @@ el contraste mínimo legible.
 - **Dominio propio.** Mientras no lo haya, la miniatura al compartir no va a
   funcionar.
 
+## Acceso directo en el teléfono
+
+La página trae `manifest.json` y los iconos `fotos/icono-*.png`, que son los que
+hacen que al agregarla a la pantalla de inicio quede con el cuadrado azul y las
+iniciales, y con el nombre corto "Sebastián Carvallo" en vez del título largo.
+
+- **Android (Chrome):** menú de tres puntos > Agregar a pantalla principal.
+- **iPhone (Safari):** botón de compartir > Añadir a pantalla de inicio.
+
+En iPhone sólo funciona desde Safari, no desde Chrome.
+
 ## Cómo se publica un cambio
 
-El repositorio se conecta a Vercel una vez. Después, cada cambio que se sube se
-publica solo:
+Hay dos caminos, según cómo se haya publicado la primera vez.
+
+**Si se publicó arrastrando la carpeta a Vercel:** hay que volver a arrastrarla
+cada vez. La carpeta lista para arrastrar es `Escritorio\subir-a-vercel`, que es
+una copia sin `originales/` — importante, porque al arrastrar se sube todo lo que
+haya dentro, incluidas las carpetas que git ignora. Si editas `index.html` en la
+carpeta del proyecto, cópialo a `subir-a-vercel` antes de arrastrar.
+
+**Si se conectó un repositorio de GitHub:** cada cambio que se sube se publica
+solo:
 
 ```bash
 git add -A
