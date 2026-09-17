@@ -95,11 +95,13 @@ el contraste mínimo legible.
 
 ## Qué falta
 
-- **Testimonios.** Hay un bloque marcado como PENDIENTE en la sección de la
-  llamada. Necesita dos o tres testimonios reales, con nombre, cargo y
-  resultado concreto. No lo publiques con testimonios inventados: en una página
-  de asesoría profesional eso es exactamente lo que destruye la confianza que
-  todo el resto del texto construye.
+- **Testimonios.** En `index.html`, al final de la sección "Qué pasa en esos
+  quince minutos", hay un bloque de ejemplo dentro de un comentario HTML. Está
+  comentado a propósito: así no se ve mientras no haya testimonios de verdad.
+  Cuando tengas dos o tres, con nombre, cargo y resultado concreto, sácalos del
+  comentario. No los inventes: en una página de asesoría profesional un
+  testimonio falso destruye exactamente la confianza que construye el resto del
+  texto.
 - **Dominio propio.** Mientras no lo haya, la miniatura al compartir no va a
   funcionar.
 

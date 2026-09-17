@@ -174,11 +174,11 @@ section h2{font-size:clamp(1.55rem,1.35rem + .9vw,2.1rem);letter-spacing:-.008em
 .pasos-llamada li{border-top:1px solid var(--linea);padding:1.15rem 0}
 .momento{font-family:var(--display);font-style:italic;color:var(--ocre-texto);display:block;font-size:.98rem;margin-bottom:.15rem}
 
-.pendiente{
-  margin-top:2.4rem;border:1px dashed var(--ocre);border-radius:8px;
-  padding:1.1rem 1.25rem;max-width:42rem;color:var(--tinta-2);font-size:.95rem;
-}
-.pendiente strong{color:var(--ocre-texto);font-weight:500}
+.testimonios{margin-top:2.6rem;display:grid;gap:1.8rem;max-width:42rem}
+.testimonio{border-left:2px solid var(--ocre);border-radius:0;padding:.1rem 0 .1rem 1.2rem}
+.testimonio p{margin:0 0 .5rem}
+.testimonio blockquote{margin:0 0 .6rem;font-family:var(--display);font-size:1.08rem;line-height:1.5}
+.testimonio cite{font-style:normal;font-size:.93rem;color:var(--tinta-2)}
 
 .contacto .env{max-width:44rem}
 .vias{display:grid;gap:1.4rem;margin-top:2rem}
@@ -364,9 +364,21 @@ section h2{font-size:clamp(1.55rem,1.35rem + .9vw,2.1rem);letter-spacing:-.008em
       </li>
     </ol>
 
-    <div class="pendiente">
-      <strong>PENDIENTE:</strong> acá van dos o tres testimonios de clientes reales, con nombre, cargo y resultado. Es lo que más peso tiene en una página como esta. Reemplaza este bloque cuando los tengas, y no lo publiques con texto inventado.
+    <!-- PENDIENTE: testimonios de clientes reales, con nombre, cargo y resultado.
+         Es lo que más peso tiene en una página como esta. Cuando los tengas,
+         copia este bloque fuera del comentario (quita esta línea y la última) y
+         repite el <div class="testimonio"> por cada uno. No lo llenes con
+         testimonios inventados.
+
+    <div class="testimonios">
+      <div class="testimonio">
+        <blockquote>Frase textual del cliente, corta y concreta.</blockquote>
+        <cite>Nombre Apellido — Cargo, empresa</cite>
+      </div>
     </div>
+
+    -->
+
   </div>
 </section>
 
