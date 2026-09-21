@@ -84,6 +84,31 @@ propia, que es lo que evita que la ausencia de precio se lea como algo turbio.
 que `fotos/favicon.png` es un cuadrado azul marino con las iniciales. Cuando
 exista un logo de verdad, se reemplaza ese archivo manteniendo el nombre.
 
+**LinkedIn va antes que el currículum en "Ganando al algoritmo", y es a propósito.**
+En Google Trends (Chile, cinco años) las búsquedas de "curriculum" cayeron de 33
+a 20 y las de "linkedin" subieron de 36 a 69. El activo que la gente está
+trabajando hoy es el perfil, no el documento. Si algún día se reordena esa
+lista, que sea porque los datos cambiaron, no por costumbre.
+
+**La sigla ATS está escrita en el texto, no sólo los nombres de los sistemas.**
+"cv ats" no registraba búsquedas en Chile durante 2025 y en 2026 aparece todos
+los meses; "curriculum ats" sube 70 % en doce meses, y 60 % en España. Es la
+palabra con la que la gente está empezando a nombrar el problema, y es
+exactamente la credencial más fuerte de la página. Conviene que aparezca.
+
+**El servicio de entrevista parte por "debilidades", no por "STAR".**
+En el grupo de búsquedas de "entrevista de trabajo", cuatro de las seis primeras
+son sobre debilidades. "Entrevista por competencias" y "metodología STAR" no
+registran búsquedas: son el vocabulario del que evalúa, no el del que postula.
+STAR sigue en la página como respaldo metodológico, después del gancho.
+
+**El título dice "CV para ATS, LinkedIn y entrevistas", no "asesorías de
+empleabilidad".** Nadie busca lo segundo: "asesoría laboral" y "coach laboral"
+están bajo el umbral de medición de Google en Chile, doce meses casi enteros en
+cero. Además, "currículum" a secas compite en Chile con el currículo escolar
+("curriculum nacional", "curriculum mineduc"), así que en los textos de posicionamiento
+conviene usar "CV" con calificador.
+
 **Los colores salen de la foto.** El azul marino (`#1D3557`) es el del muro de
 la oficina en el retrato, y el fondo es un papel cálido en vez de blanco puro.
 Si cambias la foto por una con otro ambiente, revisa que la paleta siga
