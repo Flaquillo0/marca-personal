@@ -221,6 +221,18 @@ details > .contenido{padding-bottom:.4rem}
 }
 .mini-cta:hover{color:var(--tinta)}
 
+.barra-enlaces{display:flex;align-items:center;gap:1.4rem}
+.enlace-base{font-size:.9rem;text-decoration:none;color:var(--tinta-2);display:none}
+.enlace-base:hover{color:var(--marino)}
+@media (min-width:40rem){.enlace-base{display:inline}}
+
+/* Segunda salida: la base de candidatos */
+.base-cta{border-top:1px solid var(--linea)}
+.base-cta h2{margin-bottom:.9rem}
+.base-cta .letra-chica{font-size:.92rem;color:var(--tinta-2);margin-bottom:1.4rem}
+.destacado-linea{border-color:var(--tinta-2)}
+.destacado-linea:hover{border-color:var(--tinta);background:var(--papel-2)}
+
 /* Barra fija de contacto en el teléfono */
 .barra-movil{
   position:fixed;left:0;right:0;bottom:0;z-index:20;display:none;
@@ -250,9 +262,12 @@ details > .contenido{padding-bottom:.4rem}
 <header class="barra">
   <div class="env">
     <a class="marca" href="#">Sebastián Carvallo Campos</a>
-    <a class="barra-wa" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20agendar%20el%20diagn%C3%B3stico%20de%2015%20minutos" target="_blank" rel="noopener">
-      <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>Escríbeme
-    </a>
+    <nav class="barra-enlaces">
+      <a class="enlace-base" href="/base">Base de candidatos</a>
+      <a class="barra-wa" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20agendar%20el%20diagn%C3%B3stico%20de%2015%20minutos" target="_blank" rel="noopener">
+        <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>Escríbeme
+      </a>
+    </nav>
   </div>
 </header>
 
@@ -489,12 +504,22 @@ details > .contenido{padding-bottom:.4rem}
   </div>
 </section>
 
+<section id="base" class="base-cta">
+  <div class="env">
+    <div class="medida">
+      <h2>¿Todavía no es el momento?</h2>
+      <p>Súmate a la base de candidatos. Cuando una empresa me pide un perfil, la reviso antes que cualquier otra cosa: si tu perfil calza con un cargo, te escribo.</p>
+      <p class="letra-chica">Es gratis, toma tres minutos y no te compromete a nada.</p>
+      <a class="boton-linea destacado-linea" href="/base">Registrarme en la base de candidatos</a>
+    </div>
+  </div>
+</section>
+
 <footer class="pie">
   <div class="env">
     <p>Sebastián Carvallo Campos — Psicólogo organizacional</p>
     <p>Talca, Región del Maule, Chile. Asesorías presenciales y en remoto.</p>
     <p><a href="mailto:sebastian.carvallo@outlook.com">sebastian.carvallo@outlook.com</a></p>
-    <p><a href="/base">Súmate a la base de candidatos</a></p>
   </div>
 </footer>
 
