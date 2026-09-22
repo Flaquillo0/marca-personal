@@ -130,6 +130,36 @@ el contraste mínimo legible.
 - **Dominio propio.** Mientras no lo haya, la miniatura al compartir no va a
   funcionar.
 
+## La base de candidatos
+
+La página `/base` (archivo `base.html`) tiene un formulario propio —no es un
+formulario de Google incrustado— que escribe en la planilla **"Base de
+candidatos — Sebastián Carvallo"** en Google Drive.
+
+La cadena es: formulario en `base.html` → aplicación web de Apps Script →
+planilla. El código del script está en `notas/formulario-apps-script.js`, que no
+se publica. Si alguna vez hay que reimplementarlo, la dirección nueva se pega en
+la variable `ENDPOINT`, al final de `base.html`.
+
+**Dos cosas que hay que mantener así**, porque ya fallaron una vez:
+
+- En Apps Script, la implementación debe tener "quién tiene acceso" en
+  **Cualquier usuario**. Si pide iniciar sesión, el formulario dice "quedaste
+  registrado" y no guarda nada: falla en silencio, que es lo peor que puede
+  pasar acá. Para comprobarlo, abre la dirección del script en el navegador:
+  tiene que responder "El formulario está activo."
+- En la planilla, las **columnas B a N** tienen que estar en formato *texto sin
+  formato*. Si no, un teléfono escrito como `+56 9 ...` se guarda como `#ERROR!`
+  porque Sheets lo toma por una fórmula.
+
+Las dos casillas de consentimiento del formulario son preguntas separadas a
+propósito, y la segunda —presentar el perfil a empresas— es opcional y va
+desmarcada. Eso no es un detalle de diseño: es lo que hace que la base sea
+usable legalmente. No las juntes en una sola.
+
+La planilla no se comparte con nadie, ni en modo lectura. Cuando una empresa
+pide candidatos, se le mandan los perfiles que correspondan, nunca el acceso.
+
 ## Acceso directo en el teléfono
 
 La página trae `manifest.json` y los iconos `fotos/icono-*.png`, que son los que
