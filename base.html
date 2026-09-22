@@ -399,9 +399,10 @@ legend{font-size:.92rem;font-weight:500;padding:0;margin-bottom:.15rem}
 
 <script>
 (function(){
-  // Pega acá la dirección que entrega Apps Script al implementar la aplicación web.
-  // Mientras esté vacía, el formulario no se muestra y aparece el aviso con el correo.
-  var ENDPOINT = "";
+  // Dirección de la aplicación web de Apps Script que escribe en la planilla.
+  // Si alguna vez se vuelve a implementar desde cero, hay que actualizarla acá.
+  // Dejarla vacía oculta el formulario y muestra el aviso con el correo.
+  var ENDPOINT = "https://script.google.com/macros/s/AKfycbxIWOcxCufOArIfZ4xxsj2s3ZegWu7QrLRiTynoSbTFiYCoah5Vd8i5bQwpdQwuoQFvEQ/exec";
 
   var form = document.getElementById("registro-form");
   var sinConexion = document.getElementById("sin-conexion");
