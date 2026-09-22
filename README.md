@@ -80,6 +80,13 @@ en Chile o fuera. Publicar las cifras rompe eso: el visitante compara en frío y
 no llama. La sección "Tres formas de trabajar juntos" explica el motivo en voz
 propia, que es lo que evita que la ausencia de precio se lea como algo turbio.
 
+**El detalle vive en desplegables, y es a propósito.** A la vista queda el
+titular y una línea por sección; lo que incluye cada pack, los cuatro momentos
+de la llamada y la explicación de por qué no hay precios están dentro de
+`<details>`. El texto que da credibilidad es el mismo que hace que el visitante
+se vaya antes de escribir. Si alguna vez hay que sumar contenido, va adentro de
+un desplegable, no a la vista.
+
 **El favicon es un monograma, no un logo.** No hay identidad visual todavía, así
 que `fotos/favicon.png` es un cuadrado azul marino con las iniciales. Cuando
 exista un logo de verdad, se reemplaza ese archivo manteniendo el nombre.
