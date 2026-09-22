@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Sebastián Carvallo Campos — CV para ATS, LinkedIn y entrevistas</title>
 <meta name="description" content="Asesoría de empleabilidad con un psicólogo organizacional que lideró selección diez años en grandes empresas: CV escrito para los ATS que filtran, perfil de LinkedIn que aparece en las búsquedas de los reclutadores y preparación de entrevista. Talca, Chile, y en remoto para Latinoamérica y España.">
 
@@ -191,6 +191,48 @@ section h2{font-size:clamp(1.55rem,1.35rem + .9vw,2.1rem);letter-spacing:-.008em
 .pie p{margin:0 0 .35rem}
 .pie a{color:var(--tinta-2)}
 
+/* Desplegables: lo que no todos necesitan leer */
+.abrir{
+  list-style:none;cursor:pointer;display:inline-flex;align-items:baseline;gap:.35rem;
+  font-size:.95rem;color:var(--marino);padding:.5rem 0;
+}
+.abrir::-webkit-details-marker{display:none}
+.abrir::marker{content:""}
+.abrir:hover{color:var(--tinta)}
+.abrir:focus-visible{outline:2px solid var(--ocre);outline-offset:3px}
+.abrir .senal-abrir{
+  font-family:var(--display);font-style:italic;
+  text-decoration:underline;text-decoration-color:var(--ocre);
+  text-decoration-thickness:1px;text-underline-offset:4px;
+}
+details[open] > .abrir .ver{display:none}
+.abrir .ocultar{display:none}
+details[open] > .abrir .ocultar{display:inline}
+details > .contenido{padding-bottom:.4rem}
+.contenido.nota-precio{margin-top:.2rem}
+
+.suelto{border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);margin-top:2.2rem}
+.suelto > .abrir{padding:1.1rem 0}
+.suelto > .contenido{padding-bottom:1.4rem;max-width:42rem}
+
+.mini-cta{
+  display:inline-block;margin-top:.9rem;font-size:.95rem;
+  color:var(--marino);text-decoration:none;border-bottom:1px solid var(--ocre);padding-bottom:1px;
+}
+.mini-cta:hover{color:var(--tinta)}
+
+/* Barra fija de contacto en el teléfono */
+.barra-movil{
+  position:fixed;left:0;right:0;bottom:0;z-index:20;display:none;
+  background:var(--papel);border-top:1px solid var(--linea);
+  padding:.7rem 1.15rem;padding-bottom:calc(.7rem + env(safe-area-inset-bottom, 0px));
+}
+.barra-movil .boton{width:100%;justify-content:center}
+@media (max-width:48rem){
+  .barra-movil{display:block}
+  body{padding-bottom:5.5rem}
+}
+
 @media (prefers-reduced-motion: no-preference){
   .aparece{opacity:0;transform:translateY(12px);animation:entra .7s ease .1s forwards}
 }
@@ -220,7 +262,7 @@ section h2{font-size:clamp(1.55rem,1.35rem + .9vw,2.1rem);letter-spacing:-.008em
       <p class="ficha">Talca, Chile — y en remoto para Latinoamérica y España</p>
       <h1>Diez años decidiendo quién pasaba a la siguiente etapa</h1>
       <hr class="regla">
-      <p class="entrada">Trabajé una década como líder de selección en grandes empresas: leí los currículums, configuré los filtros y tomé las entrevistas. Hoy ese mismo criterio trabaja para ti.</p>
+      <p class="entrada">Leí los currículums, configuré los filtros y tomé las entrevistas. Hoy ese criterio trabaja para ti.</p>
       <div class="acciones">
         <a class="boton" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20agendar%20el%20diagn%C3%B3stico%20de%2015%20minutos" target="_blank" rel="noopener">
           <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>Agendar diagnóstico de 15 minutos
@@ -236,27 +278,34 @@ section h2{font-size:clamp(1.55rem,1.35rem + .9vw,2.1rem);letter-spacing:-.008em
   <div class="env">
     <div class="medida">
       <h2>Quién te va a asesorar</h2>
-      <p>Soy Sebastián Carvallo Campos, psicólogo organizacional. Durante más de diez años lideré selección y adquisición de talento en compañías grandes de Chile, entre ellas PF Alimentos y CMPC.</p>
-      <p>No enseño teoría sobre currículums. Enseño lo que hace un reclutador con el tuyo cuando tiene ciento veinte postulaciones abiertas y una tarde para dejarlas en seis.</p>
+      <p>Psicólogo organizacional. Diez años liderando selección en PF Alimentos y CMPC.</p>
     </div>
     <ul class="credenciales">
       <li>
-        <h3>Procesos masivos y de cobertura nacional</h3>
-        <p>Selección de Arica a Punta Arenas, con volúmenes que obligan a filtrar rápido. Sé en qué momento exacto se descarta un perfil y por qué.</p>
+        <h3>Procesos masivos, de Arica a Punta Arenas</h3>
+        <p>Sé en qué momento exacto se descarta un perfil.</p>
       </li>
       <li>
-        <h3>Los ATS: los sistemas que leen tu CV antes que una persona</h3>
-        <p>Trabajo habitual con SAP SuccessFactors, Hiring Room y Rex+. Los he usado desde adentro, configurando los filtros que hoy te dejan fuera.</p>
+        <h3>Los ATS que leen tu CV antes que una persona</h3>
+        <p>SAP SuccessFactors, Hiring Room, Rex+. Configuré esos filtros desde adentro.</p>
       </li>
       <li>
-        <h3>Entrevistas por competencias</h3>
-        <p>Cientos de entrevistas con metodología STAR, siempre del lado del que evalúa. Sé qué respuesta convence y cuál suena aprendida de memoria, empezando por la de las debilidades, que es donde se cae más gente.</p>
+        <h3>Cientos de entrevistas, del lado del que evalúa</h3>
+        <p>Sé qué respuesta convence y cuál suena aprendida de memoria.</p>
       </li>
       <li>
         <h3>Cada mercado se postula distinto</h3>
-        <p>Lo que funciona postulando en el Maule no es lo que funciona en un proceso para el norte minero, ni en uno remoto para España o para otro país de Latinoamérica. Trabajo los tres.</p>
+        <p>El Maule, el norte minero y los procesos remotos para España no son lo mismo.</p>
       </li>
     </ul>
+
+    <details class="suelto">
+      <summary class="abrir"><span class="senal-abrir"><span class="ver">Qué significa eso para tu postulación</span><span class="ocultar">Ocultar</span></span></summary>
+      <div class="contenido">
+        <p>No enseño teoría sobre currículums. Enseño lo que hace un reclutador con el tuyo cuando tiene ciento veinte postulaciones abiertas y una tarde para dejarlas en seis.</p>
+        <p>Antes de que te lea una persona te lee un ATS, y ese filtro no evalúa tu experiencia: busca coincidencias. Yo estuve configurándolos. Y en la entrevista, cuando te preguntan por tus debilidades, hay una forma de responder que se evalúa bien y otra que no, y casi todo el mundo usa la segunda.</p>
+      </div>
+    </details>
   </div>
 </section>
 
@@ -269,11 +318,11 @@ section h2{font-size:clamp(1.55rem,1.35rem + .9vw,2.1rem);letter-spacing:-.008em
     <div class="dos">
       <div>
         <h3>Antes de que te lean</h3>
-        <p>Postulas mucho y no te llaman. El problema casi nunca es tu experiencia: es que tu currículum no está escrito para el ATS que lo filtra antes de que lo vea nadie, ni para el reclutador que lo hojea en veinte segundos. Tu perfil de LinkedIn tampoco aparece en las búsquedas donde debería aparecer.</p>
+        <p>Postulas mucho y no te llaman. Tu CV no está escrito para el ATS que lo filtra, y tu LinkedIn no aparece donde debería.</p>
       </div>
       <div>
         <h3>Después de que te leen</h3>
-        <p>Llegas a la entrevista y ahí termina el proceso. Te preguntan por tus debilidades y respondes lo que responde todo el mundo. Respuestas largas que no llegan al punto, logros contados sin cifras, ejemplos que no contestan lo que en realidad se está evaluando. Te preparaste para conversar, no para ser evaluado.</p>
+        <p>Llegas a la entrevista y ahí termina el proceso. Te preparaste para conversar, no para ser evaluado.</p>
       </div>
     </div>
     <div class="cierre-banda">
@@ -295,12 +344,18 @@ section h2{font-size:clamp(1.55rem,1.35rem + .9vw,2.1rem);letter-spacing:-.008em
           <h3>Ganando al algoritmo</h3>
           <span class="paso-para">para quien postula y no lo llaman</span>
         </div>
-        <p>Son dos puertas, no una: el currículum que tiene que pasar el filtro cuando tú postulas, y el perfil de LinkedIn por donde los reclutadores llegan a ti antes de que postules. Trabajamos las dos.</p>
-        <ul class="incluye">
-          <li>Perfil de LinkedIn reescrito para aparecer en las búsquedas que hacen los reclutadores: titular, extracto y experiencia con los términos por los que realmente se busca tu cargo</li>
-          <li>Currículum reescrito completo, con la estructura y las palabras que reconocen los ATS, que son los que deciden si tu postulación llega a ojos de alguien</li>
-          <li>Una versión adaptable del currículum, para que puedas ajustarla tú a cada postulación</li>
-        </ul>
+        <p>Son dos puertas, no una: el LinkedIn por donde los reclutadores llegan a ti, y el CV que tiene que pasar el filtro cuando postulas tú.</p>
+        <details>
+          <summary class="abrir"><span class="senal-abrir"><span class="ver">Ver qué incluye</span><span class="ocultar">Ocultar</span></span></summary>
+          <div class="contenido">
+            <ul class="incluye">
+              <li>Perfil de LinkedIn reescrito para aparecer en las búsquedas que hacen los reclutadores: titular, extracto y experiencia con los términos por los que realmente se busca tu cargo</li>
+              <li>Currículum reescrito completo, con la estructura y las palabras que reconocen los ATS, que son los que deciden si tu postulación llega a ojos de alguien</li>
+              <li>Una versión adaptable del currículum, para que puedas ajustarla tú a cada postulación</li>
+            </ul>
+          </div>
+        </details>
+        <a class="mini-cta" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20me%20interesa%20Ganando%20al%20algoritmo." target="_blank" rel="noopener">Me interesa este &rarr;</a>
       </article>
 
       <article class="paso">
@@ -309,13 +364,19 @@ section h2{font-size:clamp(1.55rem,1.35rem + .9vw,2.1rem);letter-spacing:-.008em
           <span class="paso-para">para quien llega a la entrevista y se queda ahí</span>
         </div>
         <p>Todo lo anterior, más la parte que decide el proceso: cómo respondes cuando te están evaluando.</p>
-        <ul class="incluye">
-          <li>Currículum y LinkedIn, igual que en el punto anterior</li>
-          <li>Las preguntas que deciden el proceso, preparadas una por una: partiendo por las debilidades y las fortalezas, que es donde se cae la mayoría</li>
-          <li>Simulación de entrevista completa, con la misma metodología por competencias (STAR) que usa quien te está evaluando, y retroalimentación directa de cada respuesta</li>
-          <li>Preparación de tus historias clave: logros con cifras, situaciones difíciles, salidas de trabajos anteriores</li>
-          <li>Acompañamiento mientras dure tu proceso, para revisar cada etapa a medida que ocurre</li>
-        </ul>
+        <details>
+          <summary class="abrir"><span class="senal-abrir"><span class="ver">Ver qué incluye</span><span class="ocultar">Ocultar</span></span></summary>
+          <div class="contenido">
+            <ul class="incluye">
+              <li>Currículum y LinkedIn, igual que en el punto anterior</li>
+              <li>Las preguntas que deciden el proceso, preparadas una por una: partiendo por las debilidades y las fortalezas, que es donde se cae la mayoría</li>
+              <li>Simulación de entrevista completa, con la misma metodología por competencias (STAR) que usa quien te está evaluando, y retroalimentación directa de cada respuesta</li>
+              <li>Preparación de tus historias clave: logros con cifras, situaciones difíciles, salidas de trabajos anteriores</li>
+              <li>Acompañamiento mientras dure tu proceso, para revisar cada etapa a medida que ocurre</li>
+            </ul>
+          </div>
+        </details>
+        <a class="mini-cta" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20me%20interesa%20El%20candidato%20elegido." target="_blank" rel="noopener">Me interesa este &rarr;</a>
       </article>
 
       <article class="paso">
@@ -323,20 +384,29 @@ section h2{font-size:clamp(1.55rem,1.35rem + .9vw,2.1rem);letter-spacing:-.008em
           <h3>Mentoría completa</h3>
           <span class="paso-para">para quien cambia de rubro, de nivel o de país</span>
         </div>
-        <p>Un proceso de cuatro sesiones para reconstruir tu posicionamiento profesional entero, no solo los documentos.</p>
-        <ul class="incluye">
-          <li>Cuatro sesiones de trabajo con plan definido y tareas entre una y otra</li>
-          <li>Todo el material de los puntos anteriores, construido durante el proceso</li>
-          <li>Estrategia de contacto para llegar a los cargos que nunca se publican, que en Chile son la mayoría</li>
-          <li>Preparación específica para negociar renta y condiciones</li>
-        </ul>
+        <p>Cuatro sesiones para reconstruir tu posicionamiento profesional entero, no solo los documentos.</p>
+        <details>
+          <summary class="abrir"><span class="senal-abrir"><span class="ver">Ver qué incluye</span><span class="ocultar">Ocultar</span></span></summary>
+          <div class="contenido">
+            <ul class="incluye">
+              <li>Cuatro sesiones de trabajo con plan definido y tareas entre una y otra</li>
+              <li>Todo el material de los puntos anteriores, construido durante el proceso</li>
+              <li>Estrategia de contacto para llegar a los cargos que nunca se publican, que en Chile son la mayoría</li>
+              <li>Preparación específica para negociar renta y condiciones</li>
+            </ul>
+          </div>
+        </details>
+        <a class="mini-cta" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20me%20interesa%20la%20Mentor%C3%ADa%20completa." target="_blank" rel="noopener">Me interesa este &rarr;</a>
       </article>
     </div>
 
-    <div class="nota-precio">
-      <p>No publico los valores acá, y prefiero decirte por qué: no cobro lo mismo a alguien que necesita ordenar su currículum que a alguien que va a cuatro sesiones, ni cobro igual en pesos chilenos que en un proceso para el extranjero.</p>
-      <p>El precio te lo digo completo en la llamada, cuando ya sé qué necesitas. Sin letra chica, y la llamada no te la cobro.</p>
-    </div>
+    <details class="suelto">
+      <summary class="abrir"><span class="senal-abrir"><span class="ver">¿Por qué no hay precios en esta página?</span><span class="ocultar">Ocultar</span></span></summary>
+      <div class="contenido nota-precio">
+        <p>Porque no cobro lo mismo a alguien que necesita ordenar su currículum que a alguien que va a cuatro sesiones, ni cobro igual en pesos chilenos que en un proceso para el extranjero.</p>
+        <p>El precio te lo digo completo en la llamada, cuando ya sé qué necesitas. Sin letra chica, y la llamada no te la cobro.</p>
+      </div>
+    </details>
   </div>
 </section>
 
@@ -344,26 +414,37 @@ section h2{font-size:clamp(1.55rem,1.35rem + .9vw,2.1rem);letter-spacing:-.008em
   <div class="env">
     <div class="medida">
       <h2>Qué pasa en esos quince minutos</h2>
-      <p>Es una conversación por videollamada o por teléfono. No tienes que preparar nada ni mandarme nada por adelantado.</p>
+      <p>Una videollamada o un teléfono. No preparas nada, no mandas nada por adelantado, y no te cuesta nada.</p>
+      <div class="acciones">
+        <a class="boton" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20agendar%20el%20diagn%C3%B3stico%20de%2015%20minutos" target="_blank" rel="noopener">
+          <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>Agendar por WhatsApp
+        </a>
+      </div>
     </div>
-    <ol class="pasos-llamada">
-      <li>
-        <span class="momento">Primero</span>
-        Me cuentas dónde estás: a qué estás postulando, hace cuánto y qué ha pasado hasta ahora.
-      </li>
-      <li>
-        <span class="momento">Después</span>
-        Te hago las preguntas que uso para ubicar el problema. Son pocas y son concretas: sirven para saber si te estás cayendo en el filtro o en la entrevista.
-      </li>
-      <li>
-        <span class="momento">Luego</span>
-        Te explico qué está viendo un reclutador cuando abre tu perfil. Esta es la parte que a casi todos les cambia la forma de postular, incluso si después no trabajamos juntos.
-      </li>
-      <li>
-        <span class="momento">Al final</span>
-        Te digo qué te conviene hacer, con cuál de los tres caminos y cuánto cuesta. Si tu caso se resuelve solo, con un par de correcciones que puedes hacer tú, también te lo digo.
-      </li>
-    </ol>
+
+    <details class="suelto">
+      <summary class="abrir"><span class="senal-abrir"><span class="ver">Ver los cuatro momentos de la llamada</span><span class="ocultar">Ocultar</span></span></summary>
+      <div class="contenido">
+        <ol class="pasos-llamada">
+          <li>
+            <span class="momento">Primero</span>
+            Me cuentas dónde estás: a qué estás postulando, hace cuánto y qué ha pasado hasta ahora.
+          </li>
+          <li>
+            <span class="momento">Después</span>
+            Te hago las preguntas que uso para ubicar el problema. Son pocas y son concretas: sirven para saber si te estás cayendo en el filtro o en la entrevista.
+          </li>
+          <li>
+            <span class="momento">Luego</span>
+            Te explico qué está viendo un reclutador cuando abre tu perfil. Esta es la parte que a casi todos les cambia la forma de postular, incluso si después no trabajamos juntos.
+          </li>
+          <li>
+            <span class="momento">Al final</span>
+            Te digo qué te conviene hacer, con cuál de los tres caminos y cuánto cuesta. Si tu caso se resuelve solo, con un par de correcciones que puedes hacer tú, también te lo digo.
+          </li>
+        </ol>
+      </div>
+    </details>
 
     <!-- PENDIENTE: testimonios de clientes reales, con nombre, cargo y resultado.
          Es lo que más peso tiene en una página como esta. Cuando los tengas,
@@ -398,11 +479,11 @@ section h2{font-size:clamp(1.55rem,1.35rem + .9vw,2.1rem);letter-spacing:-.008em
     <div class="vias">
       <div class="via">
         <h3>Si estás en Chile</h3>
-        <p>WhatsApp es lo más rápido. Contesto el mismo día y coordinamos el horario ahí mismo.</p>
+        <p>WhatsApp. Contesto el mismo día.</p>
       </div>
       <div class="via">
-        <h3>Si escribes desde fuera de Chile</h3>
-        <p>Mejor por correo: me cuentas en qué país estás y ajustamos la hora a tu huso horario. Trabajo con profesionales de Latinoamérica y de España.</p>
+        <h3>Si escribes desde fuera</h3>
+        <p>Mejor por correo, y ajustamos la hora a tu huso horario.</p>
       </div>
     </div>
   </div>
@@ -416,6 +497,12 @@ section h2{font-size:clamp(1.55rem,1.35rem + .9vw,2.1rem);letter-spacing:-.008em
     <p><a href="/base">Súmate a la base de candidatos</a></p>
   </div>
 </footer>
+
+<div class="barra-movil">
+  <a class="boton" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20agendar%20el%20diagn%C3%B3stico%20de%2015%20minutos" target="_blank" rel="noopener">
+    <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>Agendar diagnóstico de 15 minutos
+  </a>
+</div>
 
 </body>
 </html>
