@@ -8,17 +8,15 @@ demás. No hay que compilar nada ni instalar nada.
 
 | Dónde | Enlace |
 |---|---|
-| Sitio | https://subir-a-vercel-ashen.vercel.app |
+| Sitio | https://marcasc.vercel.app |
 | Código | https://github.com/Flaquillo0/marca-personal |
 | LinkedIn | pendiente |
 | Instagram | pendiente |
 
-El nombre del proyecto en Vercel viene de la carpeta con que se publicó la
-primera vez, así que el dominio dice `subir-a-vercel`. Si se renombra el
-proyecto en Vercel (Settings > General > Project Name), el dominio cambia y hay
-que reemplazarlo en los cuatro lugares del `index.html` que lo tienen escrito:
-`og:url`, `og:image`, `twitter:image` y `canonical`. Están todos seguidos,
-entre las líneas 14 y 21.
+La dirección anterior, `subir-a-vercel-ashen.vercel.app`, sigue funcionando:
+Vercel conserva los dominios viejos como alias al renombrar un proyecto. No
+hace falta hacer nada con ella, pero la que va escrita en las metaetiquetas y
+la que conviene compartir es `marcasc.vercel.app`.
 
 Conviene revisar esta tabla cada cierto tiempo para que no queden enlaces
 muertos apuntando a la página.
