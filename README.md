@@ -6,32 +6,34 @@ demás. No hay que compilar nada ni instalar nada.
 
 ## Dónde está publicado
 
-Todavía no está en línea. Cuando se publique, hay que anotar la dirección acá
-y reemplazarla también dentro de `index.html` (ver "Antes de publicar").
-
 | Dónde | Enlace |
 |---|---|
-| Sitio | pendiente |
+| Sitio | https://subir-a-vercel-ashen.vercel.app |
+| Código | https://github.com/Flaquillo0/marca-personal |
 | LinkedIn | pendiente |
 | Instagram | pendiente |
+
+El nombre del proyecto en Vercel viene de la carpeta con que se publicó la
+primera vez, así que el dominio dice `subir-a-vercel`. Si se renombra el
+proyecto en Vercel (Settings > General > Project Name), el dominio cambia y hay
+que reemplazarlo en los cuatro lugares del `index.html` que lo tienen escrito:
+`og:url`, `og:image`, `twitter:image` y `canonical`. Están todos seguidos,
+entre las líneas 14 y 21.
 
 Conviene revisar esta tabla cada cierto tiempo para que no queden enlaces
 muertos apuntando a la página.
 
-## Antes de publicar: reemplazar el dominio
+## Si cambia el dominio
 
-Dentro de `index.html` hay cuatro lugares que dicen `DOMINIO-PENDIENTE`. Son
+Los cuatro lugares que lo tienen escrito son `og:url`, `og:image`,
+`twitter:image` y `canonical`, entre las líneas 14 y 21 del `index.html`. Son
 los que hacen que, al compartir el enlace por WhatsApp, aparezca la miniatura
-con la foto y el nombre. Búscalo con Ctrl+F y reemplaza las cuatro apariciones
-por la dirección real, con `https://` y sin barra al final:
+con la foto y el nombre. Se reemplazan los cuatro, con `https://` y sin barra
+al final.
 
-- `og:url`
-- `og:image`
-- `twitter:image`
-- `canonical`
-
-Después de reemplazarlas, manda el enlace por WhatsApp a alguien una vez, para
-comprobar que la miniatura aparece.
+Después de cambiarlos, manda el enlace por WhatsApp a alguien una vez para
+comprobar que la miniatura aparece. WhatsApp cachea las miniaturas, así que si
+el enlace ya se compartió antes puede seguir mostrando la vieja un rato.
 
 ## Cómo se cambia el número de WhatsApp
 
