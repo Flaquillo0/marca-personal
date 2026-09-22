@@ -124,14 +124,62 @@ section h2{font-size:clamp(1.45rem,1.3rem + .8vw,1.9rem);letter-spacing:-.008em;
 .condiciones h3{font-size:1.04rem;margin-bottom:.3rem}
 .condiciones p{margin:0;color:var(--tinta-2);font-size:.97rem}
 
-.caja-formulario{margin-top:2rem;max-width:44rem}
-.marco{width:100%;min-height:42rem;border:1px solid var(--linea);border-radius:10px;background:var(--papel-2)}
+.caja-formulario{margin-top:2rem;max-width:40rem}
 .sin-formulario{
-  border:1px dashed var(--ocre);border-radius:10px;padding:1.6rem 1.4rem;max-width:44rem;
-  color:var(--tinta-2);font-size:.96rem;
+  border:1px dashed var(--ocre);border-radius:10px;padding:1.2rem 1.3rem;max-width:40rem;
+  color:var(--tinta-2);font-size:.94rem;margin-bottom:1.6rem;
 }
 .sin-formulario strong{color:var(--ocre-texto);font-weight:500}
 .sin-formulario p:last-child{margin-bottom:0}
+
+.campos{display:grid;gap:1.25rem}
+@media (min-width:40rem){
+  .campos{grid-template-columns:1fr 1fr}
+  .ancho{grid-column:1 / -1}
+}
+.campo{display:flex;flex-direction:column;gap:.3rem;min-width:0}
+.campo label{font-size:.92rem;font-weight:500}
+.campo .pista{font-size:.85rem;color:var(--tinta-2)}
+.campo input[type="text"],
+.campo input[type="email"],
+.campo input[type="tel"],
+.campo input[type="url"],
+.campo textarea{
+  font-family:var(--texto);font-size:1rem;color:var(--tinta);
+  background:var(--papel);border:1px solid var(--linea);border-radius:6px;
+  padding:.65rem .75rem;width:100%;
+}
+.campo textarea{min-height:5.5rem;resize:vertical}
+.campo input:focus-visible,.campo textarea:focus-visible{outline:2px solid var(--ocre);outline-offset:1px;border-color:transparent}
+.campo input[aria-invalid="true"],.campo textarea[aria-invalid="true"]{border-color:var(--ocre-texto)}
+
+fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:.45rem}
+legend{font-size:.92rem;font-weight:500;padding:0;margin-bottom:.15rem}
+.opciones{display:flex;flex-wrap:wrap;gap:.5rem .9rem}
+.opcion{display:flex;align-items:center;gap:.45rem;font-size:.95rem}
+.opcion input{accent-color:var(--marino);width:1.05rem;height:1.05rem}
+
+.permisos{margin-top:1.8rem;display:grid;gap:1rem;border-top:1px solid var(--linea);padding-top:1.5rem}
+.permiso{display:flex;gap:.7rem;align-items:flex-start;font-size:.95rem;line-height:1.5}
+.permiso input{accent-color:var(--marino);width:1.15rem;height:1.15rem;margin-top:.2rem;flex:none}
+.permiso .clave{font-weight:500}
+
+.error{font-size:.86rem;color:var(--ocre-texto);min-height:1.1em}
+.trampa{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+.enviar{
+  margin-top:1.8rem;display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--marino);color:var(--sobre-marino);
+  font-family:var(--texto);font-size:1rem;border:0;border-radius:6px;
+  padding:.8rem 1.4rem;cursor:pointer;
+}
+.enviar:hover:not(:disabled){background:var(--tinta)}
+.enviar:disabled{opacity:.55;cursor:not-allowed}
+.enviar:focus-visible{outline:2px solid var(--ocre);outline-offset:3px}
+.estado-envio{font-size:.92rem;color:var(--tinta-2);margin-top:.8rem;min-height:1.3em}
+
+.gracias{border-left:2px solid var(--ocre);padding:.2rem 0 .2rem 1.2rem;max-width:40rem}
+.gracias h3{font-size:1.25rem;margin-bottom:.6rem}
 
 .aviso{max-width:42rem}
 .aviso h3{font-size:1.02rem;margin:1.6rem 0 .3rem}
@@ -211,17 +259,110 @@ section h2{font-size:clamp(1.45rem,1.3rem + .8vw,1.9rem);letter-spacing:-.008em;
       <p>Son diez preguntas cortas y toma menos de tres minutos.</p>
     </div>
     <div class="caja-formulario">
-      <!-- FORMULARIO: reemplazar este bloque por el iframe del formulario de Google.
-           Pega la dirección que entrega Google en "Enviar > Insertar HTML", así:
 
-      <iframe class="marco" src="https://docs.google.com/forms/d/e/TU-ID/viewform?embedded=true"
-              title="Formulario de registro en la base de candidatos" loading="lazy">Cargando…</iframe>
-
-           Y borra el bloque de abajo. -->
-      <div class="sin-formulario">
-        <p><strong>El formulario todavía no está conectado.</strong></p>
-        <p>Mientras tanto, escríbeme a <a href="mailto:sebastian.carvallo@outlook.com?subject=Quiero%20registrarme%20en%20la%20base">sebastian.carvallo@outlook.com</a> con tu nombre, la ciudad donde vives, tu cargo actual y qué cargos estás buscando, y te registro yo.</p>
+      <div class="sin-formulario" id="sin-conexion" hidden>
+        <p><strong>El formulario todavía no está recibiendo registros.</strong></p>
+        <p>Escríbeme a <a href="mailto:sebastian.carvallo@outlook.com?subject=Quiero%20registrarme%20en%20la%20base">sebastian.carvallo@outlook.com</a> con tu nombre, la ciudad donde vives, tu cargo actual y qué cargos estás buscando, y te registro yo.</p>
       </div>
+
+      <form id="registro-form" novalidate>
+        <div class="campos">
+          <div class="campo">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+          </div>
+          <div class="campo">
+            <label for="correo">Correo electrónico</label>
+            <input type="email" id="correo" name="correo" autocomplete="email" required>
+          </div>
+          <div class="campo">
+            <label for="telefono">Teléfono</label>
+            <span class="pista" id="pista-tel">Con código de país, por ejemplo +56 9 1234 5678</span>
+            <input type="tel" id="telefono" name="telefono" autocomplete="tel" aria-describedby="pista-tel" required>
+          </div>
+          <div class="campo">
+            <label for="ciudad">Ciudad donde vives</label>
+            <input type="text" id="ciudad" name="ciudad" autocomplete="address-level2" required>
+          </div>
+          <div class="campo">
+            <label for="pais">País</label>
+            <input type="text" id="pais" name="pais" autocomplete="country-name" required>
+          </div>
+          <div class="campo">
+            <label for="cargo_actual">Cargo actual o último cargo</label>
+            <input type="text" id="cargo_actual" name="cargo_actual" autocomplete="organization-title" required>
+          </div>
+          <div class="campo ancho">
+            <label for="cargos_busca">¿Qué cargos estás buscando?</label>
+            <textarea id="cargos_busca" name="cargos_busca" required></textarea>
+          </div>
+          <div class="campo ancho">
+            <label for="linkedin">Tu perfil de LinkedIn</label>
+            <span class="pista" id="pista-li">Opcional, pero ayuda bastante</span>
+            <input type="url" id="linkedin" name="linkedin" placeholder="https://www.linkedin.com/in/tu-perfil" aria-describedby="pista-li">
+          </div>
+
+          <div class="campo ancho">
+            <fieldset>
+              <legend>¿Has hecho una asesoría conmigo?</legend>
+              <div class="opciones">
+                <label class="opcion"><input type="radio" name="asesoria" value="Sí" required> Sí</label>
+                <label class="opcion"><input type="radio" name="asesoria" value="No"> No</label>
+                <label class="opcion"><input type="radio" name="asesoria" value="Estoy en proceso"> Estoy en proceso</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="campo ancho">
+            <fieldset>
+              <legend>¿Qué modalidad aceptas?</legend>
+              <div class="opciones">
+                <label class="opcion"><input type="checkbox" name="modalidad" value="Presencial"> Presencial</label>
+                <label class="opcion"><input type="checkbox" name="modalidad" value="Híbrido"> Híbrido</label>
+                <label class="opcion"><input type="checkbox" name="modalidad" value="Remoto"> Remoto</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="campo ancho">
+            <fieldset>
+              <legend>¿Te trasladarías de ciudad por un buen cargo?</legend>
+              <div class="opciones">
+                <label class="opcion"><input type="radio" name="traslado" value="Sí" required> Sí</label>
+                <label class="opcion"><input type="radio" name="traslado" value="No"> No</label>
+                <label class="opcion"><input type="radio" name="traslado" value="Depende del cargo"> Depende del cargo</label>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+
+        <div class="permisos">
+          <label class="permiso">
+            <input type="checkbox" name="consent_contacto" id="consent_contacto" required>
+            <span><span class="clave">Autorizo a guardar estos datos</span> para que me contacten si aparece un cargo que calce con mi perfil.</span>
+          </label>
+          <label class="permiso">
+            <input type="checkbox" name="consent_empresas" id="consent_empresas">
+            <span><span class="clave">Autorizo además a que mi perfil sea presentado a empresas</span> que estén buscando candidatos. Sé que me avisarán antes de cada presentación y que puedo retirar esta autorización cuando quiera. Esta casilla es opcional.</span>
+          </label>
+        </div>
+
+        <div class="trampa" aria-hidden="true">
+          <label for="apellido-medio">No llenar</label>
+          <input type="text" id="apellido-medio" name="apellido_medio" tabindex="-1" autocomplete="off">
+        </div>
+
+        <p class="error" id="error-form" role="alert"></p>
+
+        <button class="enviar" type="submit" id="boton-enviar">Registrarme en la base</button>
+        <p class="estado-envio" id="estado-envio" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="gracias" id="gracias" hidden>
+        <h3>Listo, quedaste registrado</h3>
+        <p>Te voy a escribir solo si aparece un cargo que calce con lo que buscas. Si quieres corregir algo o salir de la base, escríbeme a <a href="mailto:sebastian.carvallo@outlook.com">sebastian.carvallo@outlook.com</a>.</p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -255,6 +396,133 @@ section h2{font-size:clamp(1.45rem,1.3rem + .8vw,1.9rem);letter-spacing:-.008em;
     <p><a href="/">Volver a las asesorías de empleabilidad</a></p>
   </div>
 </footer>
+
+<script>
+(function(){
+  // Pega acá la dirección que entrega Apps Script al implementar la aplicación web.
+  // Mientras esté vacía, el formulario no se muestra y aparece el aviso con el correo.
+  var ENDPOINT = "";
+
+  var form = document.getElementById("registro-form");
+  var sinConexion = document.getElementById("sin-conexion");
+  var gracias = document.getElementById("gracias");
+  var errorForm = document.getElementById("error-form");
+  var estado = document.getElementById("estado-envio");
+  var boton = document.getElementById("boton-enviar");
+
+  if (!ENDPOINT){
+    form.hidden = true;
+    sinConexion.hidden = false;
+    return;
+  }
+
+  function limpiarMarca(campo){
+    campo.setAttribute("aria-invalid", "false");
+  }
+
+  form.querySelectorAll("input, textarea").forEach(function(campo){
+    campo.addEventListener("input", function(){
+      limpiarMarca(campo);
+      errorForm.textContent = "";
+    });
+    campo.addEventListener("change", function(){
+      errorForm.textContent = "";
+    });
+  });
+
+  function faltantes(){
+    var problemas = [];
+    var primero = null;
+
+    form.querySelectorAll("input[required], textarea[required]").forEach(function(campo){
+      if (campo.type === "radio" || campo.type === "checkbox") return;
+      var vacio = campo.value.trim() === "";
+      var correoMalo = campo.type === "email" && !vacio && campo.value.indexOf("@") === -1;
+      if (vacio || correoMalo){
+        campo.setAttribute("aria-invalid", "true");
+        if (!primero) primero = campo;
+        var etiqueta = form.querySelector('label[for="' + campo.id + '"]');
+        var nombreCampo = etiqueta ? etiqueta.textContent.toLowerCase() : "un dato";
+        problemas.push(correoMalo ? "revisa el correo" : "falta " + nombreCampo);
+      }
+    });
+
+    ["asesoria", "traslado"].forEach(function(nombre){
+      if (!form.querySelector('input[name="' + nombre + '"]:checked')){
+        problemas.push(nombre === "asesoria" ? "dinos si hiciste una asesoría" : "dinos si te trasladarías");
+        if (!primero) primero = form.querySelector('input[name="' + nombre + '"]');
+      }
+    });
+
+    if (!form.querySelector('input[name="modalidad"]:checked')){
+      problemas.push("elige al menos una modalidad");
+      if (!primero) primero = form.querySelector('input[name="modalidad"]');
+    }
+
+    if (!document.getElementById("consent_contacto").checked){
+      problemas.push("marca la autorización para guardar tus datos");
+      if (!primero) primero = document.getElementById("consent_contacto");
+    }
+
+    return {problemas: problemas, primero: primero};
+  }
+
+  form.addEventListener("submit", function(evento){
+    evento.preventDefault();
+    errorForm.textContent = "";
+
+    var revision = faltantes();
+    if (revision.problemas.length){
+      var texto = revision.problemas.length === 1
+        ? "Antes de enviar: " + revision.problemas[0] + "."
+        : "Antes de enviar hay " + revision.problemas.length + " cosas por completar. Empieza por la primera marcada.";
+      errorForm.textContent = texto;
+      if (revision.primero) revision.primero.focus();
+      return;
+    }
+
+    if (document.getElementById("apellido-medio").value !== ""){
+      form.hidden = true;
+      gracias.hidden = false;
+      return;
+    }
+
+    var datos = new URLSearchParams();
+    datos.append("nombre", document.getElementById("nombre").value.trim());
+    datos.append("correo", document.getElementById("correo").value.trim());
+    datos.append("telefono", document.getElementById("telefono").value.trim());
+    datos.append("ciudad", document.getElementById("ciudad").value.trim());
+    datos.append("pais", document.getElementById("pais").value.trim());
+    datos.append("cargo_actual", document.getElementById("cargo_actual").value.trim());
+    datos.append("cargos_busca", document.getElementById("cargos_busca").value.trim());
+    datos.append("linkedin", document.getElementById("linkedin").value.trim());
+    datos.append("asesoria", form.querySelector('input[name="asesoria"]:checked').value);
+    datos.append("traslado", form.querySelector('input[name="traslado"]:checked').value);
+
+    var modalidades = [];
+    form.querySelectorAll('input[name="modalidad"]:checked').forEach(function(c){ modalidades.push(c.value); });
+    datos.append("modalidad", modalidades.join(", "));
+
+    datos.append("consent_contacto", "Sí");
+    datos.append("consent_empresas", document.getElementById("consent_empresas").checked ? "Sí" : "No");
+
+    boton.disabled = true;
+    estado.textContent = "Enviando…";
+
+    fetch(ENDPOINT, {method: "POST", mode: "no-cors", body: datos})
+      .then(function(){
+        form.hidden = true;
+        gracias.hidden = false;
+        gracias.scrollIntoView({block: "center"});
+      })
+      .catch(function(){
+        boton.disabled = false;
+        estado.textContent = "";
+        errorForm.textContent = "No se pudo enviar. Revisa tu conexión y vuelve a intentar, o escríbeme a sebastian.carvallo@outlook.com.";
+      });
+  });
+})();
+</script>
 
 </body>
 </html>
