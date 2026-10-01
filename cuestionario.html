@@ -261,7 +261,7 @@ const JEFATURAS=["SUPER","JEFAT","JEFEDEP","SUBGER","GER"]; // suman Liderazgo y
 
 /* Planos y pesos (Intelectual 10% pendiente: test cognitivo aparte) */
 const PLANOS=[
- {k:"P",label:"Características Personales",peso:50,subs:["Emocional","Cognitivo","Conductual"]},
+ {k:"P",label:"Plano Personal",peso:50,subs:["Emocional","Cognitivo","Conductual"]},
  {k:"M",label:"Motivacional y de Logro",peso:20},
  {k:"I",label:"Relaciones Interpersonales",peso:20},
 ];
@@ -469,7 +469,7 @@ function render(){
     html+=`<div class="plano-h"><h3>${pl.label} <span class="peso">(${pl.peso}%)</span></h3><span class="plano-score">${sc}%</span></div>`;
     if(pl.subs){ pl.subs.forEach(sub=>{
       const scs=cs.filter(r=>r.sub===sub); if(!scs.length)return;
-      html+=`<div class="subh">${sub==="Emocional"?"Emocional · lo que siente":sub==="Cognitivo"?"Cognitivo · lo que piensa":"Conductual · lo que hace"}</div>`;
+      html+=`<div class="subh">${sub==="Emocional"?"Siente · Emocional":sub==="Cognitivo"?"Piensa · Cognitivo":"Hace · Conductual"}</div>`;
       html+=scs.map(barra).join("");
     }); }
     else html+=cs.map(barra).join("");
