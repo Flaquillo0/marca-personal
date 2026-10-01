@@ -240,9 +240,9 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
 /* Captura automática opcional: pega tu endpoint (Formspree u otro). Vacío = solo WhatsApp. */
 const ENDPOINT = "";
 
-/* Nivel esperado por cargo (escala 1–7). Se aplica a todas las características del cargo;
-   es un valor de referencia, ajustable por cargo en el panel. */
-const EXP_ROL={OPER:4.5,ADMIN:4.5,TEC:4.5,VEND:5.5,PROF:5.5,SUPER:5.5,JEFAT:5.5,JEFEDEP:6.5,SUBGER:6.5,GER:6.5};
+/* Tramo de cargo: 1 entrada · 2 medio · 3 supervisión · 4 mando.
+   El nivel esperado y QUÉ características se evalúan varían por tramo (ver CARACT.e). */
+const TRAMO={OPER:1,ADMIN:1,TEC:1,VEND:2,PROF:2,SUPER:3,JEFAT:3,JEFEDEP:4,SUBGER:4,GER:4};
 const ROLES=[
  {k:"OPER",label:"Operario / Auxiliar"},
  {k:"ADMIN",label:"Administrativo"},
@@ -257,7 +257,6 @@ const ROLES=[
 ];
 const ROLE_LABEL={}; ROLES.forEach(r=>ROLE_LABEL[r.k]=r.label);
 const PRIMER={roles:["OPER","ADMIN"]};
-const JEFATURAS=["SUPER","JEFAT","JEFEDEP","SUBGER","GER"]; // suman Liderazgo y Gestión
 
 /* Planos y pesos (Intelectual 10% pendiente: test cognitivo aparte) */
 const PLANOS=[
@@ -269,55 +268,58 @@ const PESO={P:0.5,M:0.2,I:0.2};
 
 /* Catálogo de características (modelo CMPC) con ítems de autoinforme (frecuencia 1–5) */
 const CARACT={
- EE:{n:"Estabilidad Emocional",p:"P",s:"Emocional",items:[
+ EE:{n:"Estabilidad Emocional",p:"P",s:"Emocional",o:"d",e:[4.5,5,5.5,6.5],items:[
    {t:"Mantengo la calma y el equilibrio aunque el día se complique."},
    {t:"Los problemas del trabajo me afectan el ánimo con facilidad.",rev:true}]},
- AE:{n:"Autocontrol Emocional",p:"P",s:"Emocional",items:[
+ AE:{n:"Autocontrol Emocional",p:"P",s:"Emocional",o:"d",e:[4.5,5,5.5,6.5],items:[
    {t:"Controlo mis reacciones aunque algo me moleste o me presione."},
    {t:"Cuando me enojo se me nota y me cuesta contenerme.",rev:true}]},
- TF:{n:"Tolerancia a la Frustración",p:"P",s:"Emocional",items:[
+ TF:{n:"Tolerancia a la Frustración",p:"P",s:"Emocional",o:"d",e:[4.5,5,5.5,6],items:[
    {t:"Cuando las cosas no salen como esperaba, lo manejo sin desmotivarme."},
    {t:"Si algo me sale mal, me cuesta recuperar el ánimo.",rev:true}]},
- RE:{n:"Responsabilidad",p:"P",s:"Cognitivo",items:[
+ RE:{n:"Responsabilidad",p:"P",s:"Cognitivo",o:"d",e:[5,5.5,5.5,6],items:[
    {t:"Cumplo lo que me comprometo, aunque nadie me esté controlando."},
    {t:"A veces dejo compromisos a medias cuando se complican.",rev:true}]},
- AN:{n:"Capacidad de Análisis",p:"P",s:"Cognitivo",items:[
+ AN:{n:"Capacidad de Análisis",p:"P",s:"Cognitivo",o:"d",e:[null,5,5.5,6.5],items:[
    {t:"Antes de decidir, desarmo el problema en sus partes para entenderlo."},
    {t:"Comparo causas y consecuencias antes de sacar conclusiones."}]},
- DE:{n:"Capacidad de Decisión",p:"P",s:"Cognitivo",items:[
+ DE:{n:"Capacidad de Decisión",p:"P",s:"Cognitivo",o:"d",e:[null,null,5.5,6.5],items:[
    {t:"Tomo decisiones a tiempo, aun con información incompleta."},
    {t:"Postergo las decisiones difíciles más de lo que debería.",rev:true}]},
- PR:{n:"Proactividad",p:"P",s:"Conductual",items:[
-   {t:"Tomo la iniciativa y actúo sin esperar que me lo pidan."},
-   {t:"Prefiero esperar instrucciones antes de moverme.",rev:true}]},
- OM:{n:"Organización y Método",p:"P",s:"Conductual",items:[
-   {t:"Trabajo con un orden y un método claros para lo que hago."},
-   {t:"Trabajo sobre la marcha, sin un orden definido.",rev:true}]},
- TP:{n:"Trabajo Bajo Presión",p:"P",s:"Conductual",items:[
-   {t:"Mantengo mi rendimiento cuando hay plazos ajustados o presión."},
-   {t:"Bajo presión, mi rendimiento cae.",rev:true}]},
- PV:{n:"Perseverancia",p:"M",items:[
-   {t:"Insisto hasta lograr el objetivo, aunque cueste."},
-   {t:"Si algo se pone difícil, tiendo a abandonar.",rev:true}]},
- IN:{n:"Iniciativa",p:"M",items:[
-   {t:"Propongo ideas o mejoras más allá de lo que me piden."},
-   {t:"Hago lo justo y necesario, sin proponer de más.",rev:true}]},
- LM:{n:"Logro de Metas Laborales",p:"M",items:[
-   {t:"Me involucro de lleno con las metas de mi trabajo."},
-   {t:"Me motiva cumplir y superar los objetivos que me ponen."}]},
- TE:{n:"Trabajo en Equipo",p:"I",items:[
-   {t:"Colaboro y aporto para que al equipo le vaya bien."},
-   {t:"Prefiero trabajar solo y no depender del equipo.",rev:true}]},
- CO:{n:"Habilidad de Comunicación",p:"I",items:[
-   {t:"Me expreso con claridad y me hago entender."},
-   {t:"Escucho con atención antes de responder."}]},
- AS:{n:"Asertividad",p:"I",items:[
-   {t:"Digo lo que pienso con respeto, sin quedarme callado ni imponerme."},
-   {t:"Me cuesta expresar mi opinión cuando otros piensan distinto.",rev:true}]},
- GE:{n:"Capacidad de Gestión",p:"P",s:"Cognitivo",jefatura:true,items:[
+ GE:{n:"Capacidad de Gestión",p:"P",s:"Cognitivo",o:"d",e:[null,null,5.5,6.5],items:[
    {t:"Planifico y organizo recursos y personas para lograr los objetivos."},
    {t:"Hago seguimiento para que las cosas se cumplan."}]},
- LI:{n:"Liderazgo",p:"I",jefatura:true,items:[
+ PR:{n:"Proactividad",p:"P",s:"Conductual",o:"d",e:[4.5,5,5.5,6],items:[
+   {t:"Tomo la iniciativa y actúo sin esperar que me lo pidan."},
+   {t:"Prefiero esperar instrucciones antes de moverme.",rev:true}]},
+ OM:{n:"Organización y Método",p:"P",s:"Conductual",o:"d",e:[4.5,5,5.5,6],items:[
+   {t:"Trabajo con un orden y un método claros para lo que hago."},
+   {t:"Trabajo sobre la marcha, sin un orden definido.",rev:true}]},
+ TP:{n:"Trabajo Bajo Presión",p:"P",s:"Conductual",o:"d",e:[4.5,5,5.5,5.5],items:[
+   {t:"Mantengo mi rendimiento cuando hay plazos ajustados o presión."},
+   {t:"Bajo presión, mi rendimiento cae.",rev:true}]},
+ PV:{n:"Perseverancia",p:"M",o:"d",e:[4.5,5,5.5,6],items:[
+   {t:"Insisto hasta lograr el objetivo, aunque cueste."},
+   {t:"Si algo se pone difícil, tiendo a abandonar.",rev:true}]},
+ IN:{n:"Iniciativa",p:"M",o:"d",e:[null,5,5.5,6],items:[
+   {t:"Propongo ideas o mejoras más allá de lo que me piden."},
+   {t:"Hago lo justo y necesario, sin proponer de más.",rev:true}]},
+ AU:{n:"Autonomía",p:"M",o:"o",e:[null,5,5.5,5.5],items:[
+   {t:"Trabajo de forma independiente y resuelvo por mi cuenta la mayoría de las situaciones."},
+   {t:"Tomo decisiones por mi cuenta, incluso en temas que quizá no me corresponden."}]},
+ LM:{n:"Logro de Metas Laborales",p:"M",o:"d",e:[4.5,5,5.5,6.5],items:[
+   {t:"Me involucro de lleno con las metas de mi trabajo."},
+   {t:"Me motiva cumplir y superar los objetivos que me ponen."}]},
+ TE:{n:"Trabajo en Equipo",p:"I",o:"d",e:[5,5,5.5,5.5],items:[
+   {t:"Colaboro y aporto para que al equipo le vaya bien."},
+   {t:"Prefiero trabajar solo y no depender del equipo.",rev:true}]},
+ CO:{n:"Habilidad de Comunicación",p:"I",o:"d",e:[4.5,5,5.5,6.5],items:[
+   {t:"Me expreso con claridad y me hago entender."},
+   {t:"Escucho con atención antes de responder."}]},
+ AS:{n:"Asertividad",p:"I",o:"d",e:[4.5,5,5.5,6],items:[
+   {t:"Digo lo que pienso con respeto, sin quedarme callado ni imponerme."},
+   {t:"Me cuesta expresar mi opinión cuando otros piensan distinto.",rev:true}]},
+ LI:{n:"Liderazgo",p:"I",o:"d",e:[null,null,5.5,6.5],items:[
    {t:"Motivo y oriento a otros hacia una meta común."},
    {t:"Las personas me siguen y confían en mi dirección."}]},
 };
@@ -328,7 +330,7 @@ const VALIDEZ=[
 ];
 
 const SCALE=["Casi nunca","Pocas veces","A veces","Frecuentemente","Casi siempre"];
-let FLAT=[],TOTAL=0,ACTIVAS=[],ESP=0,SELROLES=[],SINEXP=false;
+let FLAT=[],TOTAL=0,ACTIVAS=[],ESPMAP={},SELROLES=[],SINEXP=false;
 const answers={};
 const selRoles=new Set();
 
@@ -356,9 +358,12 @@ function rolesEfectivos(){
 }
 function construirPerfil(){
   SELROLES=rolesEfectivos(); SINEXP=selRoles.has("PRIMER");
-  ESP=Math.max(...SELROLES.map(r=>EXP_ROL[r]||5.5));
-  const esJef=SELROLES.some(r=>JEFATURAS.includes(r));
-  ACTIVAS=Object.keys(CARACT).filter(id=>!CARACT[id].jefatura || esJef);
+  const tramos=SELROLES.map(r=>TRAMO[r]);
+  ESPMAP={}; ACTIVAS=[];
+  const ORDEN=["EE","AE","TF","RE","AN","DE","GE","PR","OM","TP","PV","IN","AU","LM","TE","CO","AS","LI"];
+  ORDEN.forEach(id=>{ const c=CARACT[id]; if(!c)return; let esp=null;
+    tramos.forEach(t=>{ const v=c.e[t-1]; if(v!=null) esp=(esp==null)?v:Math.max(esp,v); });
+    if(esp!=null){ ACTIVAS.push(id); ESPMAP[id]=esp; } });
 }
 
 function buildFlat(){
@@ -409,15 +414,23 @@ const nota=m=>1+(m-1)*1.5;
 const zoneOf=n=>n<4?"bajo":(n<5.5?"prom":"alto");
 const zoneLabel=z=>z==="bajo"?"Bajo":(z==="prom"?"Promedio":"Alto");
 const pos=n=>Math.max(0,Math.min(100,(n-1)/6*100));
-const cumplir=(nt,esp)=>Math.max(0,Math.min(1,(nt-1)/(((esp||4)-1)||1)));
+const clamp=x=>Math.max(0,Math.min(1,x));
+function cumplir(nt,esp,o){ const e=esp||5.5;
+  if(o==="i") return clamp((7-nt)/((7-e)||1));
+  if(o==="o") return nt<=e?clamp((nt-1)/((e-1)||1)):clamp((7-nt)/((7-e)||1));
+  return clamp((nt-1)/((e-1)||1)); }
+function metaTxt(nt,esp,o){
+  if(o==="i") return nt<=esp?'<span class="ok">en el nivel buscado</span>':'<span class="gap">por sobre lo deseado</span>';
+  if(o==="o") return Math.abs(nt-esp)<=0.5?'<span class="ok">en el punto buscado</span>':(nt>esp?'<span class="gap">sobre el punto medio</span>':'<span class="gap">bajo el punto medio</span>');
+  return nt>=esp?'<span class="ok">lo cubres</span>':'<span class="gap">a desarrollar</span>'; }
 
 function render(){
   const res={};
   ACTIVAS.forEach(c=>{
     let sum=0,n=0;
     CARACT[c].items.forEach((it,i)=>{let v=answers[c+"_"+i]; v=it.rev?(6-v):v; sum+=v; n++;});
-    const nt=Math.round(nota(sum/n)*10)/10;
-    res[c]={id:c,nombre:CARACT[c].n,plano:CARACT[c].p,sub:CARACT[c].s||null,nota:nt,zona:zoneOf(nt),esp:ESP,cumpl:cumplir(nt,ESP)};
+    const nt=Math.round(nota(sum/n)*10)/10; const o=CARACT[c].o||"d"; const esp=ESPMAP[c];
+    res[c]={id:c,nombre:CARACT[c].n,plano:CARACT[c].p,sub:CARACT[c].s||null,orient:o,nota:nt,zona:zoneOf(nt),esp,cumpl:cumplir(nt,esp,o)};
   });
   const lista=Object.values(res);
   let vs=0; VALIDEZ.forEach((it,i)=>vs+=answers["V_"+i]); const desFlag=(vs/VALIDEZ.length)>=4;
@@ -451,7 +464,8 @@ function render(){
     `<div class="flag"><strong>Respondiste de forma muy positiva.</strong> Para que el perfil te
      sirva conviene ser honesto, también con lo que te cuesta. Puedes reiniciar y responder con más calma.</div>`:"";
 
-  const barra=r=>{ const cumple=r.nota>=r.esp;
+  const barra=r=>{
+    const notaEsp=r.orient==="o"?" (punto medio)":r.orient==="i"?" (inversa)":"";
     return `<div class="comp">
       <div class="top"><span class="nm">${r.nombre}</span>
         <span><span class="nt">${r.nota.toFixed(1).replace(".",",")}</span> <span class="chip ${r.zona}">${zoneLabel(r.zona)}</span></span></div>
@@ -459,7 +473,7 @@ function render(){
         <div class="target" style="left:${pos(r.esp)}%"></div>
         <div class="mk" style="left:calc(${pos(r.nota)}% - 1px)"></div></div>
       <div class="eje"><span>1</span><span>4</span><span>5,5</span><span>7</span></div>
-      <div class="cmp-meta">Esperado ${r.esp.toFixed(1).replace(".",",")} · ${cumple?'<span class="ok">lo cubres</span>':'<span class="gap">a desarrollar</span>'}</div>
+      <div class="cmp-meta">Esperado ${r.esp.toFixed(1).replace(".",",")}${notaEsp} · ${metaTxt(r.nota,r.esp,r.orient)}</div>
     </div>`; };
 
   let html="";
@@ -478,19 +492,19 @@ function render(){
     <div class="pendiente">Este plano (razonamiento, concentración, aprendizaje) se mide con un <strong>test cognitivo</strong>, no con autopercepción. Se evalúa aparte; queda pendiente para tu informe completo.</div>`;
   document.getElementById("res-planos").innerHTML=html;
 
-  const fort=lista.filter(r=>r.nota>=r.esp).sort((a,b)=>b.nota-a.nota);
-  const area=lista.filter(r=>r.nota<r.esp).sort((a,b)=>(a.nota-a.esp)-(b.nota-b.esp));
+  const fort=lista.filter(r=>r.cumpl>=0.95).sort((a,b)=>b.cumpl-a.cumpl);
+  const area=lista.filter(r=>r.cumpl<0.75).sort((a,b)=>a.cumpl-b.cumpl);
   document.getElementById("res-dev").innerHTML=`
     <div class="dos">
-      <div class="tarjeta"><h3 style="color:var(--z-alto)">Cubres lo esperado en</h3>
+      <div class="tarjeta"><h3 style="color:var(--z-alto)">Estás en el nivel buscado en</h3>
         ${fort.length?"<ul>"+fort.slice(0,6).map(r=>`<li>${r.nombre}</li>`).join("")+"</ul>"
           :"<p style='margin:0;font-size:.92rem'>Aún no alcanzas el nivel esperado en las características clave; es justo lo que se puede trabajar.</p>"}</div>
       <div class="tarjeta"><h3 style="color:var(--ocre-texto)">Para desarrollar</h3>
-        ${area.length?"<ul>"+area.slice(0,6).map(r=>`<li>${r.nombre} (te faltan ${(r.esp-r.nota).toFixed(1).replace(".",",")})</li>`).join("")+"</ul>"
-          :"<p style='margin:0;font-size:.92rem'>Cubres el nivel esperado en todas las características.</p>"}</div>
+        ${area.length?"<ul>"+area.slice(0,6).map(r=>`<li>${r.nombre}${r.orient==="d"&&r.nota<r.esp?` (te faltan ${(r.esp-r.nota).toFixed(1).replace(".",",")})`:""}</li>`).join("")+"</ul>"
+          :"<p style='margin:0;font-size:.92rem'>Estás en el nivel buscado en todas las características.</p>"}</div>
     </div>`;
 
-  const payload={v:3,modelo:"cmpc",n:nombre,f:hoyISO,roles:SELROLES,sinexp:SINEXP?1:0,o:overall,aj,d:desFlag?1:0,r:lista.map(x=>[x.id,x.nota,x.esp])};
+  const payload={v:3,modelo:"cmpc",n:nombre,f:hoyISO,roles:SELROLES,sinexp:SINEXP?1:0,o:overall,aj,d:desFlag?1:0,r:lista.map(x=>[x.id,x.nota,x.esp,x.orient])};
   const code=btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
   const resumen=lista.map(x=>`• ${x.nombre}: ${x.nota.toFixed(1).replace(".",",")} / esp ${x.esp.toFixed(1).replace(".",",")}`).join("\n");
   const msg=`Hola Sebastián, hice el cuestionario (modelo 4 planos).\n\n${nombre||"(sin nombre)"} · ${hoy}\nCargo(s): ${rolesTxt}${SINEXP?" (primer empleo)":""}\nAjuste: ${aj}% — ${banda[0]}\n\n${resumen}${desFlag?"\n\n(Aviso: respondí de forma muy positiva)":""}\n\nCódigo para cargar el perfil:\n${code}`;
