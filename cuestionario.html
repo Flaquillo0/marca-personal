@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Conoce tu perfil conductual — Sebastián Carvallo Campos</title>
+<meta name="description" content="Cuestionario gratuito de autopercepción conductual por competencias: descubre tus fortalezas y áreas para desarrollar, con el método que usan las empresas para evaluar. Toma unos 10 minutos.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://marcasc.vercel.app/cuestionario">
+
+<link rel="icon" type="image/png" href="fotos/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="fotos/icono-180.png">
+<meta name="theme-color" content="#F1EFE9">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+
+<style>
+:root{
+  --papel:#F1EFE9; --papel-2:#E7E4DC; --tinta:#16202E; --tinta-2:#4E5A68;
+  --marino:#1D3557; --sobre-marino:#F1EFE9; --ocre:#A97B2C; --ocre-texto:#8A6220;
+  --linea:rgba(22,32,46,.16); --tarjeta:#FBF9F5;
+  --z-bajo:#9A3B3B; --z-prom:#A97B2C; --z-alto:#3E7C59;
+  --z-bajo-bg:rgba(154,59,59,.13); --z-prom-bg:rgba(169,123,44,.14); --z-alto-bg:rgba(62,124,89,.15);
+  --display:"Source Serif 4","Iowan Old Style",Georgia,serif;
+  --texto:"IBM Plex Sans","Segoe UI",Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --papel:#111A24; --papel-2:#17222E; --tinta:#E9E6DE; --tinta-2:#A8B3BF;
+    --marino:#8FB4DF; --sobre-marino:#0E1620; --ocre:#D2A253; --ocre-texto:#D2A253;
+    --linea:rgba(233,230,222,.18); --tarjeta:#17222E;
+    --z-bajo:#D98A8A; --z-prom:#D2A253; --z-alto:#79B592;
+  }
+}
+:root[data-theme="dark"]{
+  --papel:#111A24; --papel-2:#17222E; --tinta:#E9E6DE; --tinta-2:#A8B3BF;
+  --marino:#8FB4DF; --sobre-marino:#0E1620; --ocre:#D2A253; --ocre-texto:#D2A253;
+  --linea:rgba(233,230,222,.18); --tarjeta:#17222E;
+  --z-bajo:#D98A8A; --z-prom:#D2A253; --z-alto:#79B592;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--texto);
+  font-size:clamp(1rem,.96rem + .2vw,1.06rem);line-height:1.62;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.2;margin:0}
+p{margin:0 0 1.05rem}
+a{color:var(--marino)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--ocre);outline-offset:3px}
+.env{max-width:46rem;margin:0 auto;padding:0 1.35rem}
+
+.barra{border-bottom:1px solid var(--linea)}
+.barra .env{display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding-top:.9rem;padding-bottom:.9rem;max-width:70rem}
+.marca{font-family:var(--display);font-size:1.02rem;text-decoration:none;color:var(--tinta)}
+.volver{font-size:.9rem;text-decoration:none;color:var(--tinta-2)}
+.volver:hover{color:var(--marino)}
+
+main{padding:2.6rem 0 5rem}
+h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bottom:.4rem}
+.regla{width:3rem;height:2px;background:var(--ocre);border:0;margin:1.1rem 0 1.4rem}
+.lead{font-size:1.08rem;color:var(--tinta-2)}
+.aviso{background:var(--tarjeta);border:1px solid var(--linea);border-left:3px solid var(--ocre);
+  border-radius:8px;padding:.85rem 1rem;font-size:.92rem;color:var(--tinta-2);margin:1.2rem 0}
+.campos{display:flex;gap:.9rem;flex-wrap:wrap;margin:1.3rem 0}
+.campos label{font-size:.82rem;color:var(--tinta-2);display:block;margin-bottom:.25rem}
+.campos input{font-family:var(--texto);font-size:1rem;padding:.6rem .7rem;border:1px solid var(--linea);
+  border-radius:6px;background:var(--tarjeta);color:var(--tinta);min-width:13rem}
+.boton{display:inline-flex;align-items:center;gap:.5rem;background:var(--marino);color:var(--sobre-marino);
+  border:0;text-decoration:none;font-family:var(--texto);font-size:1rem;padding:.78rem 1.4rem;
+  border-radius:6px;cursor:pointer;transition:background .15s ease}
+.boton:hover{background:var(--tinta)}
+.boton-linea{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:var(--tinta);
+  text-decoration:none;font-family:var(--texto);font-size:.96rem;padding:.72rem 1.25rem;border-radius:6px;
+  border:1px solid var(--linea);cursor:pointer}
+.boton-linea:hover{border-color:var(--tinta-2)}
+.hidden{display:none !important}
+
+/* progreso + ítems */
+.prog{position:sticky;top:0;background:var(--papel);padding:.7rem 0;border-bottom:1px solid var(--linea);
+  font-size:.85rem;color:var(--tinta-2);z-index:5}
+.prog .bar{height:6px;background:var(--papel-2);border-radius:4px;margin-top:.4rem;overflow:hidden}
+.prog .bar i{display:block;height:100%;width:0;background:var(--ocre);transition:width .2s}
+.item{background:var(--tarjeta);border:1px solid var(--linea);border-radius:10px;padding:1rem 1.1rem;margin:.9rem 0}
+.item.falta{border-color:var(--z-bajo);box-shadow:0 0 0 2px var(--z-bajo-bg)}
+.item .q{font-size:1rem;margin-bottom:.7rem}
+.item .qn{color:var(--tinta-2);font-weight:500;margin-right:.35rem}
+.escala{display:flex;gap:.4rem;flex-wrap:wrap}
+.escala label{flex:1;min-width:5.4rem;text-align:center;border:1px solid var(--linea);border-radius:7px;
+  padding:.55rem .25rem;font-size:.78rem;color:var(--tinta-2);cursor:pointer;background:var(--papel);transition:.12s}
+.escala input{display:none}
+.escala label:hover{border-color:var(--ocre)}
+.escala label.on{background:var(--marino);color:var(--sobre-marino);border-color:var(--marino)}
+.escala label.on small{color:var(--sobre-marino)}
+.escala small{display:block;font-size:.72rem;opacity:.85;margin-top:.15rem}
+
+/* resultados */
+.tarjeta{background:var(--tarjeta);border:1px solid var(--linea);border-radius:10px;padding:1rem 1.15rem;margin:.9rem 0}
+.comp{margin:1.1rem 0}
+.comp .top{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem}
+.comp .nm{font-size:1rem;font-weight:500}
+.comp .nt{font-weight:600}
+.chip{font-size:.72rem;font-weight:600;padding:.12rem .55rem;border-radius:20px;color:#fff;white-space:nowrap}
+.chip.bajo{background:var(--z-bajo)} .chip.prom{background:var(--z-prom)} .chip.alto{background:var(--z-alto)}
+.track{position:relative;height:15px;border-radius:9px;margin-top:.45rem;overflow:hidden;
+  background:linear-gradient(to right,var(--z-bajo-bg) 0 50%,var(--z-prom-bg) 50% 75%,var(--z-alto-bg) 75% 100%)}
+.track .fill{position:absolute;left:0;top:0;height:100%;border-radius:9px 0 0 9px;background:var(--marino);opacity:.72}
+.track .mk{position:absolute;top:-3px;width:3px;height:21px;background:var(--tinta);border-radius:2px}
+.eje{display:flex;justify-content:space-between;font-size:.68rem;color:var(--tinta-2);margin-top:.2rem}
+.leyenda{display:flex;gap:1rem;font-size:.82rem;color:var(--tinta-2);flex-wrap:wrap;margin:.6rem 0}
+.leyenda span{display:inline-flex;align-items:center;gap:.35rem}
+.leyenda i{width:11px;height:11px;border-radius:3px;display:inline-block}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+@media(max-width:560px){.dos{grid-template-columns:1fr}}
+.dos h3{font-size:.98rem;margin:0 0 .4rem}
+.dos ul{margin:0;padding-left:1.1rem;font-size:.95rem}
+.flag{background:var(--z-prom-bg);border:1px solid var(--ocre);border-radius:8px;padding:.8rem 1rem;
+  font-size:.9rem;color:var(--tinta);margin:1rem 0}
+.cta{background:var(--marino);color:var(--banda-tinta,#EFEDE7);border-radius:10px;padding:1.2rem 1.25rem;margin:1.4rem 0}
+.cta h3{color:#fff;margin-bottom:.4rem}
+.cta p{color:#D6DEE9}
+.cta .boton{background:var(--ocre);color:#20160a}
+.cta .boton:hover{background:#c08f3c}
+.pie{margin-top:1.8rem;border-top:1px solid var(--linea);padding-top:.9rem;font-size:.8rem;color:var(--tinta-2)}
+.falta-msg{color:var(--z-bajo);font-size:.9rem;margin-left:.6rem}
+@media print{.noprint{display:none !important}body{background:#fff}}
+</style>
+</head>
+<body>
+<header class="barra">
+  <div class="env">
+    <a class="marca" href="/">Sebastián Carvallo Campos</a>
+    <a class="volver" href="/#candidatos">← Volver</a>
+  </div>
+</header>
+
+<main>
+<div class="env">
+
+  <!-- INTRO -->
+  <section id="intro">
+    <h1>Conoce tu perfil conductual</h1>
+    <hr class="regla">
+    <p class="lead">Un cuestionario breve para descubrir <strong>cómo tiendes a comportarte en
+      el trabajo</strong>: tus fortalezas y las áreas que puedes desarrollar, con el mismo método
+      por competencias que usan las empresas para evaluar.</p>
+    <p>No hay respuestas buenas ni malas. Responde con honestidad pensando en lo que
+      <em>realmente</em> haces, no en lo que "debería" hacerse. Toma unos 10 minutos.</p>
+    <div class="aviso">
+      <strong>Cómo leerlo.</strong> Esto es una <strong>autopercepción</strong>: refleja cómo te
+      ves tú, y es un punto de partida para conversar y crecer — no es un diagnóstico ni una
+      evaluación definitiva. Tus respuestas se procesan <strong>solo en este dispositivo</strong>
+      y no se envían a ningún lado.
+    </div>
+    <div class="campos noprint">
+      <div><label for="f-nombre">Nombre (opcional)</label><input id="f-nombre" type="text" placeholder="Tu nombre"></div>
+    </div>
+    <p class="noprint"><button class="boton" onclick="start()">Comenzar</button></p>
+  </section>
+
+  <!-- TEST -->
+  <section id="test" class="hidden">
+    <div class="prog noprint">
+      <span id="prog-txt">0 de 0 respondidas</span>
+      <div class="bar"><i id="prog-bar"></i></div>
+    </div>
+    <div class="aviso">Escala: <strong>1</strong> Casi nunca · <strong>2</strong> Pocas veces ·
+      <strong>3</strong> A veces · <strong>4</strong> Frecuentemente · <strong>5</strong> Casi siempre</div>
+    <div id="items"></div>
+    <p class="noprint"><button class="boton" onclick="finish()">Ver mis resultados</button>
+      <span id="miss-msg" class="falta-msg"></span></p>
+  </section>
+
+  <!-- RESULTADOS -->
+  <section id="results" class="hidden">
+    <div id="res-head"></div>
+    <div class="leyenda">
+      <span><i style="background:var(--z-bajo)"></i>Bajo (&lt; 4,0)</span>
+      <span><i style="background:var(--z-prom)"></i>Promedio (4,0–5,4)</span>
+      <span><i style="background:var(--z-alto)"></i>Alto (5,5–7,0)</span>
+    </div>
+    <div id="res-flag"></div>
+    <div id="res-bars"></div>
+    <div id="res-dev"></div>
+    <div class="cta noprint">
+      <h3>¿Quieres llevar esto más lejos?</h3>
+      <p>Este es un vistazo del método. En una asesoría trabajamos tu perfil completo con una
+        entrevista, y enfocamos tu búsqueda de trabajo en lo que de verdad te hace competitivo.</p>
+      <a class="boton" href="/#llamada">Conversemos</a>
+      <a class="boton-linea" href="/base" style="color:#D6DEE9;border-color:rgba(255,255,255,.3)">Sumarme a la base de candidatos</a>
+    </div>
+    <div class="pie">
+      Escala 1 a 7 (nota educacional chilena): bajo 4,0 = insuficiente. Resultado de
+      autopercepción conductual; no constituye diagnóstico ni evaluación psicolaboral formal.
+    </div>
+    <p class="noprint" style="margin-top:1rem">
+      <button class="boton-linea" onclick="window.print()">Guardar en PDF</button>
+      <button class="boton-linea" onclick="location.reload()">Reiniciar</button>
+    </p>
+  </section>
+
+</div>
+</main>
+
+<script>
+const CONFIG = { modo: "desarrollo" };
+const COMPS = [
+ {id:"A1", nombre:"Trabajo Bien Hecho", activa:true, items:[
+   {t:"Reviso mi trabajo antes de entregarlo para asegurarme de que quede bien hecho."},
+   {t:"Cuando veo una forma de mejorar algo, propongo la idea en vez de quedarme callado."},
+   {t:"Voy más allá de lo que me piden cuando sé que el resultado puede ser mejor."},
+   {t:"Si el trabajo “está más o menos”, lo entrego igual con tal de salir del paso.", rev:true}]},
+ {id:"A2", nombre:"Autocuidado y Seguridad", activa:true, items:[
+   {t:"Antes de hacer una tarea, identifico los riesgos que podría tener."},
+   {t:"Sigo los procedimientos de seguridad y uso la protección aunque nadie me esté mirando."},
+   {t:"Si veo a un compañero en una situación insegura, se lo advierto."},
+   {t:"Con la experiencia que tengo, a veces me salto pasos de seguridad para avanzar más rápido.", rev:true}]},
+ {id:"A3", nombre:"Servicio al Cliente Interno/Externo", activa:true, items:[
+   {t:"Me preocupo de entender bien qué necesita la persona que atiendo antes de responder."},
+   {t:"Cumplo los compromisos y plazos que acuerdo con clientes o compañeros."},
+   {t:"Busco generar una relación de confianza con las personas con las que trabajo."},
+   {t:"Cuando me piden algo que no es exactamente mi tarea, tiendo a desentenderme.", rev:true}]},
+ {id:"B1", nombre:"Liderazgo Cercano y Efectivo", activa:false, items:[
+   {t:"Cuando trabajo en equipo, estoy pendiente de cómo le va a cada integrante."},
+   {t:"Doy retroalimentación a las personas para que mejoren."},
+   {t:"Cuando algo falla, apoyo a buscar la solución en vez de solo marcar el error."},
+   {t:"Me cuesta estar presente para mi equipo cuando las cosas se complican.", rev:true}]},
+ {id:"B2", nombre:"Liderazgo Movilizador y Transformador", activa:false, items:[
+   {t:"Reconozco y destaco el buen trabajo de los demás cuando lo hacen bien."},
+   {t:"Entrego desafíos a las personas para que aprendan y se desarrollen."},
+   {t:"Asumo la responsabilidad por los resultados del equipo frente a terceros."},
+   {t:"Tiendo a hacer las cosas yo mismo en vez de desarrollar las capacidades de otros.", rev:true}]},
+ {id:"C1", nombre:"Visión Estratégica del Negocio", activa:false, items:[
+   {t:"Me interesa entender cómo mi trabajo impacta en los objetivos globales de la organización."},
+   {t:"Me mantengo informado sobre mi industria, el mercado y la competencia."},
+   {t:"Considero el mediano y largo plazo al decidir, no solo lo inmediato."},
+   {t:"Me concentro solo en mis tareas y no me fijo en el panorama general del negocio.", rev:true}]},
+ {id:"C2", nombre:"Gestionar Soluciones", activa:true, items:[
+   {t:"Cuando aparece un problema, analizo sus causas antes de actuar."},
+   {t:"Propongo soluciones concretas frente a las dificultades, no solo las reporto."},
+   {t:"Identifico a quién pedir apoyo cuando un tema excede lo que puedo resolver solo."},
+   {t:"Suelo darme cuenta de los problemas recién cuando ya ocurrieron.", rev:true}]},
+ {id:"C3", nombre:"Planificación", activa:true, items:[
+   {t:"Defino objetivos con etapas y plazos antes de empezar un trabajo grande."},
+   {t:"Hago seguimiento del avance para asegurarme de ir cumpliendo lo planificado."},
+   {t:"Anticipo imprevistos y dejo margen para manejarlos."},
+   {t:"Avanzo sobre la marcha, sin un plan claro de cómo llegar al objetivo.", rev:true}]},
+ {id:"C4", nombre:"Autonomía", activa:true, items:[
+   {t:"Saco adelante mi trabajo sin necesidad de que me estén supervisando."},
+   {t:"Cuando surge un problema en lo mío, lo resuelvo por mi cuenta hasta donde me corresponde."},
+   {t:"Busco formas de optimizar mis resultados por iniciativa propia."},
+   {t:"Necesito que me indiquen constantemente qué hacer para avanzar.", rev:true}]},
+ {id:"C5", nombre:"Organización", activa:true, items:[
+   {t:"Organizo mi día o mi semana estableciendo prioridades."},
+   {t:"Distingo lo urgente de lo importante al decidir qué hacer primero."},
+   {t:"Mantengo mi rendimiento aunque tenga varias tareas a la vez o esté bajo presión."},
+   {t:"Cuando se me junta el trabajo, me cuesta cumplir los plazos.", rev:true}]},
+ {id:"D1", nombre:"Estándares de Calidad", activa:true, items:[
+   {t:"Realizo mi trabajo cuidando los estándares y procedimientos de calidad."},
+   {t:"Tengo presente cómo mi trabajo afecta al cliente o consumidor final."},
+   {t:"Controlo el cumplimiento de las normas y corrijo cuando algo se desvía."},
+   {t:"A veces descuido las normativas con tal de terminar más rápido.", rev:true}]},
+ {id:"D2", nombre:"Visión Comercial", activa:false, items:[
+   {t:"Estoy atento a nuevas oportunidades comerciales o de mejora."},
+   {t:"Me anticipo a las necesidades de los clientes."},
+   {t:"Uso información del mercado y la competencia para tomar mejores decisiones."},
+   {t:"No suelo fijarme en las oportunidades comerciales que aparecen alrededor.", rev:true}]},
+ {id:"D3", nombre:"Negociación", activa:false, items:[
+   {t:"Expongo mis argumentos con claridad y seguridad al negociar."},
+   {t:"Busco acuerdos en que ambas partes ganen."},
+   {t:"Manejo las objeciones manteniendo la calma y el control de la conversación."},
+   {t:"Ante un desacuerdo fuerte, me cuesta mantener la calma o tiendo a ceder.", rev:true}]},
+ {id:"D4", nombre:"Optimización y Mejora de Procesos", activa:false, items:[
+   {t:"Identifico mejoras en la forma de hacer las cosas y las propongo."},
+   {t:"Construyo redes de trabajo con otras áreas para resolver mejor."},
+   {t:"Ante una contingencia, tomo un rol activo para superarla."},
+   {t:"Implemento mejoras solo cuando mi jefatura me lo pide.", rev:true}]},
+ {id:"E1", nombre:"Apertura al Cambio e Innovación", activa:true, items:[
+   {t:"Me adapto rápido cuando cambian las formas de trabajar."},
+   {t:"Tengo disposición a aprender herramientas y métodos nuevos."},
+   {t:"Me involucro con buena actitud en desafíos de innovación o mejora."},
+   {t:"Los cambios en el trabajo me incomodan y tiendo a resistirlos.", rev:true}]},
+];
+const VALIDEZ = [
+  {t:"Nunca me he equivocado en mi trabajo."},
+  {t:"Cumplo absolutamente todo lo que prometo, sin ninguna excepción."},
+  {t:"Jamás he sentido molestia hacia un compañero de trabajo."},
+];
+
+const SCALE = ["Casi nunca","Pocas veces","A veces","Frecuentemente","Casi siempre"];
+let FLAT=[], TOTAL=0; const answers={};
+
+function buildFlat(){
+  let list=[];
+  COMPS.filter(c=>c.activa).forEach(c=>c.items.forEach((it,i)=>
+    list.push({key:c.id+"_"+i, comp:c.id, rev:!!it.rev, text:it.t})));
+  VALIDEZ.forEach((it,i)=> list.push({key:"V_"+i, comp:"V", rev:false, text:it.t}));
+  for(let i=list.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[list[i],list[j]]=[list[j],list[i]];}
+  return list;
+}
+function start(){
+  FLAT=buildFlat(); TOTAL=FLAT.length;
+  const box=document.getElementById("items"); box.innerHTML="";
+  FLAT.forEach((it,idx)=>{
+    const d=document.createElement("div"); d.className="item"; d.id="it_"+it.key;
+    const opts=SCALE.map((s,v)=>`<label onclick="pick('${it.key}',${v+1},this)">
+      <input type="radio" name="${it.key}" value="${v+1}"><strong>${v+1}</strong><small>${s}</small></label>`).join("");
+    d.innerHTML=`<div class="q"><span class="qn">${idx+1}.</span>${it.text}</div><div class="escala">${opts}</div>`;
+    box.appendChild(d);
+  });
+  document.getElementById("intro").classList.add("hidden");
+  document.getElementById("test").classList.remove("hidden");
+  updateProg(); window.scrollTo(0,0);
+}
+function pick(key,val,el){
+  answers[key]=val;
+  el.parentNode.querySelectorAll("label").forEach(l=>l.classList.remove("on"));
+  el.classList.add("on");
+  document.getElementById("it_"+key).classList.remove("falta");
+  updateProg();
+}
+function updateProg(){
+  const n=Object.keys(answers).length;
+  document.getElementById("prog-txt").textContent=n+" de "+TOTAL+" respondidas";
+  document.getElementById("prog-bar").style.width=(TOTAL?(n/TOTAL*100):0)+"%";
+}
+function finish(){
+  const miss=FLAT.filter(it=>!(it.key in answers));
+  if(miss.length){
+    miss.forEach(it=>document.getElementById("it_"+it.key).classList.add("falta"));
+    document.getElementById("miss-msg").textContent="Faltan "+miss.length+" respuesta(s).";
+    document.getElementById("it_"+miss[0].key).scrollIntoView({behavior:"smooth",block:"center"});
+    return;
+  }
+  render();
+}
+const nota=m=>1+(m-1)*1.5;
+const zoneOf=n=>n<4?"bajo":(n<5.5?"prom":"alto");
+const zoneLabel=z=>z=="bajo"?"Bajo":(z=="prom"?"Promedio":"Alto");
+const pos=n=>((n-1)/6*100);
+
+function render(){
+  const res=[];
+  COMPS.filter(c=>c.activa).forEach(c=>{
+    let sum=0,n=0;
+    c.items.forEach((it,i)=>{let v=answers[c.id+"_"+i]; v=it.rev?(6-v):v; sum+=v; n++;});
+    const nt=Math.round(nota(sum/n)*10)/10;
+    res.push({nombre:c.nombre, nota:nt, zona:zoneOf(nt)});
+  });
+  let vs=0; VALIDEZ.forEach((it,i)=>vs+=answers["V_"+i]); const desFlag=(vs/VALIDEZ.length)>=4;
+  const overall=Math.round(res.reduce((a,r)=>a+r.nota,0)/res.length*10)/10;
+  const nombre=(document.getElementById("f-nombre").value||"").trim();
+  const hoy=new Date().toLocaleDateString("es-CL");
+
+  document.getElementById("res-head").innerHTML=
+    `<h1>Tu perfil conductual</h1><hr class="regla">
+     <p class="lead">${nombre?("<strong>"+nombre+"</strong> · "):""}${hoy} · Promedio general:
+     <strong>${overall.toFixed(1)}</strong></p>`;
+
+  document.getElementById("res-bars").innerHTML=res.map(r=>`
+    <div class="comp">
+      <div class="top"><span class="nm">${r.nombre}</span>
+        <span><span class="nt">${r.nota.toFixed(1)}</span> <span class="chip ${r.zona}">${zoneLabel(r.zona)}</span></span></div>
+      <div class="track"><div class="fill" style="width:${pos(r.nota)}%"></div>
+        <div class="mk" style="left:calc(${pos(r.nota)}% - 1px)"></div></div>
+      <div class="eje"><span>1</span><span>4</span><span>5,5</span><span>7</span></div>
+    </div>`).join("");
+
+  document.getElementById("res-flag").innerHTML=desFlag?
+    `<div class="flag"><strong>Respondiste de forma muy positiva.</strong> Es natural querer
+     mostrar lo mejor, pero para que el perfil te sirva conviene ser bien honesto, también con lo
+     que te cuesta. Si quieres, puedes reiniciar y responder con más calma.</div>`:"";
+
+  const fort=res.filter(r=>r.nota>=5.5).sort((a,b)=>b.nota-a.nota);
+  const area=res.filter(r=>r.nota<4.5).sort((a,b)=>a.nota-b.nota);
+  document.getElementById("res-dev").innerHTML=`
+    <div class="dos">
+      <div class="tarjeta"><h3 style="color:var(--z-alto)">Tus fortalezas</h3>
+        ${fort.length?"<ul>"+fort.slice(0,5).map(r=>`<li>${r.nombre} (${r.nota.toFixed(1)})</li>`).join("")+"</ul>"
+          :"<p style='margin:0;font-size:.92rem'>Perfil parejo, sin picos altos marcados.</p>"}</div>
+      <div class="tarjeta"><h3 style="color:var(--ocre-texto)">Áreas para desarrollar</h3>
+        ${area.length?"<ul>"+area.slice(0,5).map(r=>`<li>${r.nombre} (${r.nota.toFixed(1)})</li>`).join("")+"</ul>"
+          :"<p style='margin:0;font-size:.92rem'>No hay áreas bajo 4,0–4,5: buena base en todas.</p>"}</div>
+    </div>`;
+
+  document.getElementById("test").classList.add("hidden");
+  document.getElementById("results").classList.remove("hidden");
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
