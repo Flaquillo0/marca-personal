@@ -153,8 +153,8 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
     <div class="aviso">
       <strong>Cómo leerlo.</strong> Esto es una <strong>autopercepción</strong>: refleja cómo te
       ves tú, y es un punto de partida para conversar y crecer — no es un diagnóstico ni una
-      evaluación definitiva. Tus respuestas se procesan <strong>solo en este dispositivo</strong>
-      y no se envían a ningún lado.
+      evaluación definitiva. Tus respuestas se procesan <strong>solo en este dispositivo</strong>;
+      al final tú decides si le envías tu resultado a Sebastián.
     </div>
     <div class="campos noprint">
       <div><label for="f-nombre">Nombre (opcional)</label><input id="f-nombre" type="text" placeholder="Tu nombre"></div>
@@ -186,6 +186,7 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
     <div id="res-flag"></div>
     <div id="res-bars"></div>
     <div id="res-dev"></div>
+    <div id="res-share"></div>
     <div class="cta noprint">
       <h3>¿Quieres llevar esto más lejos?</h3>
       <p>Este es un vistazo del método. En una asesoría trabajamos tu perfil completo con una
@@ -349,12 +350,14 @@ function render(){
     let sum=0,n=0;
     c.items.forEach((it,i)=>{let v=answers[c.id+"_"+i]; v=it.rev?(6-v):v; sum+=v; n++;});
     const nt=Math.round(nota(sum/n)*10)/10;
-    res.push({nombre:c.nombre, nota:nt, zona:zoneOf(nt)});
+    res.push({id:c.id, nombre:c.nombre, nota:nt, zona:zoneOf(nt)});
   });
   let vs=0; VALIDEZ.forEach((it,i)=>vs+=answers["V_"+i]); const desFlag=(vs/VALIDEZ.length)>=4;
   const overall=Math.round(res.reduce((a,r)=>a+r.nota,0)/res.length*10)/10;
   const nombre=(document.getElementById("f-nombre").value||"").trim();
-  const hoy=new Date().toLocaleDateString("es-CL");
+  const dnow=new Date();
+  const hoy=dnow.toLocaleDateString("es-CL");
+  const hoyISO=`${dnow.getFullYear()}-${String(dnow.getMonth()+1).padStart(2,"0")}-${String(dnow.getDate()).padStart(2,"0")}`;
 
   document.getElementById("res-head").innerHTML=
     `<h1>Tu perfil conductual</h1><hr class="regla">
@@ -387,9 +390,35 @@ function render(){
           :"<p style='margin:0;font-size:.92rem'>No hay áreas bajo 4,0–4,5: buena base en todas.</p>"}</div>
     </div>`;
 
+  // Código que reconstruye el perfil exacto + mensaje para enviar a Sebastián
+  const payload={v:1,n:nombre,f:hoyISO,o:overall,d:desFlag?1:0,r:res.map(x=>[x.id,x.nota])};
+  const code=btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+  const resumen=res.map(x=>`• ${x.nombre}: ${x.nota.toFixed(1).replace(".",",")} (${zoneLabel(x.zona)})`).join("\n");
+  const msg=`Hola Sebastián, hice el cuestionario de perfil conductual.\n\n${nombre||"(sin nombre)"} · ${hoy} · Promedio ${overall.toFixed(1).replace(".",",")}\n${resumen}${desFlag?"\n\n(Aviso: respondí de forma muy positiva)":""}\n\nCódigo para cargar el perfil:\n${code}`;
+  window.__msg=msg;
+  const wa=`https://wa.me/56936108624?text=${encodeURIComponent(msg)}`;
+  document.getElementById("res-share").innerHTML=`
+    <div class="tarjeta" style="border-color:var(--ocre)">
+      <h3 style="margin:0;font-size:1.1rem">¿Lo haces para una asesoría? Envíale tus resultados a Sebastián</h3>
+      <p style="margin:.4rem 0 0;font-size:.92rem;color:var(--tinta-2)">Revisará contigo si el perfil refleja de verdad cómo eres y lo trabajan juntos.</p>
+      <div class="acciones" style="margin-top:.7rem">
+        <a class="boton" href="${wa}" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+        <button class="boton-linea" type="button" onclick="copiarCodigo(event)">Copiar mis resultados</button>
+      </div>
+      <textarea id="cod" readonly aria-hidden="true" style="position:absolute;left:-9999px;top:0"></textarea>
+    </div>`;
+
   document.getElementById("test").classList.add("hidden");
   document.getElementById("results").classList.remove("hidden");
   window.scrollTo(0,0);
+}
+
+function copiarCodigo(ev){
+  const t=window.__msg||"";
+  const btn=ev&&ev.target;
+  const ok=()=>{ if(btn){const o=btn.textContent; btn.textContent="Copiado ✓"; setTimeout(()=>btn.textContent=o,1800);} };
+  const sel=()=>{ const ta=document.getElementById("cod"); ta.value=t; ta.select(); try{document.execCommand("copy");}catch(e){} ok(); };
+  if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(ok,sel); } else { sel(); }
 }
 </script>
 </body>
