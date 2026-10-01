@@ -211,6 +211,15 @@ section h2{font-size:clamp(1.55rem,1.35rem + .9vw,2.1rem);letter-spacing:-.008em
 
 .alterna{background:var(--papel-2)}
 
+/* Bloque destacado de la autoevaluación (protagonista en ambos servicios) */
+.feat{background:var(--papel-2);border:1px solid var(--linea);border-radius:14px;padding:clamp(1.3rem,3.5vw,2.2rem);display:grid;gap:1.4rem}
+@media (min-width:52rem){.feat{grid-template-columns:1.1fr .9fr;align-items:center;gap:2.6rem}}
+.feat h2{font-size:clamp(1.5rem,1.3rem + 1vw,2.05rem);margin-bottom:.4rem}
+.feat .chip-g{display:inline-block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--ocre-texto);background:var(--papel);border:1px solid var(--linea);border-radius:999px;padding:.25rem .75rem;margin-bottom:.8rem}
+.feat .acciones{margin-top:1.1rem}
+.feat figure.mini{margin:0;justify-self:center;border-radius:10px;border:1px solid var(--linea);overflow:hidden;box-shadow:0 12px 34px rgba(22,32,46,.12);max-width:15rem}
+.feat figure.mini img{display:block;width:100%;height:auto}
+
 .credenciales{list-style:none;margin:1.8rem 0 0;padding:0;display:grid;gap:1.35rem}
 @media (min-width:48rem){.credenciales{grid-template-columns:1fr 1fr;gap:1.6rem 3rem}}
 .credenciales li{border-top:1px solid var(--linea);padding-top:1rem}
@@ -461,6 +470,23 @@ details > .contenido{padding-bottom:.4rem}
   </div>
 </div>
 
+<section id="autotest">
+  <div class="env">
+    <div class="feat">
+      <div>
+        <span class="chip-g">Gratis · 10 minutos · desde el celular</span>
+        <h2>Pruébate con el método que usan las empresas</h2>
+        <p>Antes de postular, mídete: eliges el cargo que buscas y respondes un test por competencias. Al instante ves tu <strong>% de ajuste</strong>, tus fortalezas y lo que puedes desarrollar. Es la misma lógica con la que te van a evaluar, ahora de tu lado.</p>
+        <div class="acciones"><a class="boton" href="/cuestionario">Hacer mi autoevaluación</a></div>
+        <p class="letra-chica">Tus respuestas quedan en tu dispositivo. Es una muestra del método, no un diagnóstico.</p>
+      </div>
+      <figure class="mini">
+        <a href="/cuestionario"><img src="fotos/muestra-informe-desarrollo.png" width="800" height="1560" alt="Ejemplo del resultado de la autoevaluación" loading="lazy"></a>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <section id="casos" class="banda">
   <div class="env">
     <div class="medida">
@@ -591,19 +617,6 @@ details > .contenido{padding-bottom:.4rem}
   </div>
 </section>
 
-<section id="autotest">
-  <div class="env">
-    <div class="medida">
-      <h2>Prueba tu perfil conductual, gratis</h2>
-      <p>Un cuestionario breve de <strong>autopercepción por competencias</strong>: en unos diez minutos ves tus fortalezas y las áreas que puedes desarrollar, con el mismo método que usan las empresas para evaluar. Responde desde el celular o el computador; tus respuestas quedan solo en tu dispositivo.</p>
-      <div class="acciones">
-        <a class="boton" href="/cuestionario">Hacer el cuestionario</a>
-      </div>
-      <p class="letra-chica">Es una muestra del método, no un diagnóstico. El resultado es un buen punto de partida para conversar tu búsqueda.</p>
-    </div>
-  </div>
-</section>
-
 <section id="base" class="base-cta">
   <div class="env">
     <div class="medida">
@@ -648,6 +661,26 @@ details > .contenido{padding-bottom:.4rem}
   </div>
 </section>
 
+<section id="autotest-emp">
+  <div class="env">
+    <div class="feat">
+      <div>
+        <span class="chip-g">Evaluación por competencias</span>
+        <h2>Una autoprueba por competencias, respaldada por mi criterio</h2>
+        <p>Tus candidatos responden una autoevaluación por competencias (10 minutos, online) y yo la cruzo con la entrevista. Obtienes un <strong>perfil con % de ajuste al cargo</strong> y un informe que fundamenta cada competencia: objetivo, rápido y comparable entre candidatos — algo que decidir "a ojo" no te da.</p>
+        <div class="acciones">
+          <a class="boton" href="/cuestionario" target="_blank" rel="noopener">Ver la autoevaluación</a>
+          <a class="boton-linea" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20represento%20a%20una%20empresa%20y%20quiero%20usar%20la%20autoevaluaci%C3%B3n%20por%20competencias%20en%20mi%20proceso." target="_blank" rel="noopener">Usarla en mi proceso</a>
+        </div>
+        <p class="letra-chica">Puedes pedir que tus candidatos la completen y evaluarlos a todos con el mismo estándar.</p>
+      </div>
+      <figure class="mini">
+        <a href="fotos/muestra-informe-empresa.png" target="_blank" rel="noopener"><img src="fotos/muestra-informe-empresa.png" width="800" height="1290" alt="Ejemplo del perfil e informe por competencias, con datos ficticios" loading="lazy"></a>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <section id="como-trabajo" class="alterna">
   <div class="env">
     <div class="medida">
@@ -680,21 +713,6 @@ details > .contenido{padding-bottom:.4rem}
     <div class="nota-precio">
       <p><strong>Me adapto a lo que necesitas.</strong> Cargos operativos, comerciales, profesionales o de otro rubro; online o presencial; con tus pruebas psicológicas o complementando las que ya aplicas. La metodología es la misma; el perfil y el proceso los ajusto a ti.</p>
     </div>
-  </div>
-</section>
-
-<section id="informe-muestra" class="alterna">
-  <div class="env">
-    <div class="medida">
-      <h2>Así es el informe que recibes</h2>
-      <p>Un documento claro con el <strong>porcentaje de ajuste al perfil</strong>, el detalle por competencia y la recomendación — con evidencia trazable, listo para decidir.</p>
-    </div>
-    <figure class="muestra">
-      <a href="fotos/muestra-informe-empresa.png" target="_blank" rel="noopener">
-        <img src="fotos/muestra-informe-empresa.png" width="800" height="1290" alt="Ejemplo de informe de ajuste al perfil de cargo, con datos ficticios" loading="lazy">
-      </a>
-      <figcaption>Ejemplo con datos ficticios. Toca la imagen para ampliar.</figcaption>
-    </figure>
   </div>
 </section>
 
