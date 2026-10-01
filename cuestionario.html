@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Conoce tu perfil conductual — Sebastián Carvallo Campos</title>
-<meta name="description" content="Cuestionario gratuito de afinidad por competencias: elige el cargo que quieres postular y descubre tu afinidad, tus fortalezas y áreas para desarrollar, con el método que usan las empresas. Unos 10 minutos.">
+<title>Conoce tu perfil — Sebastián Carvallo Campos</title>
+<meta name="description" content="Cuestionario gratuito por el modelo de los cuatro planos: elige el cargo que quieres postular y descubre tu % de ajuste, tus fortalezas y áreas para desarrollar. Unos 12 minutos.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://marcasc.vercel.app/cuestionario">
 
@@ -81,7 +81,6 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
 .boton-linea:hover{border-color:var(--tinta-2)}
 .hidden{display:none !important}
 
-/* selección de roles */
 .roles{display:flex;flex-wrap:wrap;gap:.5rem;margin:.4rem 0 .2rem}
 .role{border:1px solid var(--linea);background:var(--tarjeta);border-radius:999px;padding:.5rem .95rem;
   font-size:.92rem;cursor:pointer;color:var(--tinta);transition:.12s;user-select:none}
@@ -89,7 +88,6 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
 .role[aria-pressed="true"]{background:var(--marino);color:var(--sobre-marino);border-color:var(--marino)}
 .role.primer{border-style:dashed}
 
-/* progreso + ítems */
 .prog{position:sticky;top:0;background:var(--papel);padding:.7rem 0;border-bottom:1px solid var(--linea);
   font-size:.85rem;color:var(--tinta-2);z-index:5}
 .prog .bar{height:6px;background:var(--papel-2);border-radius:4px;margin-top:.4rem;overflow:hidden}
@@ -107,13 +105,17 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
 .escala label.on small{color:var(--sobre-marino)}
 .escala small{display:block;font-size:.72rem;opacity:.85;margin-top:.15rem}
 
-/* resultados */
 .tarjeta{background:var(--tarjeta);border:1px solid var(--linea);border-radius:10px;padding:1rem 1.15rem;margin:.9rem 0}
 .afbox{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;background:var(--marino);color:#EFEDE7;border-radius:12px;padding:1.1rem 1.25rem;margin:.4rem 0 1rem}
 .afbox .big{font-family:var(--display);font-size:2.6rem;line-height:1;font-variant-numeric:tabular-nums}
 .afbox .txt{font-size:.95rem;color:#D6DEE9}
 .afbox .txt b{color:#fff}
-.comp{margin:1.1rem 0}
+.plano-h{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;margin:1.6rem 0 .3rem;border-top:1px solid var(--linea);padding-top:1rem}
+.plano-h h3{font-size:1.15rem}
+.plano-h .peso{font-size:.8rem;color:var(--tinta-2)}
+.plano-score{font-variant-numeric:tabular-nums;font-weight:600;color:var(--marino)}
+.subh{font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tinta-2);font-weight:600;margin:.8rem 0 .2rem}
+.comp{margin:.9rem 0}
 .comp .top{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem}
 .comp .nm{font-size:1rem;font-weight:500}
 .comp .nt{font-weight:600}
@@ -132,6 +134,7 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
 .leyenda span{display:inline-flex;align-items:center;gap:.35rem}
 .leyenda i{width:11px;height:11px;border-radius:3px;display:inline-block}
 .leyenda .tgt{width:0;height:14px;border-left:2px dashed var(--ocre-texto)}
+.pendiente{background:var(--papel-2);border:1px dashed var(--linea);border-radius:10px;padding:.8rem 1rem;font-size:.9rem;color:var(--tinta-2);margin:.6rem 0}
 .flag{background:var(--z-prom-bg);border:1px solid var(--ocre);border-radius:8px;padding:.8rem 1rem;
   font-size:.9rem;color:var(--tinta);margin:1rem 0}
 .dos{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
@@ -161,14 +164,15 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
 
   <!-- INTRO -->
   <section id="intro">
-    <h1>Conoce tu perfil conductual</h1>
+    <h1>Conoce tu perfil</h1>
     <hr class="regla">
-    <p class="lead">Elige el tipo de cargo que te gustaría postular y responde el cuestionario:
-      te muestro tu <strong>afinidad</strong> con ese cargo, tus fortalezas y las áreas para
-      desarrollar, con el mismo método por competencias que usan las empresas.</p>
+    <p class="lead">Elige el cargo que te gustaría postular y responde el cuestionario: evalúo
+      tu perfil en los <strong>cuatro planos</strong> (lo que sientes, piensas y haces; tu
+      motivación; tus relaciones) y te muestro tu <strong>% de ajuste</strong> al cargo, con tus
+      fortalezas y áreas para desarrollar.</p>
 
     <h3 style="font-size:1.05rem;margin:1.4rem 0 .3rem">¿A qué tipo de cargo te gustaría postular?</h3>
-    <p style="font-size:.9rem;color:var(--tinta-2);margin:.2rem 0 .5rem">Elige uno o más. Según tu elección, ajusto qué competencias evaluar.</p>
+    <p style="font-size:.9rem;color:var(--tinta-2);margin:.2rem 0 .5rem">Elige uno o más. Define el nivel esperado con el que se compara tu perfil.</p>
     <div class="roles" id="roles"></div>
     <div id="rol-nota" class="aviso hidden"></div>
 
@@ -177,9 +181,8 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
     </div>
     <div class="aviso">
       <strong>Cómo leerlo.</strong> Es una <strong>autopercepción</strong>: refleja cómo te ves tú,
-      y es un punto de partida para conversar y crecer — no es un diagnóstico ni una evaluación
-      definitiva. Se procesa <strong>en este dispositivo</strong>; al final decides si le envías tu
-      resultado a Sebastián.
+      un punto de partida para conversar y crecer — no es un diagnóstico. Se procesa <strong>en
+      este dispositivo</strong>; al final decides si le envías tu resultado a Sebastián.
     </div>
     <p class="noprint"><button class="boton" id="btn-comenzar" onclick="start()" disabled>Elige al menos un cargo</button></p>
   </section>
@@ -208,19 +211,20 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
       <span><i class="tgt"></i>Esperado para el cargo</span>
     </div>
     <div id="res-flag"></div>
-    <div id="res-bars"></div>
+    <div id="res-planos"></div>
     <div id="res-dev"></div>
     <div id="res-share"></div>
     <div class="cta noprint">
       <h3>¿Quieres llevar esto más lejos?</h3>
       <p>Este es un vistazo del método. En una asesoría trabajamos tu perfil completo con una
-        entrevista, y enfocamos tu búsqueda de trabajo en lo que de verdad te hace competitivo.</p>
+        entrevista y, si corresponde, pruebas; y enfocamos tu búsqueda en lo que te hace competitivo.</p>
       <a class="boton" href="/#llamada">Conversemos</a>
       <a class="boton-linea" href="/base" style="color:#D6DEE9;border-color:rgba(255,255,255,.3)">Sumarme a la base de candidatos</a>
     </div>
     <div class="pie">
-      Escala 1 a 7 (nota educacional chilena): bajo 4,0 = insuficiente. La afinidad compara tu
-      autopercepción con el nivel esperado del cargo. Es un pre-informe orientativo; no constituye
+      Modelo por cuatro planos (CMPC), escala 1 a 7. El % de ajuste compara tu autopercepción con
+      el nivel esperado del cargo (Personales 50%, Motivacional 20%, Interpersonal 20%, Intelectual
+      10% — este último se mide aparte con un test cognitivo). Pre-informe orientativo; no es
       diagnóstico ni evaluación psicolaboral formal.
     </div>
     <p class="noprint" style="margin-top:1rem">
@@ -233,26 +237,12 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
 </main>
 
 <script>
-/* ============================================================
-   CAPTURA AUTOMÁTICA (opcional): pega aquí tu endpoint de Formspree
-   (o similar) y las respuestas se le envían solas a Sebastián.
-   Vacío = no se envía automático; la persona usa el botón de WhatsApp.
-   ============================================================ */
+/* Captura automática opcional: pega tu endpoint (Formspree u otro). Vacío = solo WhatsApp. */
 const ENDPOINT = "";
 
-/* Matriz de niveles esperados por cargo (de la matriz de PF, escala 1–7) */
-const MATRIZ={
- OPER:  {A1:4.5,A2:5.5,A3:4.5,D1:4.5,E1:4.5},
- ADMIN: {A1:4.5,A2:5.5,A3:4.5,C5:5.5,D1:4.5,D2:4.5,D3:4.5,D4:4.5,E1:4.5},
- TEC:   {A1:4.5,A2:5.5,A3:4.5,C5:5.5,D1:4.5,D2:4.5,D3:4.5,D4:4.5,E1:4.5},
- VEND:  {A1:5.5,A2:5.5,A3:5.5,C5:5.5,D2:5.5,D3:5.5,E1:5.5},
- PROF:  {A1:5.5,A2:5.5,A3:5.5,C4:5.5,D1:4.5,D2:5.5,D3:4.5,D4:5.5,E1:5.5},
- SUPER: {A1:5.5,A2:6.5,A3:5.5,B1:5.5,C2:4.5,D1:5.5,D2:5.5,D3:5.5,D4:5.5,E1:6.5},
- JEFAT: {A1:5.5,A2:6.5,A3:5.5,B1:6.5,C2:5.5,D1:5.5,D2:5.5,D3:5.5,D4:5.5,E1:6.5},
- JEFEDEP:{A1:6.5,A2:6.5,A3:5.5,B2:4.5,C2:6.5,C3:4.5,D1:5.5,D2:6.5,D3:6.5,D4:6.5,E1:6.5},
- SUBGER:{A1:6.5,A2:6.5,A3:6.5,B2:5.5,C1:5.5,C3:5.5,D1:6.5,D2:6.5,D3:6.5,D4:6.5,E1:6.5},
- GER:   {A1:6.5,A2:6.5,A3:6.5,B2:6.5,C1:6.5,C3:6.5,D1:6.5,D2:6.5,D3:6.5,D4:6.5,E1:6.5},
-};
+/* Nivel esperado por cargo (escala 1–7). Se aplica a todas las características del cargo;
+   es un valor de referencia, ajustable por cargo en el panel. */
+const EXP_ROL={OPER:4.5,ADMIN:4.5,TEC:4.5,VEND:5.5,PROF:5.5,SUPER:5.5,JEFAT:5.5,JEFEDEP:6.5,SUBGER:6.5,GER:6.5};
 const ROLES=[
  {k:"OPER",label:"Operario / Auxiliar"},
  {k:"ADMIN",label:"Administrativo"},
@@ -267,83 +257,69 @@ const ROLES=[
 ];
 const ROLE_LABEL={}; ROLES.forEach(r=>ROLE_LABEL[r.k]=r.label);
 const PRIMER={roles:["OPER","ADMIN"]};
+const JEFATURAS=["SUPER","JEFAT","JEFEDEP","SUBGER","GER"]; // suman Liderazgo y Gestión
 
-const COMPS={
- A1:{nombre:"Trabajo Bien Hecho",items:[
-   {t:"Reviso mi trabajo antes de entregarlo para asegurarme de que quede bien hecho."},
-   {t:"Cuando veo una forma de mejorar algo, propongo la idea en vez de quedarme callado."},
-   {t:"Voy más allá de lo que me piden cuando sé que el resultado puede ser mejor."},
-   {t:"Si el trabajo “está más o menos”, lo entrego igual con tal de salir del paso.",rev:true}]},
- A2:{nombre:"Autocuidado y Seguridad",items:[
-   {t:"Antes de hacer una tarea, identifico los riesgos que podría tener."},
-   {t:"Sigo los procedimientos de seguridad y uso la protección aunque nadie me esté mirando."},
-   {t:"Si veo a un compañero en una situación insegura, se lo advierto."},
-   {t:"Con la experiencia que tengo, a veces me salto pasos de seguridad para avanzar más rápido.",rev:true}]},
- A3:{nombre:"Servicio al Cliente Interno/Externo",items:[
-   {t:"Me preocupo de entender bien qué necesita la persona que atiendo antes de responder."},
-   {t:"Cumplo los compromisos y plazos que acuerdo con clientes o compañeros."},
-   {t:"Busco generar una relación de confianza con las personas con las que trabajo."},
-   {t:"Cuando me piden algo que no es exactamente mi tarea, tiendo a desentenderme.",rev:true}]},
- B1:{nombre:"Liderazgo Cercano y Efectivo",items:[
-   {t:"Cuando trabajo en equipo, estoy pendiente de cómo le va a cada integrante."},
-   {t:"Doy retroalimentación a las personas para que mejoren."},
-   {t:"Cuando algo falla, apoyo a buscar la solución en vez de solo marcar el error."},
-   {t:"Me cuesta estar presente para mi equipo cuando las cosas se complican.",rev:true}]},
- B2:{nombre:"Liderazgo Movilizador y Transformador",items:[
-   {t:"Reconozco y destaco el buen trabajo de los demás cuando lo hacen bien."},
-   {t:"Entrego desafíos a las personas para que aprendan y se desarrollen."},
-   {t:"Asumo la responsabilidad por los resultados del equipo frente a terceros."},
-   {t:"Tiendo a hacer las cosas yo mismo en vez de desarrollar las capacidades de otros.",rev:true}]},
- C1:{nombre:"Visión Estratégica del Negocio",items:[
-   {t:"Me interesa entender cómo mi trabajo impacta en los objetivos globales de la organización."},
-   {t:"Me mantengo informado sobre mi industria, el mercado y la competencia."},
-   {t:"Considero el mediano y largo plazo al decidir, no solo lo inmediato."},
-   {t:"Me concentro solo en mis tareas y no me fijo en el panorama general del negocio.",rev:true}]},
- C2:{nombre:"Gestionar Soluciones",items:[
-   {t:"Cuando aparece un problema, analizo sus causas antes de actuar."},
-   {t:"Propongo soluciones concretas frente a las dificultades, no solo las reporto."},
-   {t:"Identifico a quién pedir apoyo cuando un tema excede lo que puedo resolver solo."},
-   {t:"Suelo darme cuenta de los problemas recién cuando ya ocurrieron.",rev:true}]},
- C3:{nombre:"Planificación",items:[
-   {t:"Defino objetivos con etapas y plazos antes de empezar un trabajo grande."},
-   {t:"Hago seguimiento del avance para asegurarme de ir cumpliendo lo planificado."},
-   {t:"Anticipo imprevistos y dejo margen para manejarlos."},
-   {t:"Avanzo sobre la marcha, sin un plan claro de cómo llegar al objetivo.",rev:true}]},
- C4:{nombre:"Autonomía",items:[
-   {t:"Saco adelante mi trabajo sin necesidad de que me estén supervisando."},
-   {t:"Cuando surge un problema en lo mío, lo resuelvo por mi cuenta hasta donde me corresponde."},
-   {t:"Busco formas de optimizar mis resultados por iniciativa propia."},
-   {t:"Necesito que me indiquen constantemente qué hacer para avanzar.",rev:true}]},
- C5:{nombre:"Organización",items:[
-   {t:"Organizo mi día o mi semana estableciendo prioridades."},
-   {t:"Distingo lo urgente de lo importante al decidir qué hacer primero."},
-   {t:"Mantengo mi rendimiento aunque tenga varias tareas a la vez o esté bajo presión."},
-   {t:"Cuando se me junta el trabajo, me cuesta cumplir los plazos.",rev:true}]},
- D1:{nombre:"Estándares de Calidad",items:[
-   {t:"Realizo mi trabajo cuidando los estándares y procedimientos de calidad."},
-   {t:"Tengo presente cómo mi trabajo afecta al cliente o consumidor final."},
-   {t:"Controlo el cumplimiento de las normas y corrijo cuando algo se desvía."},
-   {t:"A veces descuido las normativas con tal de terminar más rápido.",rev:true}]},
- D2:{nombre:"Visión Comercial",items:[
-   {t:"Estoy atento a nuevas oportunidades comerciales o de mejora."},
-   {t:"Me anticipo a las necesidades de los clientes."},
-   {t:"Uso información del mercado y la competencia para tomar mejores decisiones."},
-   {t:"No suelo fijarme en las oportunidades comerciales que aparecen alrededor.",rev:true}]},
- D3:{nombre:"Negociación",items:[
-   {t:"Expongo mis argumentos con claridad y seguridad al negociar."},
-   {t:"Busco acuerdos en que ambas partes ganen."},
-   {t:"Manejo las objeciones manteniendo la calma y el control de la conversación."},
-   {t:"Ante un desacuerdo fuerte, me cuesta mantener la calma o tiendo a ceder.",rev:true}]},
- D4:{nombre:"Optimización y Mejora de Procesos",items:[
-   {t:"Identifico mejoras en la forma de hacer las cosas y las propongo."},
-   {t:"Construyo redes de trabajo con otras áreas para resolver mejor."},
-   {t:"Ante una contingencia, tomo un rol activo para superarla."},
-   {t:"Implemento mejoras solo cuando mi jefatura me lo pide.",rev:true}]},
- E1:{nombre:"Apertura al Cambio e Innovación",items:[
-   {t:"Me adapto rápido cuando cambian las formas de trabajar."},
-   {t:"Tengo disposición a aprender herramientas y métodos nuevos."},
-   {t:"Me involucro con buena actitud en desafíos de innovación o mejora."},
-   {t:"Los cambios en el trabajo me incomodan y tiendo a resistirlos.",rev:true}]},
+/* Planos y pesos (Intelectual 10% pendiente: test cognitivo aparte) */
+const PLANOS=[
+ {k:"P",label:"Características Personales",peso:50,subs:["Emocional","Cognitivo","Conductual"]},
+ {k:"M",label:"Motivacional y de Logro",peso:20},
+ {k:"I",label:"Relaciones Interpersonales",peso:20},
+];
+const PESO={P:0.5,M:0.2,I:0.2};
+
+/* Catálogo de características (modelo CMPC) con ítems de autoinforme (frecuencia 1–5) */
+const CARACT={
+ EE:{n:"Estabilidad Emocional",p:"P",s:"Emocional",items:[
+   {t:"Mantengo la calma y el equilibrio aunque el día se complique."},
+   {t:"Los problemas del trabajo me afectan el ánimo con facilidad.",rev:true}]},
+ AE:{n:"Autocontrol Emocional",p:"P",s:"Emocional",items:[
+   {t:"Controlo mis reacciones aunque algo me moleste o me presione."},
+   {t:"Cuando me enojo se me nota y me cuesta contenerme.",rev:true}]},
+ TF:{n:"Tolerancia a la Frustración",p:"P",s:"Emocional",items:[
+   {t:"Cuando las cosas no salen como esperaba, lo manejo sin desmotivarme."},
+   {t:"Si algo me sale mal, me cuesta recuperar el ánimo.",rev:true}]},
+ RE:{n:"Responsabilidad",p:"P",s:"Cognitivo",items:[
+   {t:"Cumplo lo que me comprometo, aunque nadie me esté controlando."},
+   {t:"A veces dejo compromisos a medias cuando se complican.",rev:true}]},
+ AN:{n:"Capacidad de Análisis",p:"P",s:"Cognitivo",items:[
+   {t:"Antes de decidir, desarmo el problema en sus partes para entenderlo."},
+   {t:"Comparo causas y consecuencias antes de sacar conclusiones."}]},
+ DE:{n:"Capacidad de Decisión",p:"P",s:"Cognitivo",items:[
+   {t:"Tomo decisiones a tiempo, aun con información incompleta."},
+   {t:"Postergo las decisiones difíciles más de lo que debería.",rev:true}]},
+ PR:{n:"Proactividad",p:"P",s:"Conductual",items:[
+   {t:"Tomo la iniciativa y actúo sin esperar que me lo pidan."},
+   {t:"Prefiero esperar instrucciones antes de moverme.",rev:true}]},
+ OM:{n:"Organización y Método",p:"P",s:"Conductual",items:[
+   {t:"Trabajo con un orden y un método claros para lo que hago."},
+   {t:"Trabajo sobre la marcha, sin un orden definido.",rev:true}]},
+ TP:{n:"Trabajo Bajo Presión",p:"P",s:"Conductual",items:[
+   {t:"Mantengo mi rendimiento cuando hay plazos ajustados o presión."},
+   {t:"Bajo presión, mi rendimiento cae.",rev:true}]},
+ PV:{n:"Perseverancia",p:"M",items:[
+   {t:"Insisto hasta lograr el objetivo, aunque cueste."},
+   {t:"Si algo se pone difícil, tiendo a abandonar.",rev:true}]},
+ IN:{n:"Iniciativa",p:"M",items:[
+   {t:"Propongo ideas o mejoras más allá de lo que me piden."},
+   {t:"Hago lo justo y necesario, sin proponer de más.",rev:true}]},
+ LM:{n:"Logro de Metas Laborales",p:"M",items:[
+   {t:"Me involucro de lleno con las metas de mi trabajo."},
+   {t:"Me motiva cumplir y superar los objetivos que me ponen."}]},
+ TE:{n:"Trabajo en Equipo",p:"I",items:[
+   {t:"Colaboro y aporto para que al equipo le vaya bien."},
+   {t:"Prefiero trabajar solo y no depender del equipo.",rev:true}]},
+ CO:{n:"Habilidad de Comunicación",p:"I",items:[
+   {t:"Me expreso con claridad y me hago entender."},
+   {t:"Escucho con atención antes de responder."}]},
+ AS:{n:"Asertividad",p:"I",items:[
+   {t:"Digo lo que pienso con respeto, sin quedarme callado ni imponerme."},
+   {t:"Me cuesta expresar mi opinión cuando otros piensan distinto.",rev:true}]},
+ GE:{n:"Capacidad de Gestión",p:"P",s:"Cognitivo",jefatura:true,items:[
+   {t:"Planifico y organizo recursos y personas para lograr los objetivos."},
+   {t:"Hago seguimiento para que las cosas se cumplan."}]},
+ LI:{n:"Liderazgo",p:"I",jefatura:true,items:[
+   {t:"Motivo y oriento a otros hacia una meta común."},
+   {t:"Las personas me siguen y confían en mi dirección."}]},
 };
 const VALIDEZ=[
   {t:"Nunca me he equivocado en mi trabajo."},
@@ -352,32 +328,27 @@ const VALIDEZ=[
 ];
 
 const SCALE=["Casi nunca","Pocas veces","A veces","Frecuentemente","Casi siempre"];
-let FLAT=[],TOTAL=0,ACTIVAS=[],ESPERADO={},SELROLES=[],SINEXP=false;
+let FLAT=[],TOTAL=0,ACTIVAS=[],ESP=0,SELROLES=[],SINEXP=false;
 const answers={};
-
-/* ---- selección de roles ---- */
 const selRoles=new Set();
+
 function pintarRoles(){
   const cont=document.getElementById("roles");
   let h=ROLES.map(r=>`<button type="button" class="role" data-k="${r.k}" aria-pressed="${selRoles.has(r.k)}">${r.label}</button>`).join("");
   h+=`<button type="button" class="role primer" data-k="PRIMER" aria-pressed="${selRoles.has("PRIMER")}">Primer empleo / sin experiencia</button>`;
   cont.innerHTML=h;
   cont.querySelectorAll(".role").forEach(b=>b.onclick=()=>{
-    const k=b.dataset.k; if(selRoles.has(k))selRoles.delete(k); else selRoles.add(k);
-    actualizarRoles();
-  });
+    const k=b.dataset.k; if(selRoles.has(k))selRoles.delete(k); else selRoles.add(k); actualizarRoles(); });
 }
 function actualizarRoles(){
   pintarRoles();
   const n=selRoles.size, btn=document.getElementById("btn-comenzar");
-  btn.disabled=n===0;
-  btn.textContent=n===0?"Elige al menos un cargo":"Comenzar";
+  btn.disabled=n===0; btn.textContent=n===0?"Elige al menos un cargo":"Comenzar";
   const nota=document.getElementById("rol-nota");
   if(selRoles.has("PRIMER")){ nota.classList.remove("hidden");
-    nota.innerHTML="<strong>Primer empleo.</strong> Evaluaré las competencias de cargos de entrada (operario y administrativo). Si aún no tienes experiencia laboral, responde pensando en tus estudios y tu día a día."; }
+    nota.innerHTML="<strong>Primer empleo.</strong> Te comparo con el nivel de cargos de entrada. Si aún no tienes experiencia laboral, responde pensando en tus estudios y tu día a día."; }
   else nota.classList.add("hidden");
 }
-
 function rolesEfectivos(){
   const set=new Set();
   selRoles.forEach(k=>{ if(k==="PRIMER") PRIMER.roles.forEach(r=>set.add(r)); else set.add(k); });
@@ -385,27 +356,21 @@ function rolesEfectivos(){
 }
 function construirPerfil(){
   SELROLES=rolesEfectivos(); SINEXP=selRoles.has("PRIMER");
-  ESPERADO={};
-  SELROLES.forEach(rk=>{ const m=MATRIZ[rk]||{};
-    Object.keys(m).forEach(c=>{ ESPERADO[c]=Math.max(ESPERADO[c]||0, m[c]); }); });
-  // orden fijo de competencias
-  const ORDEN=["A1","A2","A3","B1","B2","C1","C2","C3","C4","C5","D1","D2","D3","D4","E1"];
-  ACTIVAS=ORDEN.filter(c=>c in ESPERADO);
+  ESP=Math.max(...SELROLES.map(r=>EXP_ROL[r]||5.5));
+  const esJef=SELROLES.some(r=>JEFATURAS.includes(r));
+  ACTIVAS=Object.keys(CARACT).filter(id=>!CARACT[id].jefatura || esJef);
 }
 
-/* ---- test ---- */
 function buildFlat(){
   let list=[];
-  ACTIVAS.forEach(c=>COMPS[c].items.forEach((it,i)=>
-    list.push({key:c+"_"+i,comp:c,rev:!!it.rev,text:it.t})));
+  ACTIVAS.forEach(c=>CARACT[c].items.forEach((it,i)=>list.push({key:c+"_"+i,comp:c,rev:!!it.rev,text:it.t})));
   VALIDEZ.forEach((it,i)=>list.push({key:"V_"+i,comp:"V",rev:false,text:it.t}));
   for(let i=list.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[list[i],list[j]]=[list[j],list[i]];}
   return list;
 }
 function start(){
   if(selRoles.size===0)return;
-  construirPerfil();
-  FLAT=buildFlat(); TOTAL=FLAT.length;
+  construirPerfil(); FLAT=buildFlat(); TOTAL=FLAT.length;
   const box=document.getElementById("items"); box.innerHTML="";
   FLAT.forEach((it,idx)=>{
     const d=document.createElement("div"); d.className="item"; d.id="it_"+it.key;
@@ -444,22 +409,30 @@ const nota=m=>1+(m-1)*1.5;
 const zoneOf=n=>n<4?"bajo":(n<5.5?"prom":"alto");
 const zoneLabel=z=>z==="bajo"?"Bajo":(z==="prom"?"Promedio":"Alto");
 const pos=n=>Math.max(0,Math.min(100,(n-1)/6*100));
+const cumplir=(nt,esp)=>Math.max(0,Math.min(1,(nt-1)/(((esp||4)-1)||1)));
 
 function render(){
-  const res=[];
+  const res={};
   ACTIVAS.forEach(c=>{
     let sum=0,n=0;
-    COMPS[c].items.forEach((it,i)=>{let v=answers[c+"_"+i]; v=it.rev?(6-v):v; sum+=v; n++;});
+    CARACT[c].items.forEach((it,i)=>{let v=answers[c+"_"+i]; v=it.rev?(6-v):v; sum+=v; n++;});
     const nt=Math.round(nota(sum/n)*10)/10;
-    const esp=ESPERADO[c];
-    res.push({id:c,nombre:COMPS[c].nombre,nota:nt,zona:zoneOf(nt),esp});
+    res[c]={id:c,nombre:CARACT[c].n,plano:CARACT[c].p,sub:CARACT[c].s||null,nota:nt,zona:zoneOf(nt),esp:ESP,cumpl:cumplir(nt,ESP)};
   });
+  const lista=Object.values(res);
   let vs=0; VALIDEZ.forEach((it,i)=>vs+=answers["V_"+i]); const desFlag=(vs/VALIDEZ.length)>=4;
-  const overall=Math.round(res.reduce((a,r)=>a+r.nota,0)/res.length*10)/10;
-  // afinidad: cuánto cubre el nivel esperado (cap 100% por competencia)
-  const cumpl=res.map(r=>{ const e=r.esp||4; return Math.max(0,Math.min(1,(r.nota-1)/((e-1)||1))); });
-  const afin=Math.round(cumpl.reduce((a,b)=>a+b,0)/cumpl.length*100);
-  const banda=afin>=85?["Buena afinidad","var(--z-alto)"]:afin>=70?["Afinidad parcial","var(--ocre-texto)"]:["Por desarrollar","var(--z-bajo)"];
+  const overall=Math.round(lista.reduce((a,r)=>a+r.nota,0)/lista.length*10)/10;
+
+  // % de ajuste por plano, ponderado (renormalizado a los planos presentes)
+  const planoScore={}; let wsum=0, acc=0;
+  PLANOS.forEach(pl=>{
+    const cs=lista.filter(r=>r.plano===pl.k);
+    if(!cs.length)return;
+    const sc=cs.reduce((a,r)=>a+r.cumpl,0)/cs.length;
+    planoScore[pl.k]=sc; wsum+=PESO[pl.k]; acc+=sc*PESO[pl.k];
+  });
+  const aj=Math.round((wsum?acc/wsum:0)*100);
+  const banda=aj>=90?["Muy buen ajuste al perfil","#9BD3AC"]:aj>=80?["Buen ajuste, con aspectos a trabajar","#E4C98F"]:["Ajuste por desarrollar","#F0A091"];
 
   const nombre=(document.getElementById("f-nombre").value||"").trim();
   const dnow=new Date();
@@ -468,61 +441,68 @@ function render(){
   const rolesTxt=SELROLES.map(k=>ROLE_LABEL[k]).join(" · ");
 
   document.getElementById("res-head").innerHTML=
-    `<h1>Tu afinidad con el cargo</h1><hr class="regla">
+    `<h1>Tu ajuste con el cargo</h1><hr class="regla">
      <p class="lead">${nombre?("<strong>"+nombre+"</strong> · "):""}${rolesTxt}${SINEXP?" · primer empleo":""} · ${hoy}</p>`;
-
   document.getElementById("res-af").innerHTML=`
-    <div class="afbox">
-      <div class="big">${afin}%</div>
-      <div class="txt"><b style="color:${banda[1]==='var(--z-bajo)'?'#F0A091':(banda[1]==='var(--ocre-texto)'?'#E4C98F':'#9BD3AC')}">${banda[0]}</b><br>
-        Qué tanto tu autopercepción cubre el nivel que pide ${SELROLES.length>1?"los cargos elegidos":"el cargo elegido"}. Promedio general ${overall.toFixed(1).replace(".",",")}.</div>
-    </div>`;
-
+    <div class="afbox"><div class="big">${aj}%</div>
+      <div class="txt"><b style="color:${banda[1]}">${banda[0]}</b><br>
+        Ajuste de tu perfil al nivel esperado del cargo. Promedio general ${overall.toFixed(1).replace(".",",")}.</div></div>`;
   document.getElementById("res-flag").innerHTML=desFlag?
-    `<div class="flag"><strong>Respondiste de forma muy positiva.</strong> Es natural querer
-     mostrar lo mejor, pero para que el perfil te sirva conviene ser bien honesto, también con lo
-     que te cuesta. Si quieres, puedes reiniciar y responder con más calma.</div>`:"";
+    `<div class="flag"><strong>Respondiste de forma muy positiva.</strong> Para que el perfil te
+     sirva conviene ser honesto, también con lo que te cuesta. Puedes reiniciar y responder con más calma.</div>`:"";
 
-  document.getElementById("res-bars").innerHTML=res.map(r=>{
-    const cumple=r.nota>=r.esp;
+  const barra=r=>{ const cumple=r.nota>=r.esp;
     return `<div class="comp">
       <div class="top"><span class="nm">${r.nombre}</span>
         <span><span class="nt">${r.nota.toFixed(1).replace(".",",")}</span> <span class="chip ${r.zona}">${zoneLabel(r.zona)}</span></span></div>
-      <div class="track">
-        <div class="fill" style="width:${pos(r.nota)}%"></div>
+      <div class="track"><div class="fill" style="width:${pos(r.nota)}%"></div>
         <div class="target" style="left:${pos(r.esp)}%"></div>
         <div class="mk" style="left:calc(${pos(r.nota)}% - 1px)"></div></div>
       <div class="eje"><span>1</span><span>4</span><span>5,5</span><span>7</span></div>
-      <div class="cmp-meta">Esperado: ${r.esp.toFixed(1).replace(".",",")} · ${cumple?'<span class="ok">lo cubres</span>':'<span class="gap">a desarrollar</span>'}</div>
-    </div>`;}).join("");
+      <div class="cmp-meta">Esperado ${r.esp.toFixed(1).replace(".",",")} · ${cumple?'<span class="ok">lo cubres</span>':'<span class="gap">a desarrollar</span>'}</div>
+    </div>`; };
 
-  const fort=res.filter(r=>r.nota>=r.esp).sort((a,b)=>b.nota-a.nota);
-  const area=res.filter(r=>r.nota<r.esp).sort((a,b)=>(a.nota-a.esp)-(b.nota-b.esp));
+  let html="";
+  PLANOS.forEach(pl=>{
+    const cs=lista.filter(r=>r.plano===pl.k); if(!cs.length)return;
+    const sc=Math.round((planoScore[pl.k]||0)*100);
+    html+=`<div class="plano-h"><h3>${pl.label} <span class="peso">(${pl.peso}%)</span></h3><span class="plano-score">${sc}%</span></div>`;
+    if(pl.subs){ pl.subs.forEach(sub=>{
+      const scs=cs.filter(r=>r.sub===sub); if(!scs.length)return;
+      html+=`<div class="subh">${sub==="Emocional"?"Emocional · lo que siente":sub==="Cognitivo"?"Cognitivo · lo que piensa":"Conductual · lo que hace"}</div>`;
+      html+=scs.map(barra).join("");
+    }); }
+    else html+=cs.map(barra).join("");
+  });
+  html+=`<div class="plano-h"><h3>Capacidad Intelectual <span class="peso">(10%)</span></h3><span class="plano-score">—</span></div>
+    <div class="pendiente">Este plano (razonamiento, concentración, aprendizaje) se mide con un <strong>test cognitivo</strong>, no con autopercepción. Se evalúa aparte; queda pendiente para tu informe completo.</div>`;
+  document.getElementById("res-planos").innerHTML=html;
+
+  const fort=lista.filter(r=>r.nota>=r.esp).sort((a,b)=>b.nota-a.nota);
+  const area=lista.filter(r=>r.nota<r.esp).sort((a,b)=>(a.nota-a.esp)-(b.nota-b.esp));
   document.getElementById("res-dev").innerHTML=`
     <div class="dos">
       <div class="tarjeta"><h3 style="color:var(--z-alto)">Cubres lo esperado en</h3>
         ${fort.length?"<ul>"+fort.slice(0,6).map(r=>`<li>${r.nombre}</li>`).join("")+"</ul>"
-          :"<p style='margin:0;font-size:.92rem'>Aún no alcanzas el nivel esperado en las competencias clave; es justo lo que se puede trabajar.</p>"}</div>
+          :"<p style='margin:0;font-size:.92rem'>Aún no alcanzas el nivel esperado en las características clave; es justo lo que se puede trabajar.</p>"}</div>
       <div class="tarjeta"><h3 style="color:var(--ocre-texto)">Para desarrollar</h3>
         ${area.length?"<ul>"+area.slice(0,6).map(r=>`<li>${r.nombre} (te faltan ${(r.esp-r.nota).toFixed(1).replace(".",",")})</li>`).join("")+"</ul>"
-          :"<p style='margin:0;font-size:.92rem'>Cubres el nivel esperado en todas las competencias del cargo.</p>"}</div>
+          :"<p style='margin:0;font-size:.92rem'>Cubres el nivel esperado en todas las características.</p>"}</div>
     </div>`;
 
-  // código + envío
-  const payload={v:2,n:nombre,f:hoyISO,roles:SELROLES,sinexp:SINEXP?1:0,o:overall,af:afin,d:desFlag?1:0,r:res.map(x=>[x.id,x.nota,x.esp])};
+  const payload={v:3,modelo:"cmpc",n:nombre,f:hoyISO,roles:SELROLES,sinexp:SINEXP?1:0,o:overall,aj,d:desFlag?1:0,r:lista.map(x=>[x.id,x.nota,x.esp])};
   const code=btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
-  const resumen=res.map(x=>`• ${x.nombre}: ${x.nota.toFixed(1).replace(".",",")} / esp ${x.esp.toFixed(1).replace(".",",")} (${zoneLabel(x.zona)})`).join("\n");
-  const msg=`Hola Sebastián, hice el cuestionario de perfil conductual.\n\n${nombre||"(sin nombre)"} · ${hoy}\nCargo(s): ${rolesTxt}${SINEXP?" (primer empleo)":""}\nAfinidad: ${afin}% — ${banda[0]}\n\n${resumen}${desFlag?"\n\n(Aviso: respondí de forma muy positiva)":""}\n\nCódigo para cargar el perfil:\n${code}`;
+  const resumen=lista.map(x=>`• ${x.nombre}: ${x.nota.toFixed(1).replace(".",",")} / esp ${x.esp.toFixed(1).replace(".",",")}`).join("\n");
+  const msg=`Hola Sebastián, hice el cuestionario (modelo 4 planos).\n\n${nombre||"(sin nombre)"} · ${hoy}\nCargo(s): ${rolesTxt}${SINEXP?" (primer empleo)":""}\nAjuste: ${aj}% — ${banda[0]}\n\n${resumen}${desFlag?"\n\n(Aviso: respondí de forma muy positiva)":""}\n\nCódigo para cargar el perfil:\n${code}`;
   window.__msg=msg;
   const wa=`https://wa.me/56936108624?text=${encodeURIComponent(msg)}`;
 
-  // envío automático si hay ENDPOINT
   let autoNota="";
   if(ENDPOINT){
     autoNota=`<p style="margin:.6rem 0 0;font-size:.85rem;color:var(--tinta-2)" id="auto-st">Enviando tus resultados…</p>`;
     fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
-      body:JSON.stringify({nombre,fecha:hoyISO,cargos:rolesTxt,afinidad:afin,promedio:overall,alerta:desFlag,detalle:resumen,code})})
-      .then(r=>{const el=document.getElementById("auto-st"); if(el){el.textContent=r.ok?"✓ Tus resultados le llegaron a Sebastián.":"No se pudo enviar automático; usa el botón de WhatsApp.";}})
+      body:JSON.stringify({nombre,fecha:hoyISO,cargos:rolesTxt,ajuste:aj,promedio:overall,alerta:desFlag,detalle:resumen,code})})
+      .then(r=>{const el=document.getElementById("auto-st"); if(el)el.textContent=r.ok?"✓ Tus resultados le llegaron a Sebastián.":"No se pudo enviar automático; usa el botón de WhatsApp.";})
       .catch(()=>{const el=document.getElementById("auto-st"); if(el)el.textContent="No se pudo enviar automático; usa el botón de WhatsApp.";});
   }
 
@@ -541,7 +521,6 @@ function render(){
   document.getElementById("results").classList.remove("hidden");
   window.scrollTo(0,0);
 }
-
 function copiarCodigo(ev){
   const t=window.__msg||"";
   const btn=ev&&ev.target;
@@ -549,7 +528,6 @@ function copiarCodigo(ev){
   const sel=()=>{ const ta=document.getElementById("cod"); ta.value=t; ta.select(); try{document.execCommand("copy");}catch(e){} ok(); };
   if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(ok,sel); } else { sel(); }
 }
-
 pintarRoles();
 </script>
 </body>
