@@ -64,6 +64,10 @@ main{padding:2.6rem 0 5rem}
 h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bottom:.4rem}
 .regla{width:3rem;height:2px;background:var(--ocre);border:0;margin:1.1rem 0 1.4rem}
 .lead{font-size:1.08rem;color:var(--tinta-2)}
+.planos-intro{margin:.4rem 0 .6rem;padding-left:1.15rem;font-size:.98rem;color:var(--tinta-2)}
+.planos-intro li{margin:.28rem 0}
+.planos-intro strong{color:var(--tinta)}
+.planos-intro em{font-style:italic}
 .aviso{background:var(--tarjeta);border:1px solid var(--linea);border-left:3px solid var(--ocre);
   border-radius:8px;padding:.85rem 1rem;font-size:.92rem;color:var(--tinta-2);margin:1.2rem 0}
 .campos{display:flex;gap:.9rem;flex-wrap:wrap;margin:1.3rem 0}
@@ -166,10 +170,15 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
   <section id="intro">
     <h1>Conoce tu perfil</h1>
     <hr class="regla">
-    <p class="lead">Elige el cargo que te gustaría postular y responde el cuestionario: evalúo
-      tu perfil en los <strong>cuatro planos</strong> (lo que sientes, piensas y haces; tu
-      motivación; tus relaciones) y te muestro tu <strong>% de ajuste</strong> al cargo, con tus
+    <p class="lead">Elige el cargo que te gustaría postular y responde el cuestionario. Evalúo
+      tu perfil en cuatro planos y te muestro tu <strong>% de ajuste</strong> al cargo, con tus
       fortalezas y áreas para desarrollar.</p>
+    <ul class="planos-intro">
+      <li><strong>Personal</strong> — cómo <em>sientes</em>, <em>piensas</em> y <em>actúas</em> en el trabajo.</li>
+      <li><strong>Motivacional y de logro</strong> — qué te mueve y tu orientación a cumplir metas.</li>
+      <li><strong>Relaciones interpersonales</strong> — cómo te relacionas y te comunicas.</li>
+      <li><strong>Capacidad intelectual</strong> — tu razonamiento (se mide aparte, con un test).</li>
+    </ul>
 
     <h3 style="font-size:1.05rem;margin:1.4rem 0 .3rem">¿A qué tipo de cargo te gustaría postular?</h3>
     <p style="font-size:.9rem;color:var(--tinta-2);margin:.2rem 0 .5rem">Elige uno o más. Define el nivel esperado con el que se compara tu perfil.</p>
@@ -324,9 +333,9 @@ const CARACT={
    {t:"Las personas me siguen y confían en mi dirección."}]},
 };
 const VALIDEZ=[
-  {t:"Nunca me he equivocado en mi trabajo."},
-  {t:"Cumplo absolutamente todo lo que prometo, sin ninguna excepción."},
-  {t:"Jamás he sentido molestia hacia un compañero de trabajo."},
+  {t:"Hago mi trabajo de forma perfecta, sin cometer ningún error."},
+  {t:"Cumplo todo lo que prometo, tal cual lo digo, en absolutamente todos los casos."},
+  {t:"Me llevo perfectamente bien con todos mis compañeros, sin ninguna excepción."},
 ];
 
 const SCALE=["Casi nunca","Pocas veces","A veces","Frecuentemente","Casi siempre"];
