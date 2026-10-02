@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Conoce tu perfil — Sebastián Carvallo Campos</title>
-<meta name="description" content="Cuestionario gratuito por el modelo de los cuatro planos: elige el cargo que quieres postular y descubre tu % de ajuste, tus fortalezas y áreas para desarrollar. Unos 12 minutos.">
+<meta name="description" content="Cuestionario gratuito por el modelo de los cuatro planos: elige el cargo que quieres postular y descubre tu % de ajuste, tus fortalezas y áreas para desarrollar. Entre 11 y 15 minutos.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://marcasc.vercel.app/cuestionario">
 
@@ -70,6 +70,8 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
 .planos-intro em{font-style:italic}
 .aviso{background:var(--tarjeta);border:1px solid var(--linea);border-left:3px solid var(--ocre);
   border-radius:8px;padding:.85rem 1rem;font-size:.92rem;color:var(--tinta-2);margin:1.2rem 0}
+.aviso ul{margin:.4rem 0 0;padding-left:1.1rem}
+.aviso li{margin:.2rem 0}
 .campos{display:flex;gap:.9rem;flex-wrap:wrap;margin:1.3rem 0}
 .campos label{font-size:.82rem;color:var(--tinta-2);display:block;margin-bottom:.25rem}
 .campos input{font-family:var(--texto);font-size:1rem;padding:.6rem .7rem;border:1px solid var(--linea);
@@ -84,6 +86,7 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
   border:1px solid var(--linea);cursor:pointer}
 .boton-linea:hover{border-color:var(--tinta-2)}
 .hidden{display:none !important}
+.dur{font-size:.88rem;color:var(--tinta-2);margin:.2rem 0 .8rem}
 
 .roles{display:flex;flex-wrap:wrap;gap:.5rem;margin:.4rem 0 .2rem}
 .role{border:1px solid var(--linea);background:var(--tarjeta);border-radius:999px;padding:.5rem .95rem;
@@ -108,6 +111,7 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
 .escala label.on{background:var(--marino);color:var(--sobre-marino);border-color:var(--marino)}
 .escala label.on small{color:var(--sobre-marino)}
 .escala small{display:block;font-size:.72rem;opacity:.85;margin-top:.15rem}
+.pager{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;margin-top:1.2rem}
 
 .tarjeta{background:var(--tarjeta);border:1px solid var(--linea);border-radius:10px;padding:1rem 1.15rem;margin:.9rem 0}
 .afbox{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;background:var(--marino);color:#EFEDE7;border-radius:12px;padding:1.1rem 1.25rem;margin:.4rem 0 1rem}
@@ -139,8 +143,16 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
 .leyenda i{width:11px;height:11px;border-radius:3px;display:inline-block}
 .leyenda .tgt{width:0;height:14px;border-left:2px dashed var(--ocre-texto)}
 .pendiente{background:var(--papel-2);border:1px dashed var(--linea);border-radius:10px;padding:.8rem 1rem;font-size:.9rem;color:var(--tinta-2);margin:.6rem 0}
-.flag{background:var(--z-prom-bg);border:1px solid var(--ocre);border-radius:8px;padding:.8rem 1rem;
-  font-size:.9rem;color:var(--tinta);margin:1rem 0}
+.calidad{border-left:3px solid var(--z-alto)}
+.calidad.n1{border-left-color:var(--z-prom);background:var(--z-prom-bg)}
+.calidad.n2{border-left-color:var(--z-bajo);background:var(--z-bajo-bg)}
+.calidad h3{font-size:1.05rem;margin-bottom:.35rem}
+.calidad p{font-size:.92rem;margin:.2rem 0 .5rem}
+.senales{margin:.2rem 0 .7rem;padding-left:1.1rem;font-size:.9rem}
+.indic{list-style:none;margin:0;padding:0;font-size:.88rem}
+.indic li{display:flex;justify-content:space-between;gap:.8rem;padding:.3rem 0;border-top:1px solid var(--linea)}
+.indic .st{font-weight:600;white-space:nowrap}
+.st.n0{color:var(--z-alto)} .st.n1{color:var(--ocre-texto)} .st.n2{color:var(--z-bajo)}
 .dos{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
 @media(max-width:560px){.dos{grid-template-columns:1fr}}
 .dos h3{font-size:.98rem;margin:0 0 .4rem}
@@ -151,7 +163,7 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
 .cta .boton{background:var(--ocre);color:#20160a}
 .cta .boton:hover{background:#c08f3c}
 .pie{margin-top:1.8rem;border-top:1px solid var(--linea);padding-top:.9rem;font-size:.8rem;color:var(--tinta-2)}
-.falta-msg{color:var(--z-bajo);font-size:.9rem;margin-left:.6rem}
+.falta-msg{color:var(--z-bajo);font-size:.9rem}
 @media print{.noprint{display:none !important}body{background:#fff}}
 </style>
 </head>
@@ -189,11 +201,19 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
       <div><label for="f-nombre">Nombre (opcional)</label><input id="f-nombre" type="text" placeholder="Tu nombre"></div>
     </div>
     <div class="aviso">
-      <strong>Cómo leerlo.</strong> Es una <strong>autopercepción</strong>: refleja cómo te ves tú,
-      un punto de partida para conversar y crecer — no es un diagnóstico. Se procesa <strong>en
-      este dispositivo</strong>; al final decides si le envías tu resultado a Sebastián.
+      <strong>Antes de empezar.</strong>
+      <ul>
+        <li>Piensa en cómo has actuado en los <strong>últimos 12 meses</strong>: en tu trabajo, tu práctica o tus estudios.</li>
+        <li>Responde según lo que <strong>haces de verdad</strong>, no lo que te gustaría hacer. Todos tenemos cosas que nos cuestan.</li>
+        <li>El cuestionario incluye <strong>preguntas de control</strong> que detectan respuestas poco realistas o al azar.</li>
+        <li>Es una <strong>autopercepción</strong>: un punto de partida para conversar y crecer, no un diagnóstico. Se procesa en este dispositivo; al final decides si le envías tu resultado a Sebastián.</li>
+      </ul>
     </div>
-    <p class="noprint"><button class="boton" id="btn-comenzar" onclick="start()" disabled>Elige al menos un cargo</button></p>
+    <p class="dur noprint" id="dur"></p>
+    <p class="noprint">
+      <button class="boton" id="btn-comenzar" onclick="start()" disabled>Elige al menos un cargo</button>
+      <button class="boton-linea hidden" id="btn-continuar" onclick="continuar()"></button>
+    </p>
   </section>
 
   <!-- TEST -->
@@ -203,23 +223,27 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
       <div class="bar"><i id="prog-bar"></i></div>
     </div>
     <div class="aviso">Escala: <strong>1</strong> Casi nunca · <strong>2</strong> Pocas veces ·
-      <strong>3</strong> A veces · <strong>4</strong> Frecuentemente · <strong>5</strong> Casi siempre</div>
+      <strong>3</strong> A veces · <strong>4</strong> Frecuentemente · <strong>5</strong> Casi siempre.
+      Piensa en los últimos 12 meses.</div>
     <div id="items"></div>
-    <p class="noprint"><button class="boton" onclick="finish()">Ver mis resultados</button>
-      <span id="miss-msg" class="falta-msg"></span></p>
+    <div class="pager noprint">
+      <button class="boton-linea" id="btn-ant" onclick="irPagina(-1)">← Anterior</button>
+      <button class="boton" id="btn-sig" onclick="irPagina(1)">Siguiente →</button>
+      <span id="miss-msg" class="falta-msg"></span>
+    </div>
   </section>
 
   <!-- RESULTADOS -->
   <section id="results" class="hidden">
     <div id="res-head"></div>
     <div id="res-af"></div>
+    <div id="res-calidad"></div>
     <div class="leyenda">
       <span><i style="background:var(--z-bajo)"></i>Bajo (&lt; 4,0)</span>
       <span><i style="background:var(--z-prom)"></i>Promedio (4,0–5,4)</span>
       <span><i style="background:var(--z-alto)"></i>Alto (5,5–7,0)</span>
       <span><i class="tgt"></i>Esperado para el cargo</span>
     </div>
-    <div id="res-flag"></div>
     <div id="res-planos"></div>
     <div id="res-dev"></div>
     <div id="res-share"></div>
@@ -231,14 +255,18 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
       <a class="boton-linea" href="/base" style="color:#D6DEE9;border-color:rgba(255,255,255,.3)">Sumarme a la base de candidatos</a>
     </div>
     <div class="pie">
-      Modelo de evaluación por competencias en cuatro planos, escala 1 a 7. El % de ajuste compara tu autopercepción con
-      el nivel esperado del cargo (Personales 50%, Motivacional 20%, Interpersonal 20%, Intelectual
-      10% — este último se mide aparte con un test cognitivo). Pre-informe orientativo; no es
-      diagnóstico ni evaluación psicolaboral formal.
+      Modelo de evaluación por competencias en cuatro planos, escala 1 a 7. Cada característica se
+      mide con 6 afirmaciones (3 en sentido directo y 3 en sentido inverso) más 8 preguntas de control
+      de la calidad de las respuestas. Cada nota compara tus respuestas con las de una población de
+      referencia: entre 4,0 y 5,4 está la mayoría de las personas, y sobre 5,5 el cuarto superior
+      (referencia provisional mientras se completa la validación). El % de ajuste compara tu autopercepción con el nivel esperado
+      del cargo (Personales 50%, Motivacional 20%, Interpersonal 20%, Intelectual 10% — este último se
+      mide aparte con un test cognitivo). Versión en validación (banco <span id="banco"></span>):
+      pre-informe orientativo, no es diagnóstico ni evaluación psicolaboral formal.
     </div>
     <p class="noprint" style="margin-top:1rem">
       <button class="boton-linea" onclick="window.print()">Guardar en PDF</button>
-      <button class="boton-linea" onclick="location.reload()">Reiniciar</button>
+      <button class="boton-linea" onclick="reiniciar()">Reiniciar</button>
     </p>
   </section>
 
@@ -248,6 +276,10 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
 <script>
 /* Captura automática opcional: pega tu endpoint (Formspree u otro). Vacío = solo WhatsApp. */
 const ENDPOINT = "";
+/* Versión del banco de ítems. Súbela si cambias el texto, el orden o la cantidad de ítems:
+   el código que llega a Sebastián la incluye, para no mezclar datos de versiones distintas. */
+const BANCO = "b2-2026-10";
+const GUARDADO = "cuestionario";
 
 /* Tramo de cargo: 1 entrada · 2 medio · 3 supervisión · 4 mando.
    El nivel esperado y QUÉ características se evalúan varían por tramo (ver CARACT.e). */
@@ -275,72 +307,159 @@ const PLANOS=[
 ];
 const PESO={P:0.5,M:0.2,I:0.2};
 
-/* Catálogo de características con ítems de autoinforme (frecuencia 1–5) */
+/* Banco de ítems: 6 por característica, frecuencia 1–5.
+   Reglas de redacción: una sola idea por ítem, conducta observable, sin negaciones
+   ("no", "nunca", "jamás") que choquen con la escala de frecuencia.
+   Orden fijo [directo, inverso, directo, inverso, directo, inverso]: los índices impares
+   se puntúan al revés. El ítem 0 y el 3 son opuestos y forman el par de consistencia. */
 const CARACT={
  EE:{n:"Estabilidad Emocional",p:"P",s:"Emocional",o:"d",e:[4.5,5,5.5,6.5],items:[
-   {t:"Mantengo la calma y el equilibrio aunque el día se complique."},
-   {t:"Los problemas del trabajo me afectan el ánimo con facilidad.",rev:true}]},
+   "Mantengo un ánimo estable durante la jornada, aunque surjan problemas.",
+   "Mi estado de ánimo cambia mucho de un día a otro.",
+   "Enfrento los imprevistos del trabajo con tranquilidad.",
+   "Los problemas del trabajo me afectan el ánimo con facilidad.",
+   "Puedo concentrarme en mis tareas aunque esté pasando por un momento tenso.",
+   "Me preocupo en exceso por problemas del trabajo que todavía están por ocurrir."]},
  AE:{n:"Autocontrol Emocional",p:"P",s:"Emocional",o:"d",e:[4.5,5,5.5,6.5],items:[
-   {t:"Controlo mis reacciones aunque algo me moleste o me presione."},
-   {t:"Cuando me enojo se me nota y me cuesta contenerme.",rev:true}]},
+   "Cuando algo me molesta, pienso antes de reaccionar.",
+   "Cuando me enojo, se me nota de inmediato.",
+   "Mantengo un tono respetuoso aunque la otra persona esté alterada.",
+   "Respondo de forma brusca y después me arrepiento.",
+   "Espero el momento adecuado para expresar una molestia.",
+   "Ante una crítica, reacciono a la defensiva."]},
  TF:{n:"Tolerancia a la Frustración",p:"P",s:"Emocional",o:"d",e:[4.5,5,5.5,6],items:[
-   {t:"Cuando las cosas no salen como esperaba, lo manejo sin desmotivarme."},
-   {t:"Si algo me sale mal, me cuesta recuperar el ánimo.",rev:true}]},
+   "Acepto con calma cuando un resultado sale distinto a lo que esperaba.",
+   "Me impaciento cuando las cosas avanzan más lento de lo que quiero.",
+   "Cuando rechazan una propuesta mía, lo tomo como parte del trabajo.",
+   "Si algo me sale mal, me cuesta recuperar el ánimo.",
+   "Después de un error, retomo mis tareas con buena disposición.",
+   "Cuando un plan se cae, quedo desmotivado por el resto del día."]},
  RE:{n:"Responsabilidad",p:"P",s:"Cognitivo",o:"d",e:[5,5.5,5.5,6],items:[
-   {t:"Cumplo lo que me comprometo, aunque nadie me esté controlando."},
-   {t:"A veces dejo compromisos a medias cuando se complican.",rev:true}]},
+   "Cumplo los compromisos que asumo, aun sin supervisión.",
+   "Me comprometo con más cosas de las que alcanzo a cumplir.",
+   "Respeto los horarios y plazos acordados.",
+   "Dejo tareas a medias cuando se complican.",
+   "Cuando cometo un error, lo reconozco y me hago cargo de corregirlo.",
+   "Cuando algo sale mal, lo atribuyo a causas ajenas a mí."]},
  AN:{n:"Capacidad de Análisis",p:"P",s:"Cognitivo",o:"d",e:[null,5,5.5,6.5],items:[
-   {t:"Antes de decidir, desarmo el problema en sus partes para entenderlo."},
-   {t:"Comparo causas y consecuencias antes de sacar conclusiones."}]},
+   "Antes de decidir, separo el problema en partes para entenderlo mejor.",
+   "Saco conclusiones con la primera información que tengo.",
+   "Busco datos o antecedentes antes de dar una opinión sobre un problema.",
+   "Resuelvo los problemas por intuición, sin revisar los datos.",
+   "Identifico la causa de fondo de un problema, más allá del síntoma.",
+   "Me confundo cuando un problema tiene muchos factores."]},
  DE:{n:"Capacidad de Decisión",p:"P",s:"Cognitivo",o:"d",e:[null,null,5.5,6.5],items:[
-   {t:"Tomo decisiones a tiempo, aun con información incompleta."},
-   {t:"Postergo las decisiones difíciles más de lo que debería.",rev:true}]},
+   "Tomo decisiones a tiempo, aun con información incompleta.",
+   "Doy muchas vueltas a una decisión aunque ya tenga la información necesaria.",
+   "Cuando elijo un camino, lo sostengo y lo llevo adelante.",
+   "Postergo las decisiones difíciles más de lo necesario.",
+   "Asumo las consecuencias de las decisiones que tomo.",
+   "Cuando hay que decidir algo importante, prefiero que lo haga otra persona."]},
  GE:{n:"Capacidad de Gestión",p:"P",s:"Cognitivo",o:"d",e:[null,null,5.5,6.5],items:[
-   {t:"Planifico y organizo recursos y personas para lograr los objetivos."},
-   {t:"Hago seguimiento para que las cosas se cumplan."}]},
+   "Planifico recursos y plazos antes de iniciar un trabajo.",
+   "Improviso la distribución del trabajo sobre la marcha.",
+   "Asigno las tareas según las capacidades de cada persona.",
+   "Me entero tarde de que un trabajo a mi cargo está atrasado.",
+   "Hago seguimiento al avance hasta que el objetivo se cumple.",
+   "Me cuesta coordinar a varias personas al mismo tiempo."]},
  PR:{n:"Proactividad",p:"P",s:"Conductual",o:"d",e:[4.5,5,5.5,6],items:[
-   {t:"Tomo la iniciativa y actúo sin esperar que me lo pidan."},
-   {t:"Prefiero esperar instrucciones antes de moverme.",rev:true}]},
+   "Cuando veo algo por hacer, actúo sin esperar a que me lo pidan.",
+   "Reacciono a los problemas recién cuando ya están encima.",
+   "Me anticipo a los problemas antes de que ocurran.",
+   "Espero instrucciones antes de empezar algo nuevo.",
+   "Busco por mi cuenta la información que necesito para avanzar.",
+   "Si una tarea pendiente es de otra persona, la dejo pasar aunque vea que hace falta."]},
  OM:{n:"Organización y Método",p:"P",s:"Conductual",o:"d",e:[4.5,5,5.5,6],items:[
-   {t:"Trabajo con un orden y un método claros para lo que hago."},
-   {t:"Trabajo sobre la marcha, sin un orden definido.",rev:true}]},
+   "Ordeno mis tareas según su prioridad antes de empezar.",
+   "Se me olvidan tareas o detalles por falta de registro.",
+   "Uso un sistema para controlar mi trabajo (listas, agenda o planillas).",
+   "Trabajo sobre la marcha, sin un orden definido.",
+   "Mantengo mis materiales y archivos ordenados para encontrarlos rápido.",
+   "Empiezo varias cosas a la vez y me cuesta terminarlas."]},
  TP:{n:"Trabajo Bajo Presión",p:"P",s:"Conductual",o:"d",e:[4.5,5,5.5,5.5],items:[
-   {t:"Mantengo mi rendimiento cuando hay plazos ajustados o presión."},
-   {t:"Bajo presión, mi rendimiento cae.",rev:true}]},
+   "Mantengo la calidad de mi trabajo cuando los plazos son ajustados.",
+   "Cuando se acumula el trabajo, me bloqueo.",
+   "Con mucha carga, priorizo lo urgente sin perder el foco.",
+   "Bajo presión, cometo más errores de lo habitual.",
+   "Rindo bien aunque tenga varias exigencias al mismo tiempo.",
+   "Los plazos cortos me hacen rendir menos."]},
  PV:{n:"Perseverancia",p:"M",o:"d",e:[4.5,5,5.5,6],items:[
-   {t:"Insisto hasta lograr el objetivo, aunque cueste."},
-   {t:"Si algo se pone difícil, tiendo a abandonar.",rev:true}]},
+   "Insisto hasta lograr un objetivo, aunque cueste.",
+   "Pierdo el interés en un proyecto cuando deja de ser novedoso.",
+   "Mantengo el esfuerzo en tareas largas, aunque los resultados tarden.",
+   "Si algo se pone difícil, tiendo a abandonarlo.",
+   "Ante un obstáculo, busco otra forma de seguir adelante.",
+   "Abandono un intento después del primer o segundo fracaso."]},
  IN:{n:"Iniciativa",p:"M",o:"d",e:[null,5,5.5,6],items:[
-   {t:"Propongo ideas o mejoras más allá de lo que me piden."},
-   {t:"Hago lo justo y necesario, sin proponer de más.",rev:true}]},
+   "Propongo ideas para mejorar la forma en que se hacen las cosas.",
+   "Hago lo justo y necesario, sin proponer de más.",
+   "Cuando veo algo que podría funcionar mejor, se lo planteo a quien corresponde.",
+   "Prefiero seguir los procedimientos de siempre antes que proponer cambios.",
+   "Me ofrezco para participar en proyectos o tareas nuevas.",
+   "Me guardo mis ideas de mejora para evitar complicaciones."]},
  AU:{n:"Autonomía",p:"M",o:"o",e:[null,5,5.5,5.5],items:[
-   {t:"Trabajo de forma independiente y resuelvo por mi cuenta la mayoría de las situaciones."},
-   {t:"Tomo decisiones por mi cuenta, incluso en temas que quizá no me corresponden."}]},
+   "Resuelvo por mi cuenta la mayoría de las situaciones de mi trabajo.",
+   "Necesito que me confirmen cada paso antes de avanzar.",
+   "Organizo mi trabajo sin necesitar supervisión constante.",
+   "Consulto a mi jefatura incluso por decisiones simples.",
+   "Cuando surge un problema dentro de mis funciones, lo soluciono sin escalarlo.",
+   "Me siento inseguro cuando debo trabajar sin supervisión."]},
  LM:{n:"Logro de Metas Laborales",p:"M",o:"d",e:[4.5,5,5.5,6.5],items:[
-   {t:"Me involucro de lleno con las metas de mi trabajo."},
-   {t:"Me motiva cumplir y superar los objetivos que me ponen."}]},
+   "Me motiva superar los resultados que me piden.",
+   "Me conformo con cumplir lo mínimo.",
+   "Me pongo metas concretas y reviso si las estoy cumpliendo.",
+   "Las metas de mi trabajo me resultan indiferentes.",
+   "Me esfuerzo por entregar mi trabajo con un nivel de calidad alto.",
+   "Trabajo sin tener claro qué resultado se espera de mí."]},
  TE:{n:"Trabajo en Equipo",p:"I",o:"d",e:[5,5,5.5,5.5],items:[
-   {t:"Colaboro y aporto para que al equipo le vaya bien."},
-   {t:"Prefiero trabajar solo y no depender del equipo.",rev:true}]},
+   "Colaboro con mis compañeros para que al equipo le vaya bien.",
+   "Me molesta tener que adaptar mi trabajo a lo que decide el grupo.",
+   "Comparto información y conocimientos con mis compañeros.",
+   "Prefiero trabajar solo antes que depender del equipo.",
+   "Ayudo a otros cuando están sobrepasados, aunque sea fuera de mi tarea.",
+   "Me cuesta confiar en el trabajo que hacen otros."]},
  CO:{n:"Habilidad de Comunicación",p:"I",o:"d",e:[4.5,5,5.5,6.5],items:[
-   {t:"Me expreso con claridad y me hago entender."},
-   {t:"Escucho con atención antes de responder."}]},
+   "Explico mis ideas de forma clara y ordenada.",
+   "Interrumpo a los demás cuando están hablando.",
+   "Escucho con atención antes de responder.",
+   "Me piden que repita o aclare lo que quise decir.",
+   "Confirmo que la otra persona entendió lo que le expliqué.",
+   "Me cuesta explicar algo complejo de forma simple."]},
  AS:{n:"Asertividad",p:"I",o:"d",e:[4.5,5,5.5,6],items:[
-   {t:"Digo lo que pienso con respeto, sin quedarme callado ni imponerme."},
-   {t:"Me cuesta expresar mi opinión cuando otros piensan distinto.",rev:true}]},
+   "Digo lo que pienso con respeto, aunque otros opinen distinto.",
+   "Acepto tareas fuera de mis funciones solo para evitar un conflicto.",
+   "Pongo límites con respeto cuando me piden algo fuera de mis funciones.",
+   "Me quedo callado en una reunión aunque esté en desacuerdo.",
+   "Planteo los desacuerdos directamente a la persona involucrada.",
+   "En una discusión, levanto la voz para imponer mi punto."]},
  LI:{n:"Liderazgo",p:"I",o:"d",e:[null,null,5.5,6.5],items:[
-   {t:"Motivo y oriento a otros hacia una meta común."},
-   {t:"Las personas me siguen y confían en mi dirección."}]},
+   "Oriento a otros hacia una meta común.",
+   "Evito asumir la conducción de un grupo.",
+   "Las personas me buscan para pedirme orientación.",
+   "Me cuesta que otros sigan mis indicaciones.",
+   "Doy retroalimentación a otros para que mejoren su trabajo.",
+   "Me incomoda tener que corregir a otra persona."]},
 };
-const VALIDEZ=[
-  {t:"Hago mi trabajo de forma perfecta, sin cometer ningún error."},
-  {t:"Cumplo todo lo que prometo, tal cual lo digo, en absolutamente todos los casos."},
-  {t:"Me llevo perfectamente bien con todos mis compañeros, sin ninguna excepción."},
+const ORDEN=["EE","AE","TF","RE","AN","DE","GE","PR","OM","TP","PV","IN","AU","LM","TE","CO","AS","LI"];
+
+/* Escala de impresión positiva: 4 virtudes casi imposibles de tener "casi siempre" (k:5)
+   y 4 faltas comunes que casi todos tenemos alguna vez (k:1). Cuenta las respuestas en el
+   extremo "deseable"; no entra en ninguna característica. */
+const CONTROL=[
+  {t:"Termino todas mis tareas sin cometer errores.",k:5},
+  {t:"Dejo para después alguna tarea que me resulta aburrida.",k:1},
+  {t:"Sigo cada norma al pie de la letra, también cuando estoy solo.",k:5},
+  {t:"Comento sobre compañeros que están ausentes.",k:1},
+  {t:"Mantengo la paciencia con todas las personas, incluso en mis peores días.",k:5},
+  {t:"Me tienta tomar el camino fácil en lugar del correcto.",k:1},
+  {t:"Escucho con total atención a cualquier persona, aunque esté muy apurado.",k:5},
+  {t:"Siento envidia cuando a otra persona le va mejor que a mí.",k:1},
 ];
 
 const SCALE=["Casi nunca","Pocas veces","A veces","Frecuentemente","Casi siempre"];
+const POR_PAG=10;
 let FLAT=[],TOTAL=0,ACTIVAS=[],ESPMAP={},SELROLES=[],SINEXP=false;
-const answers={};
+let answers={},PAG=0,PAGS=0,T_PAG=0,ELAPSED=0;
 const selRoles=new Set();
 
 function pintarRoles(){
@@ -357,8 +476,12 @@ function actualizarRoles(){
   btn.disabled=n===0; btn.textContent=n===0?"Elige al menos un cargo":"Comenzar";
   const nota=document.getElementById("rol-nota");
   if(selRoles.has("PRIMER")){ nota.classList.remove("hidden");
-    nota.innerHTML="<strong>Primer empleo.</strong> Te comparo con el nivel de cargos de entrada. Si aún no tienes experiencia laboral, responde pensando en tus estudios y tu día a día."; }
+    nota.innerHTML="<strong>Primer empleo.</strong> Te comparo con el nivel de cargos de entrada. Si aún no tienes experiencia laboral, responde pensando en tus estudios, tu práctica y tu día a día."; }
   else nota.classList.add("hidden");
+  const dur=document.getElementById("dur");
+  if(n){ construirPerfil(); const q=ACTIVAS.length*6+CONTROL.length;
+    dur.textContent=`${q} preguntas · unos ${Math.round(q*8/60)} minutos. Puedes pausar: tus respuestas se guardan en este dispositivo.`; }
+  else dur.textContent="";
 }
 function rolesEfectivos(){
   const set=new Set();
@@ -369,61 +492,114 @@ function construirPerfil(){
   SELROLES=rolesEfectivos(); SINEXP=selRoles.has("PRIMER");
   const tramos=SELROLES.map(r=>TRAMO[r]);
   ESPMAP={}; ACTIVAS=[];
-  const ORDEN=["EE","AE","TF","RE","AN","DE","GE","PR","OM","TP","PV","IN","AU","LM","TE","CO","AS","LI"];
   ORDEN.forEach(id=>{ const c=CARACT[id]; if(!c)return; let esp=null;
     tramos.forEach(t=>{ const v=c.e[t-1]; if(v!=null) esp=(esp==null)?v:Math.max(esp,v); });
     if(esp!=null){ ACTIVAS.push(id); ESPMAP[id]=esp; } });
 }
 
+/* Orden fijo (igual para todos los que eligen el mismo cargo), para que las condiciones de
+   aplicación sean comparables. Rota el ítem de partida por característica: así se alternan
+   directos e inversos y los dos ítems de cada par de consistencia quedan lejos entre sí. */
 function buildFlat(){
-  let list=[];
-  ACTIVAS.forEach(c=>CARACT[c].items.forEach((it,i)=>list.push({key:c+"_"+i,comp:c,rev:!!it.rev,text:it.t})));
-  VALIDEZ.forEach((it,i)=>list.push({key:"V_"+i,comp:"V",rev:false,text:it.t}));
-  for(let i=list.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[list[i],list[j]]=[list[j],list[i]];}
+  const list=[];
+  for(let r=0;r<6;r++) ACTIVAS.forEach((c,t)=>{ const i=(r+t)%6;
+    list.push({key:c+"_"+i,comp:c,rev:i%2===1,text:CARACT[c].items[i]}); });
+  const paso=Math.floor(list.length/(CONTROL.length+1));
+  CONTROL.forEach((it,j)=>list.splice(paso*(j+1)+j,0,{key:"V_"+j,comp:"V",text:it.t}));
   return list;
+}
+function abrirTest(){
+  TOTAL=FLAT.length; PAGS=Math.ceil(TOTAL/POR_PAG);
+  document.getElementById("intro").classList.add("hidden");
+  document.getElementById("test").classList.remove("hidden");
+  pintarPagina();
 }
 function start(){
   if(selRoles.size===0)return;
-  construirPerfil(); FLAT=buildFlat(); TOTAL=FLAT.length;
+  answers={}; PAG=0; ELAPSED=0;
+  construirPerfil(); FLAT=buildFlat(); abrirTest(); guardar();
+}
+function pintarPagina(){
   const box=document.getElementById("items"); box.innerHTML="";
-  FLAT.forEach((it,idx)=>{
+  const ini=PAG*POR_PAG, fin=Math.min(TOTAL,ini+POR_PAG);
+  for(let idx=ini;idx<fin;idx++){
+    const it=FLAT[idx];
     const d=document.createElement("div"); d.className="item"; d.id="it_"+it.key;
-    const opts=SCALE.map((s,v)=>`<label onclick="pick('${it.key}',${v+1},this)">
+    const opts=SCALE.map((s,v)=>`<label class="${answers[it.key]===v+1?"on":""}" onclick="pick('${it.key}',${v+1},this)">
       <input type="radio" name="${it.key}" value="${v+1}"><strong>${v+1}</strong><small>${s}</small></label>`).join("");
     d.innerHTML=`<div class="q"><span class="qn">${idx+1}.</span>${it.text}</div><div class="escala">${opts}</div>`;
     box.appendChild(d);
-  });
-  document.getElementById("intro").classList.add("hidden");
-  document.getElementById("test").classList.remove("hidden");
-  updateProg(); window.scrollTo(0,0);
+  }
+  document.getElementById("btn-ant").classList.toggle("hidden",PAG===0);
+  document.getElementById("btn-sig").textContent=PAG===PAGS-1?"Ver mis resultados":"Siguiente →";
+  document.getElementById("miss-msg").textContent="";
+  T_PAG=Date.now(); updateProg(); window.scrollTo(0,0);
+}
+/* Tiempo activo: se suma por página y se topa en 10 min, para que una pausa no cuente. */
+function acumular(){ if(T_PAG){ ELAPSED+=Math.min(Date.now()-T_PAG,600000); T_PAG=Date.now(); } }
+function irPagina(d){
+  if(d>0){
+    const ini=PAG*POR_PAG, miss=FLAT.slice(ini,ini+POR_PAG).filter(it=>!(it.key in answers));
+    if(miss.length){
+      miss.forEach(it=>document.getElementById("it_"+it.key).classList.add("falta"));
+      document.getElementById("miss-msg").textContent="Faltan "+miss.length+" respuesta(s) en esta página.";
+      document.getElementById("it_"+miss[0].key).scrollIntoView({behavior:"smooth",block:"center"});
+      return;
+    }
+  }
+  acumular();
+  if(d>0&&PAG===PAGS-1){ render(); return; }
+  PAG=Math.max(0,Math.min(PAGS-1,PAG+d)); guardar(); pintarPagina();
 }
 function pick(key,val,el){
   answers[key]=val;
   el.parentNode.querySelectorAll("label").forEach(l=>l.classList.remove("on"));
   el.classList.add("on");
   document.getElementById("it_"+key).classList.remove("falta");
-  updateProg();
+  updateProg(); guardar();
 }
 function updateProg(){
   const n=Object.keys(answers).length;
-  document.getElementById("prog-txt").textContent=n+" de "+TOTAL+" respondidas";
+  document.getElementById("prog-txt").textContent=`${n} de ${TOTAL} respondidas · página ${PAG+1} de ${PAGS}`;
   document.getElementById("prog-bar").style.width=(TOTAL?(n/TOTAL*100):0)+"%";
 }
-function finish(){
-  const miss=FLAT.filter(it=>!(it.key in answers));
-  if(miss.length){
-    miss.forEach(it=>document.getElementById("it_"+it.key).classList.add("falta"));
-    document.getElementById("miss-msg").textContent="Faltan "+miss.length+" respuesta(s).";
-    document.getElementById("it_"+miss[0].key).scrollIntoView({behavior:"smooth",block:"center"});
-    return;
-  }
-  render();
+
+/* Avance guardado en este dispositivo (si el navegador lo permite) */
+function guardar(){
+  try{ localStorage.setItem(GUARDADO,JSON.stringify({banco:BANCO,sel:[...selRoles],
+    nombre:document.getElementById("f-nombre").value||"",answers,pag:PAG,
+    el:ELAPSED+(T_PAG?Math.min(Date.now()-T_PAG,600000):0)})); }catch(e){}
 }
-const nota=m=>1+(m-1)*1.5;
+function leerGuardado(){
+  try{ const s=JSON.parse(localStorage.getItem(GUARDADO)||"null");
+    return (s&&s.banco===BANCO&&s.sel&&s.sel.length&&Object.keys(s.answers||{}).length)?s:null; }catch(e){ return null; }
+}
+function borrarGuardado(){ try{ localStorage.removeItem(GUARDADO); }catch(e){} }
+function continuar(){
+  const s=leerGuardado(); if(!s)return;
+  selRoles.clear(); s.sel.forEach(k=>selRoles.add(k));
+  document.getElementById("f-nombre").value=s.nombre||"";
+  construirPerfil(); FLAT=buildFlat();
+  answers=s.answers; PAG=s.pag||0; ELAPSED=s.el||0;
+  abrirTest();
+}
+function reiniciar(){ borrarGuardado(); location.reload(); }
+
+/* Conversión normativa: el promedio bruto de la característica (1–5, ya invertidos los ítems
+   inversos) se compara con una población de referencia y se pasa a nota 1–7 con
+   nota = 4,75 + z, acotada a 1–7. Así Bajo (<4,0) queda en el ~23 % inferior, Promedio en el
+   ~54 % central y Alto (≥5,5) en el ~23 % superior, igual que los estaninos 1–3 / 4–6 / 7–9.
+   PROVISIONAL: la media y la DE de referencia son estimaciones de autoinformes laborales.
+   Con el piloto se cargan las reales en NORMAS, por característica, y se sube NORMA_VER. */
+const NORMA_VER="prov-1";
+const NORMA_DEF={m:3.8,de:0.55};
+const NORMAS={}; // ej.: EE:{m:3.62,de:0.58}
+const nota=(m,c)=>{ const n=NORMAS[c]||NORMA_DEF; return Math.max(1,Math.min(7,4.75+(m-n.m)/n.de)); };
 const zoneOf=n=>n<4?"bajo":(n<5.5?"prom":"alto");
 const zoneLabel=z=>z==="bajo"?"Bajo":(z==="prom"?"Promedio":"Alto");
 const pos=n=>Math.max(0,Math.min(100,(n-1)/6*100));
 const clamp=x=>Math.max(0,Math.min(1,x));
+const coma=(x,d=1)=>x.toFixed(d).replace(".",",");
 function cumplir(nt,esp,o){ const e=esp||5.5;
   if(o==="i") return clamp((7-nt)/((7-e)||1));
   if(o==="o") return nt<=e?clamp((nt-1)/((e-1)||1)):clamp((7-nt)/((7-e)||1));
@@ -433,16 +609,42 @@ function metaTxt(nt,esp,o){
   if(o==="o") return Math.abs(nt-esp)<=0.5?'<span class="ok">en el punto buscado</span>':(nt>esp?'<span class="gap">sobre el punto medio</span>':'<span class="gap">bajo el punto medio</span>');
   return nt>=esp?'<span class="ok">lo cubres</span>':'<span class="gap">a desarrollar</span>'; }
 
+/* Calidad del protocolo: cinco indicadores, cada uno 0 ok · 1 cautela · 2 alerta.
+   El nivel general es el peor de los cinco. Umbrales iniciales; se recalibran con el piloto. */
+function calidad(){
+  const it=FLAT.filter(x=>x.comp!=="V");
+  let ip=0; CONTROL.forEach((c,j)=>{ if(answers["V_"+j]===c.k) ip++; });
+  let inc=0; ACTIVAS.forEach(c=>{ if(Math.abs(answers[c+"_0"]-(6-answers[c+"_3"]))>=3) inc++; });
+  const acq=it.reduce((s,x)=>s+answers[x.key],0)/it.length;
+  const spi=ELAPSED/1000/TOTAL;
+  let run=1,racha=1; for(let i=1;i<TOTAL;i++){ run=answers[FLAT[i].key]===answers[FLAT[i-1].key]?run+1:1; racha=Math.max(racha,run); }
+  const ind=[
+    {k:"Impresión positiva",v:`${ip} de ${CONTROL.length}`,n:ip>=5?2:ip>=3?1:0,
+      m:"Te describiste sin ninguna de las faltas comunes que casi todos tenemos."},
+    {k:"Consistencia",v:`${inc} contradicción(es)`,n:inc>=3?2:inc>=2?1:0,
+      m:"Algunas respuestas se contradicen entre sí."},
+    {k:"Tendencia a estar de acuerdo",v:coma(acq),n:(acq>=4.2||acq<=1.8)?2:(acq>=3.8||acq<=2.2)?1:0,
+      m:"Marcaste parecido en afirmaciones que dicen cosas opuestas."},
+    {k:"Tiempo de respuesta",v:`${coma(spi)} s por pregunta`,n:spi<1.5?2:spi<2.5?1:0,
+      m:"Respondiste muy rápido para alcanzar a leer cada afirmación."},
+    {k:"Respuestas en línea",v:`${racha} iguales seguidas`,n:racha>=15?2:racha>=10?1:0,
+      m:"Marcaste la misma opción muchas veces seguidas."},
+  ];
+  const lvl=Math.max(...ind.map(x=>x.n));
+  return {ind,lvl,ip,inc,acq,spi,racha};
+}
+
 function render(){
   const res={};
   ACTIVAS.forEach(c=>{
-    let sum=0,n=0;
-    CARACT[c].items.forEach((it,i)=>{let v=answers[c+"_"+i]; v=it.rev?(6-v):v; sum+=v; n++;});
-    const nt=Math.round(nota(sum/n)*10)/10; const o=CARACT[c].o||"d"; const esp=ESPMAP[c];
+    let sum=0;
+    for(let i=0;i<6;i++){ const v=answers[c+"_"+i]; sum+=i%2===1?(6-v):v; }
+    const nt=Math.round(nota(sum/6,c)*10)/10; const o=CARACT[c].o||"d"; const esp=ESPMAP[c];
     res[c]={id:c,nombre:CARACT[c].n,plano:CARACT[c].p,sub:CARACT[c].s||null,orient:o,nota:nt,zona:zoneOf(nt),esp,cumpl:cumplir(nt,esp,o)};
   });
   const lista=Object.values(res);
-  let vs=0; VALIDEZ.forEach((it,i)=>vs+=answers["V_"+i]); const desFlag=(vs/VALIDEZ.length)>=4;
+  const Q=calidad();
+  const desFlag=Q.ind[0].n>=1||Q.lvl===2;
   const overall=Math.round(lista.reduce((a,r)=>a+r.nota,0)/lista.length*10)/10;
 
   // % de ajuste por plano, ponderado (renormalizado a los planos presentes)
@@ -468,21 +670,32 @@ function render(){
   document.getElementById("res-af").innerHTML=`
     <div class="afbox"><div class="big">${aj}%</div>
       <div class="txt"><b style="color:${banda[1]}">${banda[0]}</b><br>
-        Ajuste de tu perfil al nivel esperado del cargo. Promedio general ${overall.toFixed(1).replace(".",",")}.</div></div>`;
-  document.getElementById("res-flag").innerHTML=desFlag?
-    `<div class="flag"><strong>Respondiste de forma muy positiva.</strong> Para que el perfil te
-     sirva conviene ser honesto, también con lo que te cuesta. Puedes reiniciar y responder con más calma.</div>`:"";
+        Ajuste de tu perfil al nivel esperado del cargo. Promedio general ${coma(overall)}.${Q.lvl===2?"<br><b>Solo referencial:</b> revisa la calidad de tus respuestas más abajo.":""}</div></div>`;
+
+  const CAL=[
+    ["Respuestas confiables","Tus respuestas son consistentes y realistas: el perfil se puede leer tal como está."],
+    ["Leer con cautela","Hay una señal en tu forma de responder. El perfil sirve como orientación, pero conviene revisarlo con calma o conversarlo."],
+    ["Perfil poco interpretable","Tu forma de responder hace que el perfil refleje poco cómo eres. Te sugiero reiniciar y responder con más calma, pensando en ejemplos concretos."],
+  ];
+  const ESTADO=["Bien","Revisar","Alerta"];
+  const senales=Q.ind.filter(x=>x.n>0).map(x=>`<li>${x.m}</li>`).join("");
+  document.getElementById("res-calidad").innerHTML=`
+    <div class="tarjeta calidad n${Q.lvl}">
+      <h3>${CAL[Q.lvl][0]}</h3><p>${CAL[Q.lvl][1]}</p>
+      ${senales?`<ul class="senales">${senales}</ul>`:""}
+      <ul class="indic">${Q.ind.map(x=>`<li><span>${x.k} <span style="color:var(--tinta-2)">· ${x.v}</span></span><span class="st n${x.n}">${ESTADO[x.n]}</span></li>`).join("")}</ul>
+    </div>`;
 
   const barra=r=>{
     const notaEsp=r.orient==="o"?" (punto medio)":r.orient==="i"?" (inversa)":"";
     return `<div class="comp">
       <div class="top"><span class="nm">${r.nombre}</span>
-        <span><span class="nt">${r.nota.toFixed(1).replace(".",",")}</span> <span class="chip ${r.zona}">${zoneLabel(r.zona)}</span></span></div>
+        <span><span class="nt">${coma(r.nota)}</span> <span class="chip ${r.zona}">${zoneLabel(r.zona)}</span></span></div>
       <div class="track"><div class="fill" style="width:${pos(r.nota)}%"></div>
         <div class="target" style="left:${pos(r.esp)}%"></div>
         <div class="mk" style="left:calc(${pos(r.nota)}% - 1px)"></div></div>
       <div class="eje"><span>1</span><span>4</span><span>5,5</span><span>7</span></div>
-      <div class="cmp-meta">Esperado ${r.esp.toFixed(1).replace(".",",")}${notaEsp} · ${metaTxt(r.nota,r.esp,r.orient)}</div>
+      <div class="cmp-meta">Esperado ${coma(r.esp)}${notaEsp} · ${metaTxt(r.nota,r.esp,r.orient)}</div>
     </div>`; };
 
   let html="";
@@ -509,14 +722,19 @@ function render(){
         ${fort.length?"<ul>"+fort.slice(0,6).map(r=>`<li>${r.nombre}</li>`).join("")+"</ul>"
           :"<p style='margin:0;font-size:.92rem'>Aún no alcanzas el nivel esperado en las características clave; es justo lo que se puede trabajar.</p>"}</div>
       <div class="tarjeta"><h3 style="color:var(--ocre-texto)">Para desarrollar</h3>
-        ${area.length?"<ul>"+area.slice(0,6).map(r=>`<li>${r.nombre}${r.orient==="d"&&r.nota<r.esp?` (te faltan ${(r.esp-r.nota).toFixed(1).replace(".",",")})`:""}</li>`).join("")+"</ul>"
+        ${area.length?"<ul>"+area.slice(0,6).map(r=>`<li>${r.nombre}${r.orient==="d"&&r.nota<r.esp?` (te faltan ${coma(r.esp-r.nota)})`:""}</li>`).join("")+"</ul>"
           :"<p style='margin:0;font-size:.92rem'>Estás en el nivel buscado en todas las características.</p>"}</div>
     </div>`;
 
-  const payload={v:3,modelo:"cmpc",n:nombre,f:hoyISO,roles:SELROLES,sinexp:SINEXP?1:0,o:overall,aj,d:desFlag?1:0,r:lista.map(x=>[x.id,x.nota,x.esp,x.orient])};
+  /* Código para el panel: mismo formato v3 (r:[[id,nota,esp,orient]]) más la calidad (q)
+     y las respuestas ítem por ítem (a), en orden canónico, para calcular la confiabilidad. */
+  const CANON=[]; ORDEN.forEach(c=>{ for(let i=0;i<6;i++) CANON.push(c+"_"+i); }); CONTROL.forEach((_,j)=>CANON.push("V_"+j));
+  const a=CANON.map(k=>answers[k]||0).join("");
+  const q=[Q.lvl,Q.ip,Q.inc,Math.round(Q.acq*10)/10,Math.round(Q.spi*10)/10,Q.racha];
+  const payload={v:3,modelo:"cmpc",banco:BANCO,nv:NORMA_VER,n:nombre,f:hoyISO,roles:SELROLES,sinexp:SINEXP?1:0,o:overall,aj,d:desFlag?1:0,q,a,r:lista.map(x=>[x.id,x.nota,x.esp,x.orient])};
   const code=btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
-  const resumen=lista.map(x=>`• ${x.nombre}: ${x.nota.toFixed(1).replace(".",",")} / esp ${x.esp.toFixed(1).replace(".",",")}`).join("\n");
-  const msg=`Hola Sebastián, hice el cuestionario (modelo 4 planos).\n\n${nombre||"(sin nombre)"} · ${hoy}\nCargo(s): ${rolesTxt}${SINEXP?" (primer empleo)":""}\nAjuste: ${aj}% — ${banda[0]}\n\n${resumen}${desFlag?"\n\n(Aviso: respondí de forma muy positiva)":""}\n\nCódigo para cargar el perfil:\n${code}`;
+  const resumen=lista.map(x=>`• ${x.nombre}: ${coma(x.nota)} / esp ${coma(x.esp)}`).join("\n");
+  const msg=`Hola Sebastián, hice el cuestionario (modelo 4 planos).\n\n${nombre||"(sin nombre)"} · ${hoy}\nCargo(s): ${rolesTxt}${SINEXP?" (primer empleo)":""}\nAjuste: ${aj}% — ${banda[0]}\nCalidad de respuestas: ${CAL[Q.lvl][0]}\n\n${resumen}\n\nCódigo para cargar el perfil:\n${code}`;
   window.__msg=msg;
   const wa=`https://wa.me/56936108624?text=${encodeURIComponent(msg)}`;
 
@@ -524,7 +742,7 @@ function render(){
   if(ENDPOINT){
     autoNota=`<p style="margin:.6rem 0 0;font-size:.85rem;color:var(--tinta-2)" id="auto-st">Enviando tus resultados…</p>`;
     fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
-      body:JSON.stringify({nombre,fecha:hoyISO,cargos:rolesTxt,ajuste:aj,promedio:overall,alerta:desFlag,detalle:resumen,code})})
+      body:JSON.stringify({nombre,fecha:hoyISO,banco:BANCO,cargos:rolesTxt,ajuste:aj,promedio:overall,calidad:Q.lvl,alerta:desFlag,detalle:resumen,respuestas:a,code})})
       .then(r=>{const el=document.getElementById("auto-st"); if(el)el.textContent=r.ok?"✓ Tus resultados le llegaron a Sebastián.":"No se pudo enviar automático; usa el botón de WhatsApp.";})
       .catch(()=>{const el=document.getElementById("auto-st"); if(el)el.textContent="No se pudo enviar automático; usa el botón de WhatsApp.";});
   }
@@ -532,14 +750,16 @@ function render(){
   document.getElementById("res-share").innerHTML=`
     <div class="tarjeta" style="border-color:var(--ocre)">
       <h3 style="margin:0;font-size:1.1rem">¿Lo haces para una asesoría? Envíale tus resultados a Sebastián</h3>
-      <p style="margin:.4rem 0 0;font-size:.92rem;color:var(--tinta-2)">Revisará contigo si el perfil refleja de verdad cómo eres y lo trabajan juntos.</p>
+      <p style="margin:.4rem 0 0;font-size:.92rem;color:var(--tinta-2)">Revisará contigo si el perfil refleja de verdad cómo eres y lo trabajan juntos. Tus respuestas, sin tu nombre, también ayudan a mejorar el cuestionario.</p>
       <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.7rem">
         <a class="boton" href="${wa}" target="_blank" rel="noopener">Enviar por WhatsApp</a>
         <button class="boton-linea" type="button" onclick="copiarCodigo(event)">Copiar mis resultados</button>
       </div>${autoNota}
       <textarea id="cod" readonly aria-hidden="true" style="position:absolute;left:-9999px;top:0"></textarea>
     </div>`;
+  document.getElementById("banco").textContent=BANCO;
 
+  borrarGuardado();
   document.getElementById("test").classList.add("hidden");
   document.getElementById("results").classList.remove("hidden");
   window.scrollTo(0,0);
@@ -552,6 +772,9 @@ function copiarCodigo(ev){
   if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(ok,sel); } else { sel(); }
 }
 pintarRoles();
+(function(){ const s=leerGuardado(); if(!s)return;
+  const b=document.getElementById("btn-continuar"); b.classList.remove("hidden");
+  b.textContent=`Continuar donde quedaste (${Object.keys(s.answers).length} respondidas)`; })();
 </script>
 </body>
 </html>

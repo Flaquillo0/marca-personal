@@ -2,6 +2,9 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/cuestionario-beta", "destination": "/cuestionario", "permanent": false }
+  ],
   "headers": [
     {
       "source": "/fotos/(.*)",
