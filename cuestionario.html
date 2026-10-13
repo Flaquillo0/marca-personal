@@ -164,6 +164,17 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
 .cta .boton:hover{background:#c08f3c}
 .pie{margin-top:1.8rem;border-top:1px solid var(--linea);padding-top:.9rem;font-size:.8rem;color:var(--tinta-2)}
 .falta-msg{color:var(--z-bajo);font-size:.9rem}
+.envio .campos{margin:.8rem 0}
+.envio .campos > div{flex:1 1 13rem}
+.envio .campos input,.envio .campos select{width:100%;min-width:0}
+.campos select{font-family:var(--texto);font-size:1rem;padding:.6rem .7rem;border:1px solid var(--linea);
+  border-radius:6px;background:var(--tarjeta);color:var(--tinta)}
+.check{display:flex;gap:.55rem;align-items:flex-start;font-size:.88rem;color:var(--tinta-2);margin:.5rem 0;cursor:pointer}
+.check input{margin-top:.22rem;flex:none;width:1rem;height:1rem;accent-color:var(--marino)}
+.envio [aria-invalid="true"]{border-color:var(--z-bajo)}
+.trampa{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.ok-msg{color:var(--z-alto);font-size:.92rem;font-weight:500}
+.separa{font-size:.85rem;color:var(--tinta-2);margin:1rem 0 .5rem;border-top:1px solid var(--linea);padding-top:.9rem}
 @media print{.noprint{display:none !important}body{background:#fff}}
 </style>
 </head>
@@ -274,7 +285,8 @@ h1{font-size:clamp(1.7rem,1.4rem + 1.5vw,2.3rem);letter-spacing:-.01em;margin-bo
 </main>
 
 <script>
-/* Captura automática opcional: pega tu endpoint (Formspree u otro). Vacío = solo WhatsApp. */
+/* Dirección del hub (Apps Script) que guarda el resultado en el CRM y se lo manda por correo.
+   Solo se usa si la persona lo pide y da su consentimiento. Vacío = solo WhatsApp. */
 const ENDPOINT = "";
 /* Versión del banco de ítems. Súbela si cambias el texto, el orden o la cantidad de ítems:
    el código que llega a Sebastián la incluye, para no mezclar datos de versiones distintas. */
@@ -738,23 +750,38 @@ function render(){
   window.__msg=msg;
   const wa=`https://wa.me/56936108624?text=${encodeURIComponent(msg)}`;
 
-  let autoNota="";
-  if(ENDPOINT){
-    autoNota=`<p style="margin:.6rem 0 0;font-size:.85rem;color:var(--tinta-2)" id="auto-st">Enviando tus resultados…</p>`;
-    fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
-      body:JSON.stringify({nombre,fecha:hoyISO,banco:BANCO,cargos:rolesTxt,ajuste:aj,promedio:overall,calidad:Q.lvl,alerta:desFlag,detalle:resumen,respuestas:a,code})})
-      .then(r=>{const el=document.getElementById("auto-st"); if(el)el.textContent=r.ok?"✓ Tus resultados le llegaron a Sebastián.":"No se pudo enviar automático; usa el botón de WhatsApp.";})
-      .catch(()=>{const el=document.getElementById("auto-st"); if(el)el.textContent="No se pudo enviar automático; usa el botón de WhatsApp.";});
-  }
+  /* Lo que viaja al hub si la persona pide el resultado por correo. */
+  window.__res={nombre,cargos:rolesTxt,sinexp:SINEXP?"1":"0",ajuste:aj,banda:banda[0],promedio:coma(overall),
+    calidad:CAL[Q.lvl][0],alerta:desFlag?"1":"0",en_nivel:fort.slice(0,6).map(r=>r.nombre).join("|"),
+    por_desarrollar:area.slice(0,6).map(r=>r.nombre).join("|"),detalle:resumen,code,respuestas:a,banco:BANCO,nv:NORMA_VER};
+
+  const PAISES=["Chile","Argentina","Bolivia","Colombia","Ecuador","España","México","Perú","Uruguay","Venezuela","Otro país"];
+  const formCorreo=ENDPOINT?`
+      <form class="envio noprint" id="envio" novalidate onsubmit="enviarResultado(event)">
+        <h3 style="margin:0;font-size:1.1rem">Recibe tu resultado por correo</h3>
+        <p style="margin:.4rem 0 0;font-size:.92rem;color:var(--tinta-2)">Te llega el resumen y Sebastián lo recibe para revisarlo contigo si quieres agendar una conversación.</p>
+        <div class="campos">
+          <div><label for="e-nombre">Nombre</label><input id="e-nombre" type="text" autocomplete="name" maxlength="60" value="${esc(nombre)}"></div>
+          <div><label for="e-correo">Correo</label><input id="e-correo" type="email" autocomplete="email" maxlength="120" required></div>
+          <div><label for="e-tel">WhatsApp (opcional)</label><input id="e-tel" type="tel" autocomplete="tel" maxlength="30"></div>
+          <div><label for="e-pais">País donde vives</label><select id="e-pais">${PAISES.map(p=>`<option>${p}</option>`).join("")}</select></div>
+        </div>
+        <label class="check"><input type="checkbox" id="e-ok"><span>Autorizo a Sebastián a guardar mis datos y este resultado para enviármelo y contactarme por mi búsqueda laboral. Puedo pedir que los borre cuando quiera.</span></label>
+        <label class="check"><input type="checkbox" id="e-inv"><span>Además, acepto que mis respuestas se usen <strong>sin mi nombre ni mis datos</strong> para validar el cuestionario.</span></label>
+        <div class="trampa" aria-hidden="true"><label for="e-web">No completar</label><input id="e-web" type="text" tabindex="-1" autocomplete="off"></div>
+        <p style="margin:.8rem 0 0"><button class="boton" type="submit" id="e-btn">Enviarme el resultado</button></p>
+        <p class="falta-msg" id="e-msg" role="status" style="margin:.5rem 0 0"></p>
+      </form>
+      <p class="separa">O envíaselo directo a Sebastián:</p>`:`
+      <h3 style="margin:0;font-size:1.1rem">¿Lo haces para una asesoría? Envíale tus resultados a Sebastián</h3>
+      <p style="margin:.4rem 0 0;font-size:.92rem;color:var(--tinta-2)">Revisará contigo si el perfil refleja de verdad cómo eres y lo trabajan juntos. Tus respuestas, sin tu nombre, también ayudan a mejorar el cuestionario.</p>`;
 
   document.getElementById("res-share").innerHTML=`
-    <div class="tarjeta" style="border-color:var(--ocre)">
-      <h3 style="margin:0;font-size:1.1rem">¿Lo haces para una asesoría? Envíale tus resultados a Sebastián</h3>
-      <p style="margin:.4rem 0 0;font-size:.92rem;color:var(--tinta-2)">Revisará contigo si el perfil refleja de verdad cómo eres y lo trabajan juntos. Tus respuestas, sin tu nombre, también ayudan a mejorar el cuestionario.</p>
+    <div class="tarjeta" style="border-color:var(--ocre)">${formCorreo}
       <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.7rem">
-        <a class="boton" href="${wa}" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+        <a class="${ENDPOINT?"boton-linea":"boton"}" href="${wa}" target="_blank" rel="noopener">Enviar por WhatsApp</a>
         <button class="boton-linea" type="button" onclick="copiarCodigo(event)">Copiar mis resultados</button>
-      </div>${autoNota}
+      </div>
       <textarea id="cod" readonly aria-hidden="true" style="position:absolute;left:-9999px;top:0"></textarea>
     </div>`;
   document.getElementById("banco").textContent=BANCO;
@@ -763,6 +790,31 @@ function render(){
   document.getElementById("test").classList.add("hidden");
   document.getElementById("results").classList.remove("hidden");
   window.scrollTo(0,0);
+}
+function esc(s){ return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+/* Apps Script no responde a las consultas previas de CORS: se envía como formulario y en modo
+   no-cors, igual que /base. No se puede leer la respuesta, así que se da por enviado si no falla la red. */
+function enviarResultado(ev){
+  ev.preventDefault();
+  const $=id=>document.getElementById(id);
+  const msg=$("e-msg"), correo=$("e-correo"), ok=$("e-ok");
+  msg.className="falta-msg"; msg.textContent=""; correo.setAttribute("aria-invalid","false");
+  const c=correo.value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c)){ correo.setAttribute("aria-invalid","true"); correo.focus();
+    msg.textContent="Revisa tu correo: así no te puede llegar el resultado."; return; }
+  if(!ok.checked){ ok.focus(); msg.textContent="Para enviarte el resultado necesito tu autorización para guardar tus datos."; return; }
+  const r=window.__res||{}, inv=$("e-inv").checked;
+  const datos=new URLSearchParams({fuente:"cuestionario",web:$("e-web").value,
+    nombre:$("e-nombre").value.trim(),correo:c,telefono:$("e-tel").value.trim(),pais:$("e-pais").value,
+    cargos:r.cargos,sinexp:r.sinexp,ajuste:r.ajuste,banda:r.banda,promedio:r.promedio,calidad:r.calidad,
+    alerta:r.alerta,en_nivel:r.en_nivel,por_desarrollar:r.por_desarrollar,detalle:r.detalle,code:r.code,
+    banco:r.banco,nv:r.nv,consent_contacto:"si",consent_investigacion:inv?"si":"no",respuestas:inv?r.respuestas:""});
+  const btn=$("e-btn"); btn.disabled=true; msg.textContent="Enviando…";
+  fetch(ENDPOINT,{method:"POST",mode:"no-cors",body:datos})
+    .then(()=>{ $("envio").querySelectorAll("input,select").forEach(x=>x.disabled=true);
+      btn.classList.add("hidden"); msg.className="ok-msg";
+      msg.textContent=`Listo. En unos minutos te llega a ${c} (si no lo ves, revisa spam).`; })
+    .catch(()=>{ btn.disabled=false; msg.textContent="No se pudo enviar. Revisa tu conexión o usa el botón de WhatsApp."; });
 }
 function copiarCodigo(ev){
   const t=window.__msg||"";
