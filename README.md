@@ -129,11 +129,18 @@ cero. Además, "currículum" a secas compite en Chile con el currículo escolar
 ("curriculum nacional", "curriculum mineduc"), así que en los textos de posicionamiento
 conviene usar "CV" con calificador.
 
-**Colores y tipografía.** Fondo blanco, azul `#1A5CFF` con degradado a
-morado `#7C3AED` y azul casi negro `#0F172A` para los bloques oscuros y el pie,
-tomados del sitio de referencia. La tipografía es Outfit (Google Fonts). Todos
-los colores están como variables al inicio del `<style>`, con su versión para
+**Los colores salen de la foto.** El azul marino (`#1D3557`) es el del muro de
+la oficina en el retrato, y el fondo es un papel cálido (`#F1EFE9`) en vez de
+blanco puro. El diseño (tarjetas, bloques oscuros, tipografía Outfit) viene de
+somosempleables.com, pero la paleta es la propia. Si cambias la foto por una
+con otro ambiente, revisa que la paleta siga teniendo sentido. Todos los
+colores están como variables al inicio del `<style>`, con su versión para
 modo oscuro.
+
+**El ocre tiene dos tonos.** `--ocre` (`#A97B2C`) es para líneas, puntos y
+detalles; `--acento` (`#8A6220`) es más oscuro y es el único que se usa sobre
+texto, porque el otro no alcanza el contraste mínimo legible. En los bloques
+oscuros se usa el ocre claro `#D2A253`.
 
 ## Qué falta
 
