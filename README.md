@@ -35,9 +35,9 @@ el enlace ya se compartió antes puede seguir mostrando la vieja un rato.
 
 ## Cómo se cambia el número de WhatsApp
 
-El número está escrito tres veces en `index.html`, siempre con el mismo
-formato: `56936108624` (código de país, sin el signo + y sin espacios). Busca
-esa cadena y reemplázala en las tres.
+El número está escrito varias veces en `index.html` (en cada botón de WhatsApp
+y en el script del final), siempre con el mismo formato: `56936108624` (código
+de país, sin el signo + y sin espacios). Busca esa cadena y reemplázala en todas.
 
 El enlace lleva un mensaje ya escrito, para que quien te escriba llegue
 diciendo de dónde viene. Si quieres cambiar ese texto, está en la misma línea,
@@ -46,8 +46,8 @@ código (`á` es `%C3%A1`).
 
 ## Cómo se cambia el correo
 
-Aparece cuatro veces como `sebastian.carvallo@outlook.com`: dos en el botón de
-contacto (el enlace y el texto visible) y dos en el pie. Reemplázalas todas.
+Aparece varias veces como `sebastian.carvallo@outlook.com` (botones de correo,
+datos estructurados y pie). Busca esa cadena y reemplázala en todas.
 
 ## Cómo se cambia la foto
 
@@ -63,14 +63,27 @@ el `.gitignore`). Todo lo que pongas en esa carpeta queda fuera del sitio.
 
 ## Dónde están los textos
 
-Todos dentro de `index.html`, en orden de aparición:
+Todos dentro de `index.html`, en orden de aparición. La estructura sigue el
+formato de landing de coaching (portada con promesa, cifras, método en tres
+piezas, servicios en tarjetas, pasos, preguntas frecuentes y llamado final):
 
-1. Portada: el titular y el párrafo de entrada.
-2. "Quién te va a asesorar": tu trayectoria y las cuatro credenciales.
-3. La banda azul: los dos lugares donde se cae una postulación.
-4. "Tres formas de trabajar juntos": los tres servicios y lo que incluye cada uno.
-5. "Qué pasa en esos quince minutos": el desarrollo de la llamada.
-6. "Agenda tu diagnóstico": contacto.
+**Pestaña "Para candidatos"**
+
+1. Portada: etiqueta, titular, párrafo de entrada, botones y los tres pilares.
+2. Banda de cifras (azul): cuatro datos de trayectoria. Sólo datos que se
+   pueden respaldar; no agregar números de clientes que no estén medidos.
+3. "El método": tres tarjetas y, debajo, las cuatro credenciales.
+4. La autoevaluación destacada.
+5. "¿Dónde se te está cayendo?": los tres servicios en tarjetas, con lo que
+   incluye cada uno dentro de un desplegable.
+6. "Empezamos con quince minutos": los cuatro pasos de la llamada.
+7. El informe de afinidad.
+8. Testimonios: comentado (ver "Qué falta").
+9. Preguntas frecuentes, incluida la de por qué no hay precios.
+10. Base de candidatos y el llamado final.
+
+**Pestaña "Para empresas"**: portada, banda del problema, autoprueba, cómo
+trabajo, por qué a mí y contacto.
 
 ## Decisiones que conviene no "arreglar"
 
@@ -81,11 +94,12 @@ no llama. La sección "Tres formas de trabajar juntos" explica el motivo en voz
 propia, que es lo que evita que la ausencia de precio se lea como algo turbio.
 
 **El detalle vive en desplegables, y es a propósito.** A la vista queda el
-titular y una línea por sección; lo que incluye cada pack, los cuatro momentos
-de la llamada y la explicación de por qué no hay precios están dentro de
-`<details>`. El texto que da credibilidad es el mismo que hace que el visitante
-se vaya antes de escribir. Si alguna vez hay que sumar contenido, va adentro de
-un desplegable, no a la vista.
+titular y una línea por tarjeta; lo que incluye cada pack y las respuestas de
+las preguntas frecuentes (entre ellas, por qué no hay precios) están dentro de
+`<details>`. Los cuatro pasos de la llamada sí están a la vista, pero en una
+frase cada uno. El texto que da credibilidad es el mismo que hace que el
+visitante se vaya antes de escribir. Si alguna vez hay que sumar contenido, va
+adentro de un desplegable, no a la vista.
 
 **El favicon es un monograma, no un logo.** No hay identidad visual todavía, así
 que `fotos/favicon.png` es un cuadrado azul marino con las iniciales. Cuando
@@ -127,8 +141,8 @@ el contraste mínimo legible.
 
 ## Qué falta
 
-- **Testimonios.** En `index.html`, al final de la sección "Qué pasa en esos
-  quince minutos", hay un bloque de ejemplo dentro de un comentario HTML. Está
+- **Testimonios.** En `index.html`, entre el informe de afinidad y las preguntas
+  frecuentes, hay una sección de tres tarjetas dentro de un comentario HTML. Está
   comentado a propósito: así no se ve mientras no haya testimonios de verdad.
   Cuando tengas dos o tres, con nombre, cargo y resultado concreto, sácalos del
   comentario. No los inventes: en una página de asesoría profesional un
