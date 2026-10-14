@@ -63,27 +63,27 @@ el `.gitignore`). Todo lo que pongas en esa carpeta queda fuera del sitio.
 
 ## Dónde están los textos
 
-Todos dentro de `index.html`, en orden de aparición. La estructura sigue el
-formato de landing de coaching (portada con promesa, cifras, método en tres
-piezas, servicios en tarjetas, pasos, preguntas frecuentes y llamado final):
+Todos dentro de `index.html`, en orden de aparición. El diseño sigue el de
+somosempleables.com (portada centrada con pregunta, bloque "sobre mí" con foto,
+servicios en tarjetas, bloque oscuro de cifras, cierre en degradado y pie
+oscuro), con contenido propio.
 
 **Pestaña "Para candidatos"**
 
-1. Portada: etiqueta, titular, párrafo de entrada, botones y los tres pilares.
-2. Banda de cifras (azul): cuatro datos de trayectoria. Sólo datos que se
-   pueden respaldar; no agregar números de clientes que no estén medidos.
-3. "El método": tres tarjetas y, debajo, las cuatro credenciales.
-4. La autoevaluación destacada.
-5. "¿Dónde se te está cayendo?": los tres servicios en tarjetas, con lo que
-   incluye cada uno dentro de un desplegable.
-6. "Empezamos con quince minutos": los cuatro pasos de la llamada.
-7. El informe de afinidad.
-8. Testimonios: comentado (ver "Qué falta").
-9. Preguntas frecuentes, incluida la de por qué no hay precios.
-10. Base de candidatos y el llamado final.
+1. Portada: etiqueta, la pregunta grande, párrafo de entrada y dos botones.
+2. "Sobre mí" (`#nosotros`): foto, trayectoria y enlace a LinkedIn.
+3. Servicios (`#servicios`): cuatro tarjetas (los tres packs y la
+   autoevaluación gratis), cada una con su lista corta.
+4. La autoevaluación destacada, con la imagen del informe.
+5. "Empezamos con quince minutos" (`#como-funciona`): los cuatro pasos.
+6. Testimonios en video: comentado (ver "Qué falta").
+7. Bloque oscuro de cifras (`#trayectoria`). Sólo datos que se pueden
+   respaldar; no agregar números de clientes o seguidores que no estén medidos.
+8. Preguntas frecuentes, incluida la de por qué no hay precios.
+9. Base de candidatos y el llamado final en degradado.
 
-**Pestaña "Para empresas"**: portada, banda del problema, autoprueba, cómo
-trabajo, por qué a mí y contacto.
+**Pestaña "Para empresas"**: portada, bloque oscuro del problema, autoprueba,
+cómo trabajo, por qué a mí y contacto.
 
 ## Decisiones que conviene no "arreglar"
 
@@ -93,13 +93,12 @@ en Chile o fuera. Publicar las cifras rompe eso: el visitante compara en frío y
 no llama. La sección "Tres formas de trabajar juntos" explica el motivo en voz
 propia, que es lo que evita que la ausencia de precio se lea como algo turbio.
 
-**El detalle vive en desplegables, y es a propósito.** A la vista queda el
-titular y una línea por tarjeta; lo que incluye cada pack y las respuestas de
-las preguntas frecuentes (entre ellas, por qué no hay precios) están dentro de
-`<details>`. Los cuatro pasos de la llamada sí están a la vista, pero en una
-frase cada uno. El texto que da credibilidad es el mismo que hace que el
-visitante se vaya antes de escribir. Si alguna vez hay que sumar contenido, va
-adentro de un desplegable, no a la vista.
+**Lo que queda en desplegables, y por qué.** Las tarjetas de servicios
+muestran una lista corta, de una línea por punto, como en el sitio de
+referencia. Lo largo (por qué no hay precios, qué es un ATS, etc.) vive en las
+preguntas frecuentes, dentro de `<details>`. El texto que da credibilidad es
+el mismo que hace que el visitante se vaya antes de escribir: si hay que sumar
+contenido, va a una pregunta frecuente, no a la vista.
 
 **El favicon es un monograma, no un logo.** No hay identidad visual todavía, así
 que `fotos/favicon.png` es un cuadrado azul marino con las iniciales. Cuando
@@ -130,19 +129,17 @@ cero. Además, "currículum" a secas compite en Chile con el currículo escolar
 ("curriculum nacional", "curriculum mineduc"), así que en los textos de posicionamiento
 conviene usar "CV" con calificador.
 
-**Los colores salen de la foto.** El azul marino (`#1D3557`) es el del muro de
-la oficina en el retrato, y el fondo es un papel cálido en vez de blanco puro.
-Si cambias la foto por una con otro ambiente, revisa que la paleta siga
-teniendo sentido.
-
-**El ocre tiene dos tonos.** `--ocre` es para líneas y detalles; `--ocre-texto`
-es más oscuro y es el único que se usa sobre texto, porque el otro no alcanza
-el contraste mínimo legible.
+**Colores y tipografía.** Fondo blanco, azul `#1A5CFF` con degradado a
+morado `#7C3AED` y azul casi negro `#0F172A` para los bloques oscuros y el pie,
+tomados del sitio de referencia. La tipografía es Outfit (Google Fonts). Todos
+los colores están como variables al inicio del `<style>`, con su versión para
+modo oscuro.
 
 ## Qué falta
 
-- **Testimonios.** En `index.html`, entre el informe de afinidad y las preguntas
-  frecuentes, hay una sección de tres tarjetas dentro de un comentario HTML. Está
+- **Testimonios.** En `index.html`, después de "Empezamos con quince minutos",
+  hay una sección de cuatro videos dentro de un comentario HTML (el comentario
+  explica dónde dejar los archivos). Está
   comentado a propósito: así no se ve mientras no haya testimonios de verdad.
   Cuando tengas dos o tres, con nombre, cargo y resultado concreto, sácalos del
   comentario. No los inventes: en una página de asesoría profesional un
