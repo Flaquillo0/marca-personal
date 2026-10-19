@@ -63,27 +63,21 @@ el `.gitignore`). Todo lo que pongas en esa carpeta queda fuera del sitio.
 
 ## Dónde están los textos
 
-Todos dentro de `index.html`, en orden de aparición. El diseño sigue el de
-somosempleables.com (portada centrada con pregunta, bloque "sobre mí" con foto,
-servicios en tarjetas, bloque oscuro de cifras, cierre en degradado y pie
-oscuro), con contenido propio.
+Todos dentro de `index.html`, en orden de aparición.
 
 **Pestaña "Para candidatos"**
 
-1. Portada: etiqueta, la pregunta grande, párrafo de entrada y dos botones.
-2. "Sobre mí" (`#nosotros`): foto, trayectoria y enlace a LinkedIn.
-3. Servicios (`#servicios`): cuatro tarjetas (los tres packs y la
-   autoevaluación gratis), cada una con su lista corta.
-4. La autoevaluación destacada, con la imagen del informe.
+1. Portada: titular, entrada, botones y el CV de ejemplo corregido.
+2. "Sobre mí" (`#sobre-mi`): foto, trayectoria y enlace a LinkedIn.
+3. Servicios (`#servicios`): los tres casos en filas, con lo que incluye cada uno.
+4. La autoevaluación (`#autoevaluacion`).
 5. "Empezamos con quince minutos" (`#como-funciona`): los cuatro pasos.
 6. Testimonios en video: comentado (ver "Qué falta").
-7. Bloque oscuro de cifras (`#trayectoria`). Sólo datos que se pueden
-   respaldar; no agregar números de clientes o seguidores que no estén medidos.
-8. Preguntas frecuentes, incluida la de por qué no hay precios.
-9. Base de candidatos y el llamado final en degradado.
+7. Preguntas frecuentes, incluida la de por qué no hay precios.
+8. Base de candidatos y el llamado final (banda azul).
 
-**Pestaña "Para empresas"**: portada, bloque oscuro del problema, autoprueba,
-cómo trabajo, por qué a mí y contacto.
+**Pestaña "Para empresas"**: portada con la muestra de informe, banda azul
+del problema, cómo trabajo, por qué a mí y contacto.
 
 ## Decisiones que conviene no "arreglar"
 
@@ -93,12 +87,20 @@ en Chile o fuera. Publicar las cifras rompe eso: el visitante compara en frío y
 no llama. La sección "Tres formas de trabajar juntos" explica el motivo en voz
 propia, que es lo que evita que la ausencia de precio se lea como algo turbio.
 
-**Lo que queda en desplegables, y por qué.** Las tarjetas de servicios
-muestran una lista corta, de una línea por punto, como en el sitio de
-referencia. Lo largo (por qué no hay precios, qué es un ATS, etc.) vive en las
-preguntas frecuentes, dentro de `<details>`. El texto que da credibilidad es
-el mismo que hace que el visitante se vaya antes de escribir: si hay que sumar
-contenido, va a una pregunta frecuente, no a la vista.
+**El CV corregido de la portada es el único elemento llamativo, y es a
+propósito.** Es un CV ficticio con tres anotaciones a mano, una por filtro
+(el ATS, el reclutador, la entrevista): muestra en un vistazo lo que hace la
+asesoría. Todo lo demás es sobrio: sin tarjetas repetidas, sin etiquetas en
+mayúsculas sobre los títulos, sin palabras pintadas de otro color en los
+títulos, sin flechas en los botones y sin animaciones al hacer scroll. La
+única animación es la de las anotaciones al cargar la página, y se desactiva
+si el dispositivo pide reducir el movimiento. Esto sigue la guía del plugin
+`frontend-design` de Claude Code; si se agrega algo nuevo, que respete eso.
+
+**Lo que queda en desplegables, y por qué.** Lo largo (por qué no hay
+precios, qué es un ATS, etc.) vive en las preguntas frecuentes, dentro de
+`<details>`. Si hay que sumar contenido, va a una pregunta frecuente, no a
+la vista.
 
 **El favicon es un monograma, no un logo.** No hay identidad visual todavía, así
 que `fotos/favicon.png` es un cuadrado azul marino con las iniciales. Cuando
@@ -131,22 +133,22 @@ conviene usar "CV" con calificador.
 
 **Los colores salen de la foto.** El azul marino (`#1D3557`) es el del muro de
 la oficina en el retrato, y el fondo es un papel cálido (`#F1EFE9`) en vez de
-blanco puro. El diseño (tarjetas, bloques oscuros, tipografía Outfit) viene de
-somosempleables.com, pero la paleta es la propia. Si cambias la foto por una
+blanco puro. La tipografía es Outfit; las anotaciones del CV de la portada
+usan Caveat, una letra manuscrita, y sólo ahí. Si cambias la foto por una
 con otro ambiente, revisa que la paleta siga teniendo sentido. Todos los
 colores están como variables al inicio del `<style>`, con su versión para
 modo oscuro.
 
 **El ocre tiene dos tonos.** `--ocre` (`#A97B2C`) es para líneas, puntos y
 detalles; `--acento` (`#8A6220`) es más oscuro y es el único que se usa sobre
-texto, porque el otro no alcanza el contraste mínimo legible. En los bloques
-oscuros se usa el ocre claro `#D2A253`.
+texto, porque el otro no alcanza el contraste mínimo legible. En la banda
+azul se usa el ocre claro `#D2A253`.
 
 ## Qué falta
 
-- **Testimonios.** En `index.html`, después de "Empezamos con quince minutos",
-  hay una sección de cuatro videos dentro de un comentario HTML (el comentario
-  explica dónde dejar los archivos). Está
+- **Testimonios.** En `index.html`, entre "Empezamos con quince minutos" y las
+  preguntas frecuentes, hay una sección de cuatro videos dentro de un
+  comentario HTML (el comentario explica dónde dejar los archivos). Está
   comentado a propósito: así no se ve mientras no haya testimonios de verdad.
   Cuando tengas dos o tres, con nombre, cargo y resultado concreto, sácalos del
   comentario. No los inventes: en una página de asesoría profesional un
