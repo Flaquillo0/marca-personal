@@ -30,7 +30,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Outfit:wght@300;400;500;600;700;800&display=swap">
 
 <script type="application/ld+json">
 {
@@ -107,359 +107,314 @@
 
 <style>
 :root{
-  --fondo:#F1EFE9;
-  --fondo-2:#E9E6DE;
-  --tarjeta:#FAF9F5;
+  --papel:#F1EFE9;
+  --papel-2:#E7E4DC;
+  --hoja:#FFFDF8;
   --tinta:#16202E;
   --tinta-2:#4E5A68;
-  --tinta-3:#5E6977;
-  --azul:#1D3557;
-  --azul-hover:#16202E;
-  --azul-suave:rgba(29,53,87,.07);
-  --sobre-azul:#F1EFE9;
-  --acento:#8A6220;
+  --marino:#1D3557;
+  --marino-hover:#16202E;
+  --sobre-marino:#F1EFE9;
   --ocre:#A97B2C;
-  --ocre-suave:rgba(169,123,44,.12);
-  --linea:rgba(22,32,46,.13);
-  --oscuro:#1D3557;
-  --oscuro-tinta:#EFEDE7;
-  --oscuro-tinta-2:#BAC7D9;
-  --oscuro-acento:#D2A253;
-  --sombra:0 1px 2px rgba(22,32,46,.05),0 8px 28px rgba(22,32,46,.08);
-  --sombra-fuerte:0 20px 50px rgba(22,32,46,.16);
-  --fuente:"Outfit","Segoe UI",Helvetica,Arial,sans-serif;
+  --acento:#8A6220;
+  --linea:rgba(22,32,46,.14);
+  --banda:#1D3557;
+  --banda-tinta:#EFEDE7;
+  --banda-tinta-2:#BAC7D9;
+  --ocre-claro:#D2A253;
+  --texto:"Outfit","Segoe UI",Helvetica,Arial,sans-serif;
+  --mano:"Caveat","Segoe Print","Comic Sans MS",cursive;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --fondo:#111A24;
-    --fondo-2:#17222E;
-    --tarjeta:#1A2633;
+    --papel:#111A24;
+    --papel-2:#17222E;
+    --hoja:#F4F1EA;
     --tinta:#E9E6DE;
     --tinta-2:#A8B3BF;
-    --tinta-3:#93A0AE;
-    --azul:#8FB4DF;
-    --azul-hover:#A9C6E8;
-    --azul-suave:rgba(143,180,223,.12);
-    --sobre-azul:#0E1620;
-    --acento:#D2A253;
+    --marino:#8FB4DF;
+    --marino-hover:#A9C6E8;
+    --sobre-marino:#0E1620;
     --ocre:#D2A253;
-    --ocre-suave:rgba(210,162,83,.14);
+    --acento:#D2A253;
     --linea:rgba(233,230,222,.16);
-    --oscuro:#0B121A;
-    --sombra:0 1px 2px rgba(0,0,0,.3),0 8px 28px rgba(0,0,0,.3);
-    --sombra-fuerte:0 20px 50px rgba(0,0,0,.4);
+    --banda:#0B121A;
   }
 }
 :root[data-theme="dark"]{
-  --fondo:#111A24;
-  --fondo-2:#17222E;
-  --tarjeta:#1A2633;
+  --papel:#111A24;
+  --papel-2:#17222E;
+  --hoja:#F4F1EA;
   --tinta:#E9E6DE;
   --tinta-2:#A8B3BF;
-  --tinta-3:#93A0AE;
-  --azul:#8FB4DF;
-  --azul-hover:#A9C6E8;
-  --azul-suave:rgba(143,180,223,.12);
-  --sobre-azul:#0E1620;
-  --acento:#D2A253;
+  --marino:#8FB4DF;
+  --marino-hover:#A9C6E8;
+  --sobre-marino:#0E1620;
   --ocre:#D2A253;
-  --ocre-suave:rgba(210,162,83,.14);
+  --acento:#D2A253;
   --linea:rgba(233,230,222,.16);
-  --oscuro:#0B121A;
-  --sombra:0 1px 2px rgba(0,0,0,.3),0 8px 28px rgba(0,0,0,.3);
-  --sombra-fuerte:0 20px 50px rgba(0,0,0,.4);
+  --banda:#0B121A;
 }
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:5rem}
 body{
   margin:0;
-  background:var(--fondo);
+  background:var(--papel);
   color:var(--tinta);
-  font-family:var(--fuente);
+  font-family:var(--texto);
   font-weight:300;
-  font-size:clamp(1rem,.96rem + .2vw,1.1rem);
-  line-height:1.65;
+  font-size:clamp(1.02rem,.98rem + .2vw,1.12rem);
+  line-height:1.62;
   -webkit-font-smoothing:antialiased;
 }
-h1,h2,h3{font-weight:700;line-height:1.1;margin:0;letter-spacing:-.02em}
+h1,h2,h3{font-weight:700;line-height:1.1;margin:0;letter-spacing:-.018em}
 p{margin:0 0 1.1rem}
 strong{font-weight:600}
-a{color:var(--azul)}
-a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--azul);outline-offset:3px}
+a{color:var(--marino)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--ocre);outline-offset:3px}
 img{max-width:100%;display:block}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
-.env{max-width:76rem;margin:0 auto;padding:0 1rem}
+.env{max-width:74rem;margin:0 auto;padding:0 1rem}
 @media (min-width:40rem){.env{padding:0 1.5rem}}
-.centro{text-align:center;margin-inline:auto}
-.azul{color:var(--acento)}
-.degradado{color:var(--acento)}
+.medida{max-width:40rem}
 
 /* Barra superior */
-.barra{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--fondo) 90%,transparent);backdrop-filter:saturate(1.5) blur(12px);-webkit-backdrop-filter:saturate(1.5) blur(12px);border-bottom:1px solid var(--linea)}
-.barra .env{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-top:.85rem;padding-bottom:.85rem}
-.logo{font-weight:700;font-size:1.3rem;letter-spacing:-.02em;text-decoration:none;color:var(--tinta);white-space:nowrap}
-.logo span{color:var(--acento)}
-.nav-sec{display:none;gap:2.2rem}
+.barra{position:sticky;top:0;z-index:30;background:var(--papel);border-bottom:1px solid var(--linea)}
+.barra .env{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-top:.8rem;padding-bottom:.8rem}
+.logo{font-weight:700;font-size:1.15rem;letter-spacing:-.01em;text-decoration:none;color:var(--tinta);white-space:nowrap}
+.nav-sec{display:none;gap:2rem}
 @media (min-width:62rem){.nav-sec{display:flex}}
-.nav-sec a{font-size:.97rem;font-weight:400;text-decoration:none;color:var(--tinta-2)}
-.nav-sec a:hover{color:var(--tinta)}
-.barra-der{display:flex;align-items:center;gap:1.6rem}
-.enlace-base{display:none;font-size:.95rem;font-weight:400;text-decoration:none;color:var(--tinta-3)}
-.enlace-base:hover{color:var(--tinta)}
+.nav-sec a,.enlace-base{font-size:.95rem;font-weight:400;text-decoration:none;color:var(--tinta-2)}
+.nav-sec a:hover,.enlace-base:hover{color:var(--tinta)}
+.barra-der{display:flex;align-items:center;gap:1.5rem}
+.enlace-base{display:none}
 @media (min-width:48rem){.enlace-base{display:inline}}
 
 /* Botones */
-.acciones{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem}
-.centro .acciones,.acciones.centro{justify-content:center}
-.boton{
+.acciones{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+.boton,.boton-linea{
   display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
-  background:var(--azul);color:var(--sobre-azul);
-  text-decoration:none;font-size:1.02rem;font-weight:600;
-  padding:1rem 1.9rem;border-radius:999px;border:1px solid transparent;
-  box-shadow:0 8px 24px rgba(29,53,87,.22);
-  transition:background .15s ease,transform .15s ease,box-shadow .15s ease;
+  text-decoration:none;font-size:1rem;font-weight:500;
+  padding:.9rem 1.5rem;border-radius:999px;border:1px solid transparent;
+  transition:background-color .15s ease,border-color .15s ease;
 }
-.boton:hover{background:var(--azul-hover);transform:translateY(-1px)}
-.boton-blanco{
-  display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
-  background:var(--tarjeta);color:var(--tinta);
-  text-decoration:none;font-size:1.02rem;font-weight:500;
-  padding:1rem 1.9rem;border-radius:999px;border:1px solid var(--linea);
-  box-shadow:var(--sombra);
-  transition:border-color .15s ease,transform .15s ease;
-}
-.boton-blanco:hover{border-color:var(--tinta-3);transform:translateY(-1px)}
-.boton-oscuro{
-  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
-  background:var(--oscuro);color:#fff;text-decoration:none;font-size:.95rem;font-weight:600;
-  padding:.75rem 1.4rem;border-radius:999px;box-shadow:var(--sombra);
-  transition:transform .15s ease;
-}
-.boton-oscuro:hover{transform:translateY(-1px)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .boton-oscuro{background:#E9E6DE;color:#16202E}}
-:root[data-theme="dark"] .boton-oscuro{background:#E9E6DE;color:#16202E}
-.chico{padding:.7rem 1.3rem;font-size:.95rem}
+.boton{background:var(--marino);color:var(--sobre-marino)}
+.boton:hover{background:var(--marino-hover)}
+.boton-linea{background:transparent;color:var(--tinta);border-color:var(--linea)}
+.boton-linea:hover{border-color:var(--tinta-2)}
+.chico{padding:.6rem 1.1rem;font-size:.92rem}
 .ico{width:18px;height:18px;flex:none;fill:currentColor}
-.flecha{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-
-/* Etiquetas */
-.pildora{display:inline-flex;align-items:center;gap:.6rem;font-size:.82rem;letter-spacing:.05em;text-transform:uppercase;font-weight:500;color:var(--acento);background:var(--ocre-suave);border:1px solid color-mix(in srgb,var(--ocre) 30%,transparent);border-radius:999px;padding:.45rem 1.1rem;margin-bottom:1.6rem}
-.pildora.punto::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--ocre)}
-.antetitulo{display:block;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--acento);margin-bottom:.9rem}
+.nota-chica{font-size:.92rem;color:var(--tinta-2)}
+.acciones + .nota-chica{margin-top:1rem}
 
 /* Secciones */
-section{padding:4.5rem 0}
-@media (min-width:62rem){section{padding:6.5rem 0}}
-section h2{font-size:clamp(2rem,1.4rem + 2.4vw,3.3rem);margin-bottom:1.1rem}
-.intro{color:var(--tinta-2);font-size:1.12rem;max-width:42rem}
-.centro .intro{margin-inline:auto}
-.gris{background:var(--fondo-2)}
-.cabecera{margin-bottom:3.2rem}
+section{padding:4.5rem 0;border-top:1px solid var(--linea)}
+@media (min-width:62rem){section{padding:6rem 0}}
+section h2{font-size:clamp(1.9rem,1.4rem + 2vw,3rem);margin-bottom:1rem;max-width:22ch}
+.intro{color:var(--tinta-2);font-size:1.1rem;max-width:40rem}
+.cabecera{margin-bottom:3rem}
+.oscura{background:var(--papel-2)}
 
 /* Portada */
-.portada{position:relative;overflow:hidden;background:
-  radial-gradient(55% 60% at 50% 35%,color-mix(in srgb,var(--azul) 9%,transparent),transparent 70%),
-  repeating-radial-gradient(circle at 50% 40%,transparent 0 46px,color-mix(in srgb,var(--azul) 4%,transparent) 46px 47px),
-  var(--fondo-2)}
-.portada .env{position:relative;text-align:center;padding-top:3.5rem;padding-bottom:4.5rem}
-@media (min-width:62rem){.portada .env{padding-top:4.5rem;padding-bottom:6.5rem}}
-.portada .trazo{position:absolute;left:-4%;bottom:-6%;width:60%;max-width:46rem;opacity:.06;pointer-events:none}
-.portada .trazo path{fill:none;stroke:var(--tinta);stroke-width:34;stroke-linecap:round;stroke-linejoin:round}
-.portada h1{font-size:clamp(2.6rem,1.3rem + 5.6vw,5.8rem);font-weight:800;letter-spacing:-.028em;line-height:1.02;max-width:62rem;margin:0 auto}
-.entrada{font-size:clamp(1.1rem,1rem + .5vw,1.4rem);color:var(--tinta-2);max-width:48rem;margin:1.8rem auto 0}
-.entrada strong{color:var(--tinta);font-weight:600;text-decoration:underline;text-decoration-color:var(--ocre);text-decoration-thickness:2px;text-underline-offset:5px}
-.portada .letra-chica{margin-top:1.2rem}
-.portada .acciones{justify-content:center}
+.portada .env{display:grid;gap:3rem;padding-top:3.5rem;padding-bottom:4.5rem;align-items:center}
+@media (min-width:62rem){.portada .env{grid-template-columns:1fr 1.05fr;gap:4rem;padding-top:5rem;padding-bottom:6rem}}
+.portada h1{font-size:clamp(2.6rem,1.6rem + 4.4vw,5rem);font-weight:800;letter-spacing:-.03em;line-height:1.02;max-width:12ch}
+.entrada{font-size:clamp(1.1rem,1rem + .4vw,1.3rem);color:var(--tinta-2);margin-top:1.6rem;max-width:34rem}
 
-/* Nosotros */
-.nosotros .env{display:grid;gap:3rem;align-items:center}
-@media (min-width:62rem){.nosotros .env{grid-template-columns:.95fr 1.05fr;gap:4.5rem}}
-.marco{position:relative;max-width:34rem;width:100%;justify-self:center}
-.retrato{width:100%;height:auto;border-radius:22px;box-shadow:var(--sombra-fuerte)}
-.sello{
-  position:absolute;right:-.5rem;bottom:-1.2rem;display:flex;align-items:center;gap:.8rem;
-  background:var(--tarjeta);border:1px solid var(--linea);border-radius:16px;
-  padding:.85rem 1.1rem;box-shadow:var(--sombra-fuerte);max-width:17rem
+/* El CV corregido: el elemento memorable */
+.cv{margin:0;width:100%;max-width:38rem;justify-self:center}
+.hoja{
+  background:var(--hoja);color:#16202E;border-radius:6px;
+  border:1px solid rgba(22,32,46,.12);box-shadow:0 18px 40px rgba(22,32,46,.12);
+  padding:1.6rem 1.4rem 1.8rem;
+  display:grid;grid-template-columns:minmax(0,1fr);row-gap:.25rem;
+  font-size:.92rem;line-height:1.45;
 }
-@media (min-width:62rem){.sello{right:-1.8rem}}
-.sello .circulo{display:grid;place-items:center;width:2.6rem;height:2.6rem;border-radius:50%;background:var(--azul);flex:none}
-.sello .circulo svg{width:20px;height:20px;fill:none;stroke:var(--sobre-azul);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.sello strong{display:block;font-size:1rem;line-height:1.2}
-.sello span{font-size:.85rem;color:var(--tinta-3);line-height:1.3}
-.nosotros h2{font-size:clamp(2.1rem,1.4rem + 2.8vw,3.6rem);line-height:1.08}
-.nosotros .lead{font-size:1.2rem;font-weight:500;color:var(--tinta);margin-top:1.8rem}
-.nosotros .lead strong{color:var(--acento)}
-.nosotros p{color:var(--tinta-2)}
-.nosotros p strong{color:var(--tinta)}
-.enlace-li{display:inline-flex;align-items:center;gap:.55rem;font-weight:500;text-decoration:none;margin-top:.6rem}
+@media (min-width:36rem){.hoja{grid-template-columns:minmax(0,1fr) 11.5rem;column-gap:1.4rem;padding:2rem 1.8rem 2.2rem}}
+.hoja > *{grid-column:1;margin:0}
+.hoja .anot{grid-column:1}
+@media (min-width:36rem){.hoja .anot{grid-column:2}}
+.cv-nombre{font-weight:700;font-size:1.25rem;letter-spacing:-.01em}
+.cv-cargo{color:#4E5A68;margin-bottom:.9rem !important}
+.cv-sec{font-weight:600;font-size:.8rem;color:#4E5A68;border-bottom:1px solid rgba(22,32,46,.15);padding-bottom:.2rem;margin-top:.9rem !important;margin-bottom:.35rem !important}
+.cv-lugar{font-weight:500}
+.cv-lugar span{font-weight:300;color:#4E5A68}
+.relleno{display:block;height:.5rem;border-radius:2px;background:rgba(22,32,46,.1);margin:.38rem 0}
+.hoja p:has(> .marca),.cv-lugar:has(.marca){line-height:1.8}
+.marca{text-decoration:underline wavy var(--ocre-tinta,#A97B2C);text-decoration-thickness:1.5px;text-underline-offset:4px;text-decoration-skip-ink:none}
+.anot{font-family:var(--mano);font-weight:600;font-size:1.25rem;line-height:1.15;color:#8A6220;display:flex;gap:.45rem;align-items:flex-start;margin:.15rem 0 .5rem}
+@media (min-width:36rem){.anot{margin:-.35rem 0 0;transform:rotate(-1.5deg)}}
+.anot .n{flex:none;display:inline-grid;place-items:center;width:1.45rem;height:1.45rem;border:1.5px solid #A97B2C;border-radius:50%;font-size:1rem;line-height:1}
+.cv figcaption{font-size:.85rem;color:var(--tinta-2);margin-top:.8rem}
+
+@media (prefers-reduced-motion: no-preference){
+  .anot{opacity:0;animation:aparece .5s ease forwards}
+  .anot.a1{animation-delay:.5s}.anot.a2{animation-delay:1.1s}.anot.a3{animation-delay:1.7s}
+  .marca{text-decoration-color:transparent;animation:subraya .4s ease forwards}
+  .marca.m1{animation-delay:.3s}.marca.m2{animation-delay:.9s}.marca.m3{animation-delay:1.5s}
+}
+@keyframes aparece{from{opacity:0;translate:0 4px}to{opacity:1;translate:0 0}}
+@keyframes subraya{to{text-decoration-color:#A97B2C}}
+
+/* Sobre mí */
+.sobre .env{display:grid;gap:2.5rem;align-items:start}
+@media (min-width:62rem){.sobre .env{grid-template-columns:.8fr 1.2fr;gap:4rem}}
+.retrato{width:100%;max-width:26rem;height:auto;border-radius:12px}
+.sobre p{color:var(--tinta-2);max-width:40rem}
+.sobre p strong{color:var(--tinta)}
+.sobre .primera{font-size:1.2rem;color:var(--tinta);font-weight:400}
+.enlace-li{display:inline-flex;align-items:center;gap:.5rem;font-weight:500;text-decoration:none}
 .enlace-li:hover{text-decoration:underline}
-.enlace-li .ico{width:22px;height:22px}
+.enlace-li .ico{width:20px;height:20px}
 
-/* Tarjetas */
-.rejilla{display:grid;gap:1.4rem}
-@media (min-width:48rem){.rejilla-2,.rejilla-4{grid-template-columns:repeat(2,1fr)}}
-@media (min-width:62rem){.rejilla-3{grid-template-columns:repeat(3,1fr)}.rejilla-4{grid-template-columns:repeat(4,1fr)}}
-.tarjeta{position:relative;background:var(--tarjeta);border:1px solid var(--linea);border-radius:20px;padding:2rem 1.8rem;box-shadow:var(--sombra);display:flex;flex-direction:column}
-.tarjeta h3{font-size:1.35rem;margin-bottom:.7rem}
-.tarjeta p{color:var(--tinta-2)}
-.tarjeta > :last-child{margin-bottom:0}
-.icono-t{display:grid;place-items:center;width:3.6rem;height:3.6rem;border-radius:14px;margin-bottom:1.6rem;--c:var(--azul);background:color-mix(in srgb,var(--c) 10%,transparent);color:var(--c)}
-.icono-t svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.c-azul{--c:#1D3557}.c-naranja{--c:#8A6220}.c-morado{--c:#3D5A80}.c-verde{--c:#8A6220}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .c-azul,:root:not([data-theme="light"]) .c-morado{--c:#8FB4DF}:root:not([data-theme="light"]) .c-naranja,:root:not([data-theme="light"]) .c-verde{--c:#D2A253}}
-:root[data-theme="dark"] .c-azul,:root[data-theme="dark"] .c-morado{--c:#8FB4DF}:root[data-theme="dark"] .c-naranja,:root[data-theme="dark"] .c-verde{--c:#D2A253}
-.cinta{position:absolute;top:-1px;right:1.4rem;background:linear-gradient(90deg,#A97B2C,#D2A253);color:#16202E;font-size:.75rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:.3rem .7rem;border-radius:0 0 8px 8px}
-.checks{list-style:none;margin:.6rem 0 0;padding:0}
-.checks li{position:relative;padding:.35rem 0 .35rem 1.7rem;font-size:.97rem;color:var(--tinta-2)}
-.checks li::before{content:"";position:absolute;left:.15rem;top:.78rem;width:.75rem;height:.4rem;border-left:2px solid var(--c,var(--ocre));border-bottom:2px solid var(--c,var(--ocre));transform:rotate(-45deg)}
-.servicio .pie-tarjeta{margin-top:auto;padding-top:1.6rem}
-.mini-cta{display:inline-flex;align-items:center;gap:.4rem;font-weight:600;font-size:.97rem;text-decoration:none;color:var(--c,var(--azul))}
-.mini-cta:hover{gap:.6rem}
-.mini-cta .flecha{width:16px;height:16px;transition:transform .15s ease}
+/* Servicios: tres filas, no tarjetas */
+.servicios{list-style:none;margin:0;padding:0;border-top:1px solid var(--linea)}
+.servicio{display:grid;gap:.6rem 2.5rem;padding:2rem 0;border-bottom:1px solid var(--linea)}
+@media (min-width:56rem){.servicio{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) auto;align-items:start}}
+.servicio h3{font-size:1.45rem;margin-bottom:.4rem}
+.servicio .pack{color:var(--acento);font-weight:500;margin:0}
+.servicio .para{color:var(--tinta-2);margin:0 0 .6rem}
+.incluye{list-style:none;margin:0;padding:0}
+.incluye li{position:relative;padding:.25rem 0 .25rem 1.25rem;color:var(--tinta-2)}
+.incluye li::before{content:"";position:absolute;left:0;top:.95rem;width:.6rem;height:1.5px;background:var(--ocre)}
+.servicio .boton-linea{white-space:nowrap}
 
-/* Autoevaluación destacada */
-.feat{background:var(--tarjeta);border:1px solid var(--linea);border-radius:28px;box-shadow:var(--sombra);padding:clamp(1.6rem,4vw,3.4rem);display:grid;gap:2.4rem;align-items:center}
-@media (min-width:52rem){.feat{grid-template-columns:1.2fr .8fr;gap:3.5rem}}
-.feat h2{font-size:clamp(1.8rem,1.3rem + 2vw,2.8rem)}
-.feat p{color:var(--tinta-2)}
-.feat .acciones{margin-top:1.6rem}
-.feat figure{margin:0;justify-self:center;max-width:16rem;border-radius:16px;overflow:hidden;border:1px solid var(--linea);box-shadow:var(--sombra-fuerte);transform:rotate(2.5deg)}
-.feat figure img{width:100%;height:auto}
+/* Autoevaluación */
+.auto .env{display:grid;gap:2.5rem;align-items:center}
+@media (min-width:56rem){.auto .env{grid-template-columns:1.2fr .8fr;gap:4rem}}
+.auto figure{margin:0;justify-self:center;max-width:15rem}
+.auto figure img{width:100%;height:auto;border-radius:8px;border:1px solid var(--linea)}
+.auto figcaption{font-size:.85rem;color:var(--tinta-2);margin-top:.6rem}
+.auto p{color:var(--tinta-2);max-width:38rem}
 
-/* Pasos */
-.num{display:inline-grid;place-items:center;width:2.6rem;height:2.6rem;border-radius:12px;background:var(--azul);color:var(--sobre-azul);font-weight:700;font-size:1.1rem;margin-bottom:1.2rem}
-.pasos{list-style:none;margin:0;padding:0}
+/* Pasos: secuencia real, por eso numerados */
+.pasos{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:paso}
+@media (min-width:56rem){.pasos{grid-template-columns:repeat(4,1fr);gap:2rem}}
+.pasos li{counter-increment:paso;padding:1.4rem 0;border-top:2px solid var(--tinta)}
+.pasos li::before{content:counter(paso);display:block;font-weight:800;font-size:2rem;line-height:1;color:var(--acento);margin-bottom:.8rem}
+.pasos h3{font-size:1.15rem;margin-bottom:.4rem}
+.pasos p{color:var(--tinta-2);margin:0}
+.pasos-3{}
+@media (min-width:56rem){.pasos-3{grid-template-columns:repeat(3,1fr)}}
 
 /* Testimonios en video (comentados hasta que haya reales) */
-.video-t{position:relative;aspect-ratio:9/12;border-radius:20px;overflow:hidden;background:var(--fondo-2);box-shadow:var(--sombra)}
-.video-t video,.video-t img{width:100%;height:100%;object-fit:cover}
-
-/* Impacto */
-.impacto{background:var(--oscuro);color:var(--oscuro-tinta);border-radius:28px;padding:clamp(2.4rem,5vw,4rem) 1.5rem;text-align:center;position:relative;overflow:hidden;border:1px solid var(--linea)}
-.impacto::after{content:"";position:absolute;right:-8rem;top:-8rem;width:22rem;height:22rem;border-radius:50%;background:radial-gradient(circle,rgba(210,162,83,.22),transparent 70%);pointer-events:none}
-.impacto .antetitulo{color:var(--oscuro-acento)}
-.impacto h2{color:#fff;font-size:clamp(1.9rem,1.3rem + 2.4vw,3.2rem);max-width:44rem;margin-inline:auto}
-.impacto ul{list-style:none;margin:2.2rem auto 2.4rem;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:1.8rem 1rem;max-width:52rem}
-@media (min-width:52rem){.impacto ul{grid-template-columns:repeat(4,1fr)}}
-.impacto li strong{display:block;font-size:clamp(1.7rem,1.3rem + 1.4vw,2.4rem);font-weight:700;color:#fff;line-height:1.1}
-.impacto li span{display:block;font-size:.92rem;color:var(--oscuro-tinta-2);margin-top:.35rem}
-.impacto p{color:var(--oscuro-tinta-2);max-width:40rem;margin-inline:auto}
-.impacto .boton-blanco{background:#D2A253;color:#16202E;border-color:#D2A253;margin-top:.6rem}
+.videos{display:grid;gap:1rem;grid-template-columns:repeat(2,1fr)}
+@media (min-width:56rem){.videos{grid-template-columns:repeat(4,1fr)}}
+.videos video{width:100%;aspect-ratio:9/14;object-fit:cover;border-radius:10px;background:var(--papel-2)}
 
 /* Preguntas frecuentes */
-.faq{max-width:50rem;margin:0 auto}
-.faq details{background:var(--tarjeta);border:1px solid var(--linea);border-radius:16px;padding:0 1.5rem;margin-bottom:.8rem;box-shadow:var(--sombra)}
-.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem;font-weight:500;font-size:1.1rem;padding:1.25rem 0;color:var(--tinta)}
+.faq{max-width:46rem;border-top:1px solid var(--linea)}
+.faq details{border-bottom:1px solid var(--linea)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:1rem;align-items:baseline;font-weight:500;font-size:1.1rem;padding:1.2rem 0}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-size:1.5rem;line-height:1;color:var(--acento);transition:transform .2s ease;flex:none}
+.faq summary::after{content:"+";font-size:1.4rem;line-height:1;color:var(--acento);transition:transform .2s ease;flex:none}
 .faq details[open] summary::after{transform:rotate(45deg)}
-.faq .contenido{color:var(--tinta-2);padding-bottom:1.3rem}
+.faq .contenido{color:var(--tinta-2);padding-bottom:1.3rem;max-width:42rem}
 .faq .contenido p:last-child{margin-bottom:0}
 
 /* Base de candidatos */
-.base-cta .tarjeta{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.6rem;padding:2rem}
-.base-cta h2{font-size:clamp(1.5rem,1.25rem + 1vw,2rem);margin-bottom:.5rem}
-.base-cta p{margin:0;color:var(--tinta-2);max-width:44rem}
+.base .env{display:grid;gap:1.5rem;align-items:center}
+@media (min-width:56rem){.base .env{grid-template-columns:1fr auto;gap:3rem}}
+.base h2{font-size:clamp(1.5rem,1.25rem + 1vw,2rem);margin-bottom:.5rem}
+.base p{color:var(--tinta-2);margin:0;max-width:44rem}
 
-/* Llamado final */
-.final{position:relative;overflow:hidden;color:#fff;text-align:center;background:
-  linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px) 0 0/48px 48px,
-  linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px) 0 0/48px 48px,
-  linear-gradient(120deg,#1D3557 0%,#24426B 55%,#16202E 100%)}
-.final h2{color:#fff;font-size:clamp(2.1rem,1.4rem + 3vw,3.8rem);max-width:46rem;margin-inline:auto}
-.final p{color:rgba(255,255,255,.88);max-width:42rem;margin-inline:auto;font-size:1.15rem}
-.final .boton-blanco{background:#D2A253;color:#16202E;border-color:#D2A253;font-weight:600;padding:1.1rem 2.2rem;box-shadow:0 12px 30px rgba(0,0,0,.18)}
-.final .letra-chica{color:rgba(255,255,255,.8);margin-top:1.8rem;font-size:.92rem}
-
-.letra-chica{font-size:.92rem;color:var(--tinta-3)}
-.acciones + .letra-chica{margin-top:1rem}
+/* Banda oscura */
+.banda{background:var(--banda);color:var(--banda-tinta);border-top:0}
+.banda h2{color:var(--banda-tinta)}
+.banda p{color:var(--banda-tinta-2);max-width:40rem}
+.banda .boton{background:var(--ocre-claro);color:#16202E}
+.banda .boton:hover{background:#E0B66B}
+.banda .boton-linea{color:var(--banda-tinta);border-color:rgba(239,237,231,.3)}
+.banda .boton-linea:hover{border-color:var(--banda-tinta-2)}
+.banda .nota-chica{color:var(--banda-tinta-2)}
+.banda .nota-chica a{color:var(--banda-tinta)}
+.final h2{font-size:clamp(2rem,1.4rem + 2.6vw,3.4rem);max-width:18ch}
 
 /* Vista empresas */
-.problema{background:var(--oscuro);color:var(--oscuro-tinta);border-radius:28px;padding:clamp(2rem,5vw,3.6rem);border:1px solid var(--linea)}
-.problema h2{color:#fff;font-size:clamp(1.8rem,1.3rem + 2vw,2.8rem);max-width:40rem}
-.problema p{color:var(--oscuro-tinta-2);max-width:46rem}
-.problema p:last-child{margin-bottom:0}
-.nota{margin-top:2rem;background:var(--ocre-suave);border-radius:16px;padding:1.1rem 1.4rem;color:var(--tinta)}
-.nota p{margin:0}
-.via .boton,.via .boton-blanco{margin-top:auto;align-self:flex-start;font-size:.93rem;padding:.8rem 1.2rem;overflow-wrap:anywhere}
+.portada-emp .env{display:grid;gap:3rem;padding-top:3.5rem;padding-bottom:4.5rem;align-items:center}
+@media (min-width:62rem){.portada-emp .env{grid-template-columns:1.25fr .75fr;gap:4rem;padding-top:5rem;padding-bottom:5.5rem}}
+.portada-emp h1{font-size:clamp(2.4rem,1.5rem + 3.8vw,4.4rem);font-weight:800;letter-spacing:-.028em;line-height:1.04;max-width:14ch}
+.muestra{margin:0;justify-self:center;max-width:17rem}
+.muestra img{width:100%;height:auto;border-radius:6px;border:1px solid var(--linea);box-shadow:0 18px 40px rgba(22,32,46,.12)}
+.muestra figcaption{font-size:.85rem;color:var(--tinta-2);margin-top:.7rem}
+.razones{list-style:none;margin:0;padding:0;display:grid;gap:0 3rem}
+@media (min-width:48rem){.razones{grid-template-columns:1fr 1fr}}
+.razones li{border-top:1px solid var(--linea);padding:1.3rem 0}
+.razones h3{font-size:1.15rem;margin-bottom:.35rem}
+.razones p{color:var(--tinta-2);margin:0}
+.vias{list-style:none;margin:0;padding:0;border-top:1px solid var(--linea)}
+.vias li{display:grid;gap:.6rem 2rem;padding:1.3rem 0;border-bottom:1px solid var(--linea)}
+@media (min-width:48rem){.vias li{grid-template-columns:12rem 1fr auto;align-items:center}}
+.vias h3{font-size:1.1rem}
+.vias p{color:var(--tinta-2);margin:0}
+.vias .boton,.vias .boton-linea{justify-self:start;overflow-wrap:anywhere}
+.nota-adapto{margin-top:2rem;color:var(--tinta-2);max-width:44rem}
+.nota-adapto strong{color:var(--tinta)}
 
 /* Pie */
-.pie{background:#16202E;color:#CBD5E1;padding:4rem 0 2rem;font-size:.95rem}
-.pie .env > .cols{display:grid;gap:2.4rem}
-@media (min-width:52rem){.pie .env > .cols{grid-template-columns:2fr 1fr 1fr}}
-.pie .logo{color:#fff;font-size:1.45rem}
-.pie .logo span{color:#D2A253}
-.pie p{color:#94A3B8;max-width:24rem;margin:1.2rem 0 1.6rem}
-.pie h3{color:#fff;font-size:1rem;font-weight:600;margin-bottom:1.1rem;letter-spacing:0}
+.pie{background:#16202E;color:#BAC7D9;padding:3.5rem 0 2rem;font-size:.95rem}
+.pie .cols{display:grid;gap:2.2rem}
+@media (min-width:52rem){.pie .cols{grid-template-columns:2fr 1fr 1fr}}
+.pie .logo{color:#EFEDE7}
+.pie p{color:#9AA8BA;max-width:26rem;margin:1rem 0 1.4rem}
+.pie h3{color:#EFEDE7;font-size:1rem;font-weight:600;margin-bottom:.9rem;letter-spacing:0}
 .pie ul{list-style:none;margin:0;padding:0}
-.pie li{margin-bottom:.6rem}
-.pie li::before{content:"• ";color:#D2A253}
-.pie a{color:#CBD5E1;text-decoration:none}
-.pie a:hover{color:#fff}
-.redes{display:flex;gap:.8rem}
-.redes a{display:grid;place-items:center;width:2.6rem;height:2.6rem;border-radius:50%;background:rgba(255,255,255,.07);color:#fff}
-.redes a:hover{background:rgba(255,255,255,.14)}
-.redes .ico{width:18px;height:18px}
-.pie .derechos{max-width:none;border-top:1px solid rgba(255,255,255,.08);margin-top:3rem;padding-top:1.8rem;text-align:center;color:#64748B;font-size:.88rem}
+.pie li{margin-bottom:.55rem}
+.pie a{color:#BAC7D9;text-decoration:none}
+.pie a:hover{color:#EFEDE7;text-decoration:underline}
+.redes{display:flex;gap:.7rem}
+.redes a{display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:50%;border:1px solid rgba(239,237,231,.18);color:#EFEDE7}
+.redes a:hover{border-color:#D2A253}
+.pie .derechos{border-top:1px solid rgba(239,237,231,.1);margin-top:2.6rem;padding-top:1.6rem;color:#7D8A9B;font-size:.88rem;max-width:none}
 
 /* Pestañas: candidatos / empresas */
-.tabs{background:var(--fondo-2);border-bottom:1px solid var(--linea)}
-.tabs .env{display:flex;justify-content:center;gap:.4rem;padding-top:.55rem;padding-bottom:.55rem}
+.tabs{border-bottom:1px solid var(--linea)}
+.tabs .env{display:flex;gap:1.6rem}
 .tab{
-  appearance:none;-webkit-appearance:none;background:none;border:1px solid transparent;cursor:pointer;
-  font-family:var(--fuente);font-size:.93rem;font-weight:400;color:var(--tinta-3);
-  padding:.4rem 1.1rem;border-radius:999px;transition:color .15s ease,background .15s ease;
+  appearance:none;-webkit-appearance:none;background:none;border:0;border-bottom:2px solid transparent;cursor:pointer;
+  font-family:var(--texto);font-size:.95rem;font-weight:400;color:var(--tinta-2);
+  padding:.75rem 0;transition:color .15s ease,border-color .15s ease;
 }
 .tab:hover{color:var(--tinta)}
-.tab[aria-selected="true"]{color:var(--tinta);font-weight:500;background:var(--tarjeta);border-color:var(--linea);box-shadow:var(--sombra)}
+.tab[aria-selected="true"]{color:var(--tinta);font-weight:500;border-bottom-color:var(--ocre)}
 
 /* Barra fija de contacto en el teléfono */
 .barra-movil{
   position:fixed;left:0;right:0;bottom:0;z-index:20;display:none;
-  background:var(--fondo);border-top:1px solid var(--linea);
+  background:var(--papel);border-top:1px solid var(--linea);
   padding:.7rem 1rem;padding-bottom:calc(.7rem + env(safe-area-inset-bottom, 0px));
 }
-.barra-movil .boton{width:100%;padding:.9rem 1rem}
+.barra-movil .boton{width:100%}
 @media (max-width:48rem){
   .barra-movil{display:block}
   body{padding-bottom:5.5rem}
-  .barra-der .boton-oscuro{display:none}
+  .barra-der .boton{display:none}
 }
-
-/* Animaciones */
-@media (prefers-reduced-motion: no-preference){
-  .aparece{opacity:0;transform:translateY(14px);animation:entra .8s ease .1s forwards}
-  .js .revela{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
-  .js .revela.visto{opacity:1;transform:none}
-}
-@keyframes entra{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<script>document.documentElement.classList.add("js")</script>
 
 <svg class="sr" aria-hidden="true" focusable="false"><defs>
 <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 5L2 22l5.17-1.36a9.94 9.94 0 0 0 4.87 1.25h.01c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.04-5.16-2.92-7.04A9.88 9.88 0 0 0 12.04 2zm0 1.67c2.21 0 4.29.86 5.85 2.43a8.23 8.23 0 0 1 2.43 5.86c0 4.57-3.72 8.29-8.29 8.29-1.5 0-2.97-.4-4.25-1.16l-.3-.18-3.07.8.82-3-.2-.31a8.24 8.24 0 0 1-1.27-4.44c0-4.57 3.72-8.29 8.28-8.29zm-2.5 4.1c-.16-.36-.33-.37-.49-.38h-.41c-.14 0-.38.05-.57.27-.2.22-.75.73-.75 1.78s.77 2.07.88 2.21c.1.14 1.48 2.38 3.66 3.24 1.81.71 2.18.57 2.58.53.39-.03 1.27-.52 1.45-1.02.18-.5.18-.93.13-1.02-.06-.09-.2-.14-.41-.25-.22-.1-1.27-.63-1.47-.7-.2-.07-.34-.11-.48.11-.14.21-.55.7-.67.84-.13.14-.25.16-.46.05-.22-.1-.92-.34-1.75-1.08-.65-.58-1.08-1.29-1.21-1.5-.12-.22-.01-.34.1-.45.1-.1.22-.25.32-.38.11-.13.14-.22.22-.36.07-.14.03-.27-.02-.38-.05-.11-.47-1.17-.65-1.6z"/></symbol>
 <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2.5V17h16V7.5l-8 5.2-8-5.2zm.9-.5L12 11.1 19.1 7H4.9z"/></symbol>
 <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.73v20.54C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .78 23.2 0 22.22 0z"/></symbol>
-<symbol id="i-flecha" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
 </defs></svg>
 
 <header class="barra">
   <div class="env">
-    <a class="logo" href="#" aria-label="Sebastián Carvallo, inicio">Sebastián<span>Carvallo</span></a>
+    <a class="logo" href="#">Sebastián Carvallo</a>
     <nav class="nav-sec" aria-label="Principal">
-      <a href="#nosotros">Sobre mí</a>
+      <a href="#sobre-mi">Sobre mí</a>
       <a href="#servicios">Servicios</a>
       <a href="#como-funciona">Cómo funciona</a>
       <a href="#preguntas">Preguntas</a>
     </nav>
     <div class="barra-der">
       <a class="enlace-base" href="/base">Base de candidatos</a>
-      <a class="boton-oscuro" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20agendar%20el%20diagn%C3%B3stico%20de%2015%20minutos" target="_blank" rel="noopener">Empezar ahora</a>
+      <a class="boton chico" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20agendar%20el%20diagn%C3%B3stico%20de%2015%20minutos" target="_blank" rel="noopener">Agendar diagnóstico</a>
     </div>
   </div>
 </header>
@@ -474,195 +429,193 @@ section h2{font-size:clamp(2rem,1.4rem + 2.4vw,3.3rem);margin-bottom:1.1rem}
 <div id="panel-candidatos" role="tabpanel" aria-labelledby="tab-candidatos" tabindex="0">
 
 <div class="portada">
-  <svg class="trazo" viewBox="0 0 600 400" aria-hidden="true"><path d="M30 370 L220 190 L320 280 L560 40 M440 40 H560 V160"/></svg>
-  <div class="env aparece">
-    <span class="pildora punto">CV para ATS · LinkedIn · Entrevistas</span>
-    <h1>¿Cansado de postular sin que te llamen?</h1>
-    <p class="entrada">Durante diez años decidí quién pasaba a la siguiente etapa. Hoy ese criterio trabaja para ti: <strong>un CV que pasa el ATS, un LinkedIn que aparece en las búsquedas y una entrevista que convence</strong>, con el método que usan las empresas.</p>
-    <div class="acciones">
-      <a class="boton" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20agendar%20el%20diagn%C3%B3stico%20de%2015%20minutos" target="_blank" rel="noopener">Quiero mi diagnóstico gratis</a>
-      <a class="boton-blanco" href="#como-funciona">Descubrir cómo funciona</a>
+  <div class="env">
+    <div>
+      <h1>¿Cansado de postular sin que te llamen?</h1>
+      <p class="entrada">Durante diez años decidí quién pasaba a la siguiente etapa en PF Alimentos y CMPC. Reviso tu CV, tu LinkedIn y tu entrevista como lo haría un reclutador, y te digo qué cambiar.</p>
+      <div class="acciones">
+        <a class="boton" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20agendar%20el%20diagn%C3%B3stico%20de%2015%20minutos" target="_blank" rel="noopener">
+          <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>Agendar diagnóstico gratis
+        </a>
+        <a class="boton-linea" href="#como-funciona">Ver cómo funciona</a>
+      </div>
+      <p class="nota-chica">Son 15 minutos por videollamada o teléfono. Atiendo desde Talca a todo Chile, Latinoamérica y España.</p>
     </div>
-    <p class="letra-chica">15 minutos por videollamada o teléfono · Talca, Chile, y en remoto para Latinoamérica y España</p>
+
+    <figure class="cv">
+      <div class="hoja">
+        <p class="cv-nombre">Camila Rojas</p>
+        <p class="cv-cargo">Analista de operaciones</p>
+
+        <p class="cv-sec">Habilidades</p>
+        <p><span class="marca m1">Trabajo en equipo, proactividad, responsabilidad.</span></p>
+        <p class="anot a1"><span class="n">1</span>El aviso pedía Excel avanzado y SAP. El ATS no los encuentra y te descarta.</p>
+
+        <p class="cv-sec">Experiencia</p>
+        <p class="cv-lugar">Agrícola del Sur <span>2023 a la fecha</span></p>
+        <p><span class="marca m2">Responsable de apoyar en diversas tareas del área.</span></p>
+        <p class="anot a2"><span class="n">2</span>¿Y qué lograste? El reclutador busca resultados, no tareas.</p>
+        <span class="relleno" style="width:88%"></span>
+        <span class="relleno" style="width:64%"></span>
+
+        <p class="cv-lugar" style="margin-top:.7rem">Distribuidora Centro <span><span class="marca m3">2019 a 2021</span></span></p>
+        <p class="anot a3"><span class="n">3</span>Dos años sin explicar. Te lo van a preguntar en la entrevista.</p>
+        <span class="relleno" style="width:92%"></span>
+        <span class="relleno" style="width:70%"></span>
+      </div>
+      <figcaption>Un CV de ejemplo, con las tres cosas que mira un reclutador. Los datos son ficticios.</figcaption>
+    </figure>
   </div>
 </div>
 
-<section id="nosotros" class="nosotros">
+<section id="sobre-mi" class="sobre">
   <div class="env">
-    <div class="marco revela">
-      <img class="retrato" src="fotos/sebastian.jpg" width="900" height="900" alt="Sebastián Carvallo Campos, psicólogo organizacional, retratado en una oficina">
-      <div class="sello">
-        <span class="circulo" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
-        <div><strong>Más que un asesor</strong><span>El criterio de quien decide</span></div>
-      </div>
-    </div>
-    <div class="revela">
-      <span class="pildora">Sebastián Carvallo Campos</span>
-      <h2>No son consejos genéricos.<br><span class="degradado">Es el criterio de quien decidía.</span></h2>
-      <p class="lead">No soy un coach de frases motivacionales: fui <strong>el reclutador</strong> que leía tu CV.</p>
-      <p>¿Estás enviando CVs sin recibir respuesta? ¿Llegas a la entrevista y ahí termina? ¿Quieres cambiar de rubro, de nivel o de país y no sabes por dónde partir? Lo he visto cientos de veces, desde el otro lado del escritorio.</p>
-      <p>Soy psicólogo organizacional y pasé <strong>diez años liderando selección en PF Alimentos y CMPC</strong>, en procesos masivos de Arica a Punta Arenas. Configuré los filtros de los ATS (SAP SuccessFactors, Hiring Room, Rex+) y tomé las entrevistas. Hoy uso ese criterio, una autoevaluación por competencias y el acompañamiento 1 a 1 para que llegues al puesto que buscas.</p>
-      <a class="enlace-li" href="https://www.linkedin.com/in/sebastiancarvalloc/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-linkedin"></use></svg>Conecta conmigo en LinkedIn</a>
+    <img class="retrato" src="fotos/sebastian.jpg" width="900" height="900" alt="Sebastián Carvallo Campos, psicólogo organizacional, retratado en una oficina" loading="lazy">
+    <div>
+      <h2>No son consejos genéricos: es el criterio de quien decidía</h2>
+      <p class="primera">Fui el reclutador que leía tu CV.</p>
+      <p>Soy psicólogo organizacional y pasé <strong>diez años liderando selección en PF Alimentos y CMPC</strong>, en procesos masivos de Arica a Punta Arenas. Configuré los filtros de los ATS que leen tu CV antes que una persona (SAP SuccessFactors, Hiring Room, Rex+) y tomé cientos de entrevistas.</p>
+      <p>Por eso sé en qué momento exacto se descarta un perfil, y qué respuesta convence y cuál suena aprendida de memoria. Hoy uso ese criterio de tu lado: para que tu postulación pase el ATS, al reclutador y la entrevista.</p>
+      <a class="enlace-li" href="https://www.linkedin.com/in/sebastiancarvalloc/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-linkedin"></use></svg>Ver mi perfil de LinkedIn</a>
     </div>
   </div>
 </section>
 
-<section id="servicios" class="gris">
+<section id="servicios" class="oscura">
   <div class="env">
-    <div class="cabecera centro">
-      <h2>Todo lo que necesitas para<br><span class="azul">pasar cada filtro</span></h2>
-      <p class="intro">Cada etapa de la búsqueda se cae por una razón distinta. Cuál es la tuya lo vemos en la llamada; esto es lo que podemos trabajar.</p>
+    <div class="cabecera">
+      <h2>¿Dónde se te está cayendo la postulación?</h2>
+      <p class="intro">Cada caso se arregla de una forma distinta. Cuál es el tuyo lo vemos en la llamada, y el precio te lo digo ahí mismo.</p>
     </div>
-    <div class="rejilla rejilla-4">
-      <article class="tarjeta servicio c-azul revela">
-        <span class="icono-t" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>
-        <h3>Ganando al algoritmo</h3>
-        <p>Postulas y no te llaman: tu CV no está escrito para el ATS que lo filtra.</p>
-        <ul class="checks">
-          <li>LinkedIn que aparece en las búsquedas</li>
-          <li>CV reescrito para los ATS</li>
-          <li>Versión adaptable a cada postulación</li>
-        </ul>
-        <div class="pie-tarjeta"><a class="mini-cta" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20me%20interesa%20Ganando%20al%20algoritmo." target="_blank" rel="noopener">Me interesa <svg class="flecha" aria-hidden="true"><use href="#i-flecha"></use></svg></a></div>
-      </article>
-
-      <article class="tarjeta servicio c-naranja revela">
-        <span class="icono-t" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span>
-        <h3>El candidato elegido</h3>
-        <p>Llegas a la entrevista y ahí termina: te preparaste para conversar, no para ser evaluado.</p>
-        <ul class="checks">
-          <li>CV y LinkedIn incluidos</li>
-          <li>Preguntas clave, partiendo por las debilidades</li>
-          <li>Simulacro de entrevista con retroalimentación</li>
-          <li>Acompañamiento durante tu proceso</li>
-        </ul>
-        <div class="pie-tarjeta"><a class="mini-cta" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20me%20interesa%20El%20candidato%20elegido." target="_blank" rel="noopener">Me interesa <svg class="flecha" aria-hidden="true"><use href="#i-flecha"></use></svg></a></div>
-      </article>
-
-      <article class="tarjeta servicio c-morado revela">
-        <span class="cinta">Más completo</span>
-        <span class="icono-t" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-        <h3>Mentoría completa</h3>
-        <p>Cambias de rubro, de nivel o de país: el problema es tu posicionamiento completo.</p>
-        <ul class="checks">
-          <li>Cuatro sesiones con plan y tareas</li>
-          <li>Todo el material anterior</li>
-          <li>Estrategia para cargos que no se publican</li>
-          <li>Negociación de renta y condiciones</li>
-        </ul>
-        <div class="pie-tarjeta"><a class="mini-cta" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20me%20interesa%20la%20Mentor%C3%ADa%20completa." target="_blank" rel="noopener">Me interesa <svg class="flecha" aria-hidden="true"><use href="#i-flecha"></use></svg></a></div>
-      </article>
-
-      <article class="tarjeta servicio c-verde revela">
-        <span class="icono-t" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></span>
-        <h3>Autoevaluación gratis</h3>
-        <p>Mídete con la misma lógica con la que te van a evaluar, antes de postular.</p>
-        <ul class="checks">
-          <li>Tu % de ajuste al cargo</li>
-          <li>Fortalezas y áreas a desarrollar</li>
-          <li>15 minutos, desde el celular</li>
-        </ul>
-        <div class="pie-tarjeta"><a class="mini-cta" href="/cuestionario">Hacer mi autoevaluación <svg class="flecha" aria-hidden="true"><use href="#i-flecha"></use></svg></a></div>
-      </article>
-    </div>
-    <div class="acciones centro">
-      <a class="boton" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20agendar%20el%20diagn%C3%B3stico%20de%2015%20minutos" target="_blank" rel="noopener">Quiero mi diagnóstico gratis</a>
-    </div>
-  </div>
-</section>
-
-<section id="autotest">
-  <div class="env">
-    <div class="feat revela">
-      <div>
-        <span class="pildora punto">Gratis · 15 minutos · desde el celular</span>
-        <h2>Pruébate con el método que <span class="azul">usan las empresas</span></h2>
-        <p>Eliges el cargo que buscas y respondes un test por competencias. Al instante ves tu <strong>% de ajuste</strong>, tus fortalezas y lo que puedes desarrollar.</p>
-        <p>Si trabajamos juntos, recibes además un informe de tu afinidad con el tipo de cargo que buscas: un resultado concreto y medible para enfocar tu búsqueda.</p>
-        <div class="acciones"><a class="boton" href="/cuestionario">Hacer mi autoevaluación</a></div>
-        <p class="letra-chica">Es una muestra del método, no un diagnóstico. El ejemplo de la imagen tiene datos ficticios.</p>
-      </div>
-      <figure>
-        <a href="fotos/muestra-informe-desarrollo.png" target="_blank" rel="noopener"><img src="fotos/muestra-informe-desarrollo.png" width="800" height="1560" alt="Ejemplo de informe de afinidad y desarrollo para un candidato, con datos ficticios" loading="lazy"></a>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<section id="como-funciona" class="gris">
-  <div class="env">
-    <div class="cabecera centro">
-      <h2>Empezamos con <span class="azul">quince minutos</span></h2>
-      <p class="intro">Una videollamada o un teléfono para ubicar dónde se te está cayendo la postulación. No preparas nada y no te cuesta nada.</p>
-    </div>
-    <ol class="rejilla rejilla-4 pasos">
-      <li class="tarjeta revela">
-        <span class="num" aria-hidden="true">1</span>
-        <h3>Me cuentas dónde estás</h3>
-        <p>A qué estás postulando, hace cuánto y qué ha pasado hasta ahora.</p>
+    <ol class="servicios">
+      <li class="servicio">
+        <div>
+          <h3>Postulas y no te llaman</h3>
+          <p class="pack">Ganando al algoritmo</p>
+        </div>
+        <div>
+          <p class="para">Tu CV no está escrito para el ATS que lo filtra, y tu LinkedIn no aparece cuando los reclutadores buscan.</p>
+          <ul class="incluye">
+            <li>LinkedIn reescrito con los términos con que se busca tu cargo</li>
+            <li>CV reescrito con la estructura y las palabras que reconocen los ATS</li>
+            <li>Una versión que puedes ajustar tú a cada postulación</li>
+          </ul>
+        </div>
+        <a class="boton-linea chico" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20me%20interesa%20Ganando%20al%20algoritmo." target="_blank" rel="noopener">Consultar por este</a>
       </li>
-      <li class="tarjeta revela">
-        <span class="num" aria-hidden="true">2</span>
-        <h3>Ubicamos el problema</h3>
-        <p>Te hago las preguntas que uso para encontrarlo. Son pocas y son concretas.</p>
+      <li class="servicio">
+        <div>
+          <h3>Llegas a la entrevista y ahí termina</h3>
+          <p class="pack">El candidato elegido</p>
+        </div>
+        <div>
+          <p class="para">Te preparaste para conversar, no para ser evaluado. Y la pregunta por las debilidades se responde distinto de como crees.</p>
+          <ul class="incluye">
+            <li>CV y LinkedIn, igual que en el caso anterior</li>
+            <li>Las preguntas que deciden el proceso, partiendo por debilidades y fortalezas</li>
+            <li>Simulación de entrevista por competencias, con retroalimentación de cada respuesta</li>
+            <li>Acompañamiento mientras dure tu proceso</li>
+          </ul>
+        </div>
+        <a class="boton-linea chico" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20me%20interesa%20El%20candidato%20elegido." target="_blank" rel="noopener">Consultar por este</a>
       </li>
-      <li class="tarjeta revela">
-        <span class="num" aria-hidden="true">3</span>
-        <h3>Ves lo que ve un reclutador</h3>
-        <p>La parte que a casi todos les cambia la forma de postular, trabajemos juntos o no.</p>
-      </li>
-      <li class="tarjeta revela">
-        <span class="num" aria-hidden="true">4</span>
-        <h3>Te digo qué conviene</h3>
-        <p>Y cuánto cuesta. Si tu caso se resuelve con un par de correcciones que puedes hacer tú, también te lo digo.</p>
+      <li class="servicio">
+        <div>
+          <h3>Cambias de rubro, de nivel o de país</h3>
+          <p class="pack">Mentoría completa</p>
+        </div>
+        <div>
+          <p class="para">El problema no son los documentos: es tu posicionamiento completo, y eso no se arregla en una sesión.</p>
+          <ul class="incluye">
+            <li>Cuatro sesiones con plan definido y tareas entre una y otra</li>
+            <li>Todo el material de los casos anteriores</li>
+            <li>Estrategia para llegar a los cargos que nunca se publican</li>
+            <li>Preparación para negociar renta y condiciones</li>
+          </ul>
+        </div>
+        <a class="boton-linea chico" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20me%20interesa%20la%20Mentor%C3%ADa%20completa." target="_blank" rel="noopener">Consultar por este</a>
       </li>
     </ol>
   </div>
 </section>
 
+<section id="autoevaluacion" class="auto">
+  <div class="env">
+    <div>
+      <h2>Mídete antes de postular</h2>
+      <p>Eliges el cargo que buscas y respondes un test por competencias, la misma lógica con la que te van a evaluar. Al terminar ves tu porcentaje de ajuste al cargo, tus fortalezas y lo que puedes desarrollar.</p>
+      <p>Es gratis, toma 15 minutos y se hace desde el celular. Si trabajamos juntos, recibes además un informe de afinidad con el tipo de cargo que buscas.</p>
+      <div class="acciones"><a class="boton" href="/cuestionario">Hacer la autoevaluación</a></div>
+      <p class="nota-chica">Es una muestra del método, no un diagnóstico.</p>
+    </div>
+    <figure>
+      <a href="fotos/muestra-informe-desarrollo.png" target="_blank" rel="noopener"><img src="fotos/muestra-informe-desarrollo.png" width="800" height="1560" alt="Ejemplo de informe de afinidad y desarrollo para un candidato, con datos ficticios" loading="lazy"></a>
+      <figcaption>Ejemplo con datos ficticios.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="como-funciona" class="oscura">
+  <div class="env">
+    <div class="cabecera">
+      <h2>Empezamos con quince minutos</h2>
+      <p class="intro">Una videollamada o un teléfono. No preparas nada y no te cuesta nada.</p>
+    </div>
+    <ol class="pasos">
+      <li>
+        <h3>Me cuentas dónde estás</h3>
+        <p>A qué estás postulando, hace cuánto y qué ha pasado hasta ahora.</p>
+      </li>
+      <li>
+        <h3>Ubicamos el problema</h3>
+        <p>Te hago las preguntas que uso para encontrarlo. Son pocas y concretas.</p>
+      </li>
+      <li>
+        <h3>Ves lo que ve un reclutador</h3>
+        <p>La parte que a casi todos les cambia la forma de postular, trabajemos juntos o no.</p>
+      </li>
+      <li>
+        <h3>Te digo qué conviene</h3>
+        <p>Y cuánto cuesta. Si se resuelve con un par de correcciones que puedes hacer tú, también te lo digo.</p>
+      </li>
+    </ol>
+    <div class="acciones">
+      <a class="boton" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20agendar%20el%20diagn%C3%B3stico%20de%2015%20minutos" target="_blank" rel="noopener">
+        <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>Agendar por WhatsApp
+      </a>
+      <a class="boton-linea" href="mailto:sebastian.carvallo@outlook.com?subject=Diagn%C3%B3stico%20de%2015%20minutos">
+        <svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Agendar por correo
+      </a>
+    </div>
+    <p class="nota-chica">WhatsApp si estás en Chile, que contesto el mismo día. Correo si escribes desde fuera, y ajustamos la hora a tu huso horario.</p>
+  </div>
+</section>
+
 <!--
-  TESTIMONIOS EN VIDEO — comentado a propósito hasta que haya testimonios reales.
-  Cuando tengas videos (pide permiso por escrito para publicarlos), súbelos a
+  TESTIMONIOS EN VIDEO: comentado a propósito hasta que haya testimonios reales.
+  Cuando tengas videos (con permiso por escrito para publicarlos), súbelos a
   fotos/ como testimonio-1.mp4, etc., con una imagen de portada testimonio-1.jpg,
   y saca este bloque del comentario. No los inventes.
 
 <section id="testimonios">
   <div class="env">
-    <div class="cabecera centro">
-      <h2>Resultados que <span class="azul">cambian búsquedas</span></h2>
-      <p class="intro">Escucha en sus palabras cómo les fue.</p>
+    <div class="cabecera">
+      <h2>Lo que cuentan quienes ya pasaron por acá</h2>
     </div>
-    <div class="rejilla rejilla-4">
-      <div class="video-t"><video src="fotos/testimonio-1.mp4" poster="fotos/testimonio-1.jpg" controls preload="none" playsinline></video></div>
-      <div class="video-t"><video src="fotos/testimonio-2.mp4" poster="fotos/testimonio-2.jpg" controls preload="none" playsinline></video></div>
-      <div class="video-t"><video src="fotos/testimonio-3.mp4" poster="fotos/testimonio-3.jpg" controls preload="none" playsinline></video></div>
-      <div class="video-t"><video src="fotos/testimonio-4.mp4" poster="fotos/testimonio-4.jpg" controls preload="none" playsinline></video></div>
+    <div class="videos">
+      <video src="fotos/testimonio-1.mp4" poster="fotos/testimonio-1.jpg" controls preload="none" playsinline></video>
+      <video src="fotos/testimonio-2.mp4" poster="fotos/testimonio-2.jpg" controls preload="none" playsinline></video>
+      <video src="fotos/testimonio-3.mp4" poster="fotos/testimonio-3.jpg" controls preload="none" playsinline></video>
+      <video src="fotos/testimonio-4.mp4" poster="fotos/testimonio-4.jpg" controls preload="none" playsinline></video>
     </div>
   </div>
 </section>
 -->
 
-<section id="trayectoria">
+<section id="preguntas">
   <div class="env">
-    <div class="impacto revela">
-      <span class="antetitulo">Experiencia real</span>
-      <h2>Diez años del lado del que decide</h2>
-      <ul>
-        <li><strong>+10 años</strong><span>liderando selección</span></li>
-        <li><strong>Cientos</strong><span>de entrevistas tomadas</span></li>
-        <li><strong>3 ATS</strong><span>configurados desde adentro</span></li>
-        <li><strong>15 min</strong><span>de diagnóstico sin costo</span></li>
-      </ul>
-      <p>Lo que te enseño no es teoría: es cómo se descarta y cómo se elige un perfil en un proceso real, en Chile y en procesos remotos para España.</p>
-      <a class="boton-blanco" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20agendar%20el%20diagn%C3%B3stico%20de%2015%20minutos" target="_blank" rel="noopener">Quiero mi diagnóstico</a>
-    </div>
-  </div>
-</section>
-
-<section id="preguntas" class="gris">
-  <div class="env">
-    <div class="cabecera centro">
-      <h2>Preguntas <span class="azul">frecuentes</span></h2>
+    <div class="cabecera">
+      <h2>Preguntas frecuentes</h2>
     </div>
     <div class="faq">
       <details>
@@ -681,7 +634,7 @@ section h2{font-size:clamp(2rem,1.4rem + 2.4vw,3.3rem);margin-bottom:1.1rem}
       <details>
         <summary>¿Atiendes fuera de Chile?</summary>
         <div class="contenido">
-          <p>Sí, en remoto para Latinoamérica y España. WhatsApp si estás en Chile, que contesto el mismo día. Correo si escribes desde fuera, y ajustamos la hora a tu huso horario.</p>
+          <p>Sí, en remoto para Latinoamérica y España. Escríbeme por correo y ajustamos la hora a tu huso horario.</p>
         </div>
       </details>
       <details>
@@ -700,26 +653,26 @@ section h2{font-size:clamp(2rem,1.4rem + 2.4vw,3.3rem);margin-bottom:1.1rem}
   </div>
 </section>
 
-<section id="base" class="base-cta">
+<section id="base" class="base oscura">
   <div class="env">
-    <div class="tarjeta revela">
-      <div>
-        <h2>¿Todavía no es el momento?</h2>
-        <p>Súmate a la base de candidatos. Cuando una empresa me pide un perfil, la reviso antes que cualquier otra cosa: si el tuyo calza con un cargo, te escribo. Es gratis, toma tres minutos y no te compromete a nada.</p>
-      </div>
-      <a class="boton-blanco" href="/base">Registrarme en la base</a>
+    <div>
+      <h2>¿Todavía no es el momento?</h2>
+      <p>Súmate a la base de candidatos. Cuando una empresa me pide un perfil, la reviso antes que cualquier otra cosa: si el tuyo calza con un cargo, te escribo. Es gratis, toma tres minutos y no te compromete a nada.</p>
     </div>
+    <a class="boton-linea" href="/base">Registrarme en la base</a>
   </div>
 </section>
 
-<section class="final">
+<section class="banda final">
   <div class="env">
-    <h2>¿Listo para dejar de postular y empezar a avanzar?</h2>
-    <p>Da el primer paso hoy: agenda un diagnóstico gratuito de quince minutos y sal sabiendo qué está viendo un reclutador cuando abre tu perfil.</p>
-    <div class="acciones centro">
-      <a class="boton-blanco" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20agendar%20el%20diagn%C3%B3stico%20de%2015%20minutos" target="_blank" rel="noopener">Quiero mi diagnóstico <svg class="flecha" aria-hidden="true"><use href="#i-flecha"></use></svg></a>
+    <h2>Tu próxima postulación puede pasar los tres filtros</h2>
+    <p>Agenda los quince minutos y sal sabiendo qué está viendo un reclutador cuando abre tu perfil.</p>
+    <div class="acciones">
+      <a class="boton" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20agendar%20el%20diagn%C3%B3stico%20de%2015%20minutos" target="_blank" rel="noopener">
+        <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>Agendar diagnóstico gratis
+      </a>
     </div>
-    <p class="letra-chica">Me escribes por WhatsApp y coordinamos la hora. Si estás fuera de Chile, escríbeme a <a href="mailto:sebastian.carvallo@outlook.com?subject=Diagn%C3%B3stico%20de%2015%20minutos" style="color:#fff">sebastian.carvallo@outlook.com</a>.</p>
+    <p class="nota-chica">Si estás fuera de Chile, escríbeme a <a href="mailto:sebastian.carvallo@outlook.com?subject=Diagn%C3%B3stico%20de%2015%20minutos">sebastian.carvallo@outlook.com</a>.</p>
   </div>
 </section>
 
@@ -727,143 +680,114 @@ section h2{font-size:clamp(2rem,1.4rem + 2.4vw,3.3rem);margin-bottom:1.1rem}
 
 <div id="panel-empresas" role="tabpanel" aria-labelledby="tab-empresas" tabindex="0" hidden>
 
-<div class="portada">
-  <svg class="trazo" viewBox="0 0 600 400" aria-hidden="true"><path d="M30 370 L220 190 L320 280 L560 40 M440 40 H560 V160"/></svg>
-  <div class="env aparece">
-    <span class="pildora punto">Evaluación psicolaboral por competencias</span>
-    <h1>Contrata con evidencia, no por impresión</h1>
-    <p class="entrada">Una mala contratación cuesta meses y dinero. Evalúo a tus candidatos por competencias y te entrego <strong>un informe con evidencia de por qué cada persona se ajusta o no al cargo</strong>.</p>
-    <div class="acciones">
-      <a class="boton" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20represento%20a%20una%20empresa%20y%20necesito%20evaluar%20candidatos.%20Quiero%20conversarlo." target="_blank" rel="noopener">Conversemos tu proceso</a>
-      <a class="boton-blanco" href="mailto:sebastian.carvallo@outlook.com?subject=Evaluaci%C3%B3n%20de%20candidatos%20para%20mi%20empresa">Escríbeme por correo</a>
+<div class="portada-emp">
+  <div class="env">
+    <div>
+      <h1>Contrata con evidencia, no por impresión</h1>
+      <p class="entrada">Una mala contratación cuesta meses y dinero. Evalúo a tus candidatos por competencias y te entrego un informe con evidencia de por qué cada persona se ajusta o no al cargo.</p>
+      <div class="acciones">
+        <a class="boton" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20represento%20a%20una%20empresa%20y%20necesito%20evaluar%20candidatos.%20Quiero%20conversarlo." target="_blank" rel="noopener">
+          <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>Conversar mi proceso
+        </a>
+        <a class="boton-linea" href="mailto:sebastian.carvallo@outlook.com?subject=Evaluaci%C3%B3n%20de%20candidatos%20para%20mi%20empresa">
+          <svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Escribir por correo
+        </a>
+      </div>
+      <p class="nota-chica">Sebastián Carvallo Campos, psicólogo organizacional. Diez años liderando selección en PF Alimentos y CMPC. Presencial en Talca y en remoto para Latinoamérica y España.</p>
     </div>
-    <p class="letra-chica">Sebastián Carvallo Campos, psicólogo organizacional. Diez años liderando selección en PF Alimentos y CMPC. Presencial en Talca y en remoto para Latinoamérica y España.</p>
+    <figure class="muestra">
+      <a href="fotos/muestra-informe-empresa.png" target="_blank" rel="noopener"><img src="fotos/muestra-informe-empresa.png" width="800" height="1290" alt="Ejemplo del perfil e informe por competencias, con datos ficticios" loading="lazy"></a>
+      <figcaption>Ejemplo de informe, con datos ficticios.</figcaption>
+    </figure>
   </div>
 </div>
 
-<section>
+<section class="banda">
   <div class="env">
-    <div class="problema revela">
-      <span class="antetitulo" style="color:var(--oscuro-acento)">El problema</span>
-      <h2>No es entrevistar. Es decidir sin evidencia.</h2>
-      <p>Muchas malas contrataciones se deciden por impresión: cayó bien, respondió con soltura, buen currículum. Nada de eso predice cómo va a trabajar.</p>
-      <p>Evaluar por competencias cambia la pregunta: no "¿me cae bien?", sino "¿qué evidencia hay de que ya hizo lo que el cargo exige?". Eso lo convierto en un informe trazable para que decidas con fundamentos.</p>
-    </div>
-  </div>
-</section>
-
-<section id="autotest-emp" class="gris">
-  <div class="env">
-    <div class="feat revela">
-      <div>
-        <span class="pildora punto">Evaluación por competencias</span>
-        <h2>Una autoprueba por competencias, <span class="azul">respaldada por mi criterio</span></h2>
-        <p>Tus candidatos responden una autoprueba por competencias (15 min, online) y yo la cruzo con la entrevista. Obtienes un <strong>perfil con % de ajuste al cargo</strong> y un informe por competencia: objetivo, rápido y comparable entre candidatos.</p>
-        <div class="acciones">
-          <a class="boton" href="/cuestionario" target="_blank" rel="noopener">Ver la autoevaluación</a>
-          <a class="boton-blanco" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20represento%20a%20una%20empresa%20y%20quiero%20usar%20la%20autoevaluaci%C3%B3n%20por%20competencias%20en%20mi%20proceso." target="_blank" rel="noopener">Usarla en mi proceso</a>
-        </div>
-      </div>
-      <figure>
-        <a href="fotos/muestra-informe-empresa.png" target="_blank" rel="noopener"><img src="fotos/muestra-informe-empresa.png" width="800" height="1290" alt="Ejemplo del perfil e informe por competencias, con datos ficticios" loading="lazy"></a>
-      </figure>
-    </div>
+    <h2>El problema no es entrevistar. Es decidir sin evidencia.</h2>
+    <p>Muchas malas contrataciones se deciden por impresión: cayó bien, respondió con soltura, buen currículum. Nada de eso predice cómo va a trabajar.</p>
+    <p>Evaluar por competencias cambia la pregunta: no "¿me cae bien?", sino "¿qué evidencia hay de que ya hizo lo que el cargo exige?". Eso lo convierto en un informe trazable para que decidas con fundamentos.</p>
   </div>
 </section>
 
 <section id="como-trabajo">
   <div class="env">
-    <div class="cabecera centro">
-      <h2>Cómo <span class="azul">trabajo</span></h2>
+    <div class="cabecera">
+      <h2>Cómo trabajo</h2>
       <p class="intro">Me sumo donde lo necesites: un candidato o todo un proceso.</p>
     </div>
-    <ol class="rejilla rejilla-3 pasos">
-      <li class="tarjeta revela">
-        <span class="num" aria-hidden="true">1</span>
+    <ol class="pasos pasos-3">
+      <li>
         <h3>Definimos qué exige el cargo</h3>
         <p>Traduzco el cargo a competencias y al nivel esperado de cada una, desde el descriptor o una conversación corta.</p>
       </li>
-      <li class="tarjeta revela">
-        <span class="num" aria-hidden="true">2</span>
-        <h3>Entrevisto por competencias</h3>
-        <p>Entrevista estructurada (STAR): busco situaciones reales que vivió, no respuestas de manual.</p>
+      <li>
+        <h3>Evalúo a cada candidato</h3>
+        <p>Una autoprueba por competencias de 15 minutos, en línea, y una entrevista estructurada (STAR) que busca situaciones reales, no respuestas de manual.</p>
       </li>
-      <li class="tarjeta revela">
-        <span class="num" aria-hidden="true">3</span>
+      <li>
         <h3>Te entrego un informe con evidencia</h3>
-        <ul class="checks">
-          <li>Nivel alcanzado vs. esperado en cada competencia</li>
-          <li>Los hechos que sostienen cada nivel, no adjetivos</li>
-          <li>Fortalezas, brechas y recomendación de contratación</li>
-        </ul>
+        <p>Nivel alcanzado frente al esperado en cada competencia, los hechos que lo sostienen, y fortalezas, brechas y recomendación de contratación.</p>
       </li>
     </ol>
-    <div class="nota">
-      <p><strong>Me adapto:</strong> cargos operativos, comerciales o profesionales; online o presencial; con tus pruebas o las mías.</p>
-    </div>
+    <p class="nota-adapto"><strong>Me adapto</strong> a cargos operativos, comerciales o profesionales; en línea o presencial; con tus pruebas o las mías. <a href="/cuestionario" target="_blank" rel="noopener">Ver cómo es la autoprueba</a>.</p>
   </div>
 </section>
 
-<section id="por-que" class="gris">
+<section id="por-que" class="oscura">
   <div class="env">
-    <div class="cabecera centro">
-      <h2>No es un proceso <span class="azul">enlatado</span></h2>
-      <p class="intro">Es el criterio de alguien que decidió, diez años, quién entraba a grandes empresas.</p>
+    <div class="cabecera">
+      <h2>No es un proceso enlatado</h2>
+      <p class="intro">Es el criterio de alguien que decidió, durante diez años, quién entraba a grandes empresas.</p>
     </div>
-    <div class="rejilla rejilla-4">
-      <article class="tarjeta c-azul revela">
-        <span class="icono-t" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+    <ul class="razones">
+      <li>
         <h3>Diez años del lado del que decide</h3>
         <p>Liderando selección en PF Alimentos y CMPC, en procesos masivos de Arica a Punta Arenas.</p>
-      </article>
-      <article class="tarjeta c-naranja revela">
-        <span class="icono-t" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>
+      </li>
+      <li>
         <h3>Evaluación por competencias real</h3>
         <p>Matriz por cargo, entrevista STAR e informe fundamentado, aplicados en procesos reales.</p>
-      </article>
-      <article class="tarjeta c-morado revela">
-        <span class="icono-t" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+      </li>
+      <li>
         <h3>Conozco los dos lados</h3>
         <p>También preparo candidatos: sé qué respuesta convence y cuál suena de memoria.</p>
-      </article>
-      <article class="tarjeta c-verde revela">
-        <span class="icono-t" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+      </li>
+      <li>
         <h3>Rápido y trazable</h3>
         <p>Información consistente y a tiempo, con cada conclusión respaldada en evidencia.</p>
-      </article>
-    </div>
+      </li>
+    </ul>
   </div>
 </section>
 
 <section id="contacto-empresas">
   <div class="env">
-    <div class="cabecera centro">
-      <h2>Hablemos de <span class="azul">tu proceso</span></h2>
+    <div class="cabecera">
+      <h2>Hablemos de tu proceso</h2>
       <p class="intro">Cuéntame qué cargo necesitas cubrir, cuántos candidatos y para cuándo. Con eso te digo cómo lo abordo y cuánto cuesta, sin compromiso.</p>
     </div>
-    <div class="rejilla rejilla-3">
-      <div class="tarjeta via">
+    <ul class="vias">
+      <li>
         <h3>Por correo</h3>
-        <p>Ideal si quieres dejar por escrito el cargo y los tiempos.</p>
-        <a class="boton-blanco" href="mailto:sebastian.carvallo@outlook.com?subject=Evaluaci%C3%B3n%20de%20candidatos%20para%20mi%20empresa">
-          <svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>sebastian.carvallo@outlook.com
-        </a>
-      </div>
-      <div class="tarjeta via">
+        <p>Si quieres dejar por escrito el cargo y los tiempos.</p>
+        <a class="boton-linea chico" href="mailto:sebastian.carvallo@outlook.com?subject=Evaluaci%C3%B3n%20de%20candidatos%20para%20mi%20empresa">sebastian.carvallo@outlook.com</a>
+      </li>
+      <li>
         <h3>Por WhatsApp</h3>
         <p>Si prefieres coordinar rápido una primera conversación.</p>
-        <a class="boton" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20represento%20a%20una%20empresa%20y%20necesito%20evaluar%20candidatos.%20Quiero%20conversarlo." target="_blank" rel="noopener">
+        <a class="boton chico" href="https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20represento%20a%20una%20empresa%20y%20necesito%20evaluar%20candidatos.%20Quiero%20conversarlo." target="_blank" rel="noopener">
           <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>Escribir por WhatsApp
         </a>
-      </div>
-      <div class="tarjeta via">
+      </li>
+      <li>
         <h3>Por LinkedIn</h3>
         <p>Para ver mi trayectoria o escribirme por ahí.</p>
-        <a class="boton-blanco" href="https://www.linkedin.com/in/sebastiancarvalloc/" target="_blank" rel="noopener">
-          <svg class="ico" aria-hidden="true"><use href="#i-linkedin"></use></svg>Mi perfil de LinkedIn
+        <a class="boton-linea chico" href="https://www.linkedin.com/in/sebastiancarvalloc/" target="_blank" rel="noopener">
+          <svg class="ico" aria-hidden="true"><use href="#i-linkedin"></use></svg>Ver mi perfil
         </a>
-      </div>
-    </div>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -873,7 +797,7 @@ section h2{font-size:clamp(2rem,1.4rem + 2.4vw,3.3rem);margin-bottom:1.1rem}
   <div class="env">
     <div class="cols">
       <div>
-        <a class="logo" href="#">Sebastián<span>Carvallo</span></a>
+        <a class="logo" href="#">Sebastián Carvallo</a>
         <p>Psicólogo organizacional. CV para ATS, LinkedIn y entrevistas, con el criterio de diez años liderando selección. Talca, Chile, y en remoto.</p>
         <div class="redes">
           <a href="https://www.linkedin.com/in/sebastiancarvalloc/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ico" aria-hidden="true"><use href="#i-linkedin"></use></svg></a>
@@ -881,8 +805,8 @@ section h2{font-size:clamp(2rem,1.4rem + 2.4vw,3.3rem);margin-bottom:1.1rem}
           <a href="mailto:sebastian.carvallo@outlook.com" aria-label="Correo"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg></a>
         </div>
       </div>
-      <nav aria-label="Explora">
-        <h3>Explora</h3>
+      <nav aria-label="Páginas">
+        <h3>Páginas</h3>
         <ul>
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="/cuestionario">Autoevaluación</a></li>
@@ -899,7 +823,7 @@ section h2{font-size:clamp(2rem,1.4rem + 2.4vw,3.3rem);margin-bottom:1.1rem}
         </ul>
       </div>
     </div>
-    <p class="derechos">© 2026 Sebastián Carvallo Campos. Todos los derechos reservados.</p>
+    <p class="derechos">© 2026 Sebastián Carvallo Campos.</p>
   </div>
 </footer>
 
@@ -919,7 +843,7 @@ section h2{font-size:clamp(2rem,1.4rem + 2.4vw,3.3rem);margin-bottom:1.1rem}
   var cta = document.getElementById('cta-movil');
   var ctaInfo = {
     candidatos: {href: 'https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20agendar%20el%20diagn%C3%B3stico%20de%2015%20minutos', texto: 'Agendar diagnóstico gratis'},
-    empresas: {href: 'https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20represento%20a%20una%20empresa%20y%20necesito%20evaluar%20candidatos.%20Quiero%20conversarlo.', texto: 'Conversemos tu proceso'}
+    empresas: {href: 'https://wa.me/56936108624?text=Hola%20Sebasti%C3%A1n%2C%20represento%20a%20una%20empresa%20y%20necesito%20evaluar%20candidatos.%20Quiero%20conversarlo.', texto: 'Conversar mi proceso'}
   };
   function activar(vista, foco){
     if(!paneles[vista]) return;
@@ -965,18 +889,6 @@ section h2{font-size:clamp(2rem,1.4rem + 2.4vw,3.3rem);margin-bottom:1.1rem}
 
   if(location.hash === '#empresas') activar('empresas');
 
-  // Aparición suave al hacer scroll.
-  var revela = document.querySelectorAll('.revela');
-  if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entradas){
-      entradas.forEach(function(en){
-        if(en.isIntersecting){ en.target.classList.add('visto'); io.unobserve(en.target); }
-      });
-    }, {rootMargin: '0px 0px -8% 0px'});
-    Array.prototype.forEach.call(revela, function(el){ io.observe(el); });
-  } else {
-    Array.prototype.forEach.call(revela, function(el){ el.classList.add('visto'); });
-  }
 })();
 </script>
 
